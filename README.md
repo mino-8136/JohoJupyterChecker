@@ -1,39 +1,36 @@
 # joho-judge-system
 
-This template should help get you started developing with Vue 3 in Vite.
+学生が作成したJupyterNotebook内の課題を自動評価するためのプログラム
 
-## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## Type Support for `.vue` Imports in TS
+## 要件
+- npm install axios vue-axios
+- pip install flask flask-cors nbformat nbconvert
+- pip install jinja2==3.0.3
+- 内部サーバーはhttp://localhost:5000で融通
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
 
-## Customize configuration
+## 諸々の操作
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+### Projectの初回起動
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### 内部サーバーの起動
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### アプリケーションのビルド
 
 ```sh
 npm run build
 ```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
+### Python経由での起動
+```
+python main.py
 ```
