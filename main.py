@@ -1,20 +1,34 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
-import nbformat
 from nbconvert import PythonExporter
-import subprocess
+from pathlib import Path
+import json
+import nbformat
 import os
+import subprocess
+import sys
 import tempfile
+import webbrowser
+
+
+# 実行ファイルの基点ディレクトリを取得
+def base_dir():
+    if hasattr(sys, "_MEIPASS"):
+        # 実行ファイルで起動した場合、展開先ディレクトリを基点とする。
+        return Path(sys._MEIPASS)
+    else:
+        # python コマンドで起動した場合、プロジェクトディレクトリを基点とする。
+        return Path("..")
 
 app = Flask(__name__)
 CORS(app)
 
-# 課題データを読み込む
-import json
 
-with open('problems/week1.json', 'r', encoding='utf-8') as f:
+# 課題データを読み込む
+with open('public/problems/week1.json', 'r', encoding='utf-8') as f:
     problems = json.load(f)
 
+# 課題データを返すAPI
 @app.route('/api/submit', methods=['POST'])
 def submit_assignment():
     if 'file' not in request.files:
@@ -67,5 +81,20 @@ def submit_assignment():
         os.remove(notebook_path)
         os.remove(script_path)
 
+@app.route("/")
+def index():
+    """フロントエンド側のページを表示する。
+
+    Returns:
+        str: HTML
+    """
+    return render_template("index.html")
+
+
+
+
 if __name__ == '__main__':
+    webbrowser.open("http://localhost:5000/", new=2, autoraise=True)
     app.run(debug=True, port=5000)
+
+
