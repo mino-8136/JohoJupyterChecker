@@ -1,7 +1,7 @@
 <template>
     <v-table class="elevation-1">
         <thead>
-            <tr  class="header-row">
+            <tr class="header-row">
                 <th class="text-left">課題</th>
                 <th class="text-left">課題点</th>
                 <th class="text-left">達成状況</th>
@@ -25,7 +25,13 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
-const assignments = ref([])
+interface Assignment {
+  name: string;
+  points: number;
+  status: string | null;
+}
+
+const assignments = ref<Assignment[]>([])
 const headers = [
   { text: '課題', value: 'name' },
   { text: '課題点', value: 'points' },
@@ -33,7 +39,6 @@ const headers = [
 ]
 
 onMounted(() => {
-  // JSONファイルからデータを読み込む
   fetch('/problems/week1.json')
     .then((response) => {
       if (!response.ok) {
@@ -42,9 +47,10 @@ onMounted(() => {
       return response.json()
     })
     .then((data) => {
-      assignments.value = data.assignments.map((assignment) => {
+      assignments.value = data.assignments.map((assignment: any) => {
         return {
-          ...assignment,
+          name: assignment.name,
+          points: assignment.points,
           status: null // 初期状態では達成状況は未設定
         }
       })

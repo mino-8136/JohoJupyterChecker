@@ -12,9 +12,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const file = ref(null)
-const studentId = ref('')
-const assignments = ref([]) // 既存の assignments を参照
+const file = ref<File | null>(null)
+const studentId = ref<string>('')
+const assignments = ref<Array<{ name: string, status: string }>>([]) // 既存の assignments を参照
 
 const submitForm = () => {
   if (!file.value) {
@@ -31,16 +31,16 @@ const submitForm = () => {
     body: formData
   })
     .then(response => response.json())
-    .then(data => {
+    .then((data: any) => {
       console.log(data)
       updateAssignmentStatus(data)
     })
-    .catch(error => {
+    .catch((error: any) => {
       console.error('Error:', error)
     })
 }
 
-const updateAssignmentStatus = (results) => {
+const updateAssignmentStatus = (results: Array<{ name: string, status: boolean }>) => {
   results.forEach(result => {
     const assignment = assignments.value.find(a => a.name === result.name)
     if (assignment) {
