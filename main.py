@@ -22,6 +22,7 @@ def base_dir():
 
 app = Flask(
     __name__,
+    static_folder='dist/assets',
     template_folder='dist',
     )
 CORS(app)
