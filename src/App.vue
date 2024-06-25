@@ -13,24 +13,23 @@ function catchWeek(week: number) {
   selected_week.value = week
   console.log(week)
 }
-
 </script>
 
 <template>
   <v-app>
     <v-container>
-      <v-app-bar app color="primary" >
-        <v-toolbar-title >課題自動ジャッジシステム v1.0</v-toolbar-title>
+      <v-app-bar app color="primary">
+        <v-toolbar-title>課題自動ジャッジシステム v1.0</v-toolbar-title>
         <v-btn icon>
           <v-icon>mdi-menu</v-icon>
         </v-btn>
       </v-app-bar>
       <v-main>
-          <WeekSelector @callCatchWeek="catchWeek" />
-          <ProblemDescription :week=selected_week />
-          <SubmissionForm />
-          <AssignmentTable />
-          <StudentScore />
+        <WeekSelector @callCatchWeek="catchWeek" />
+        <ProblemDescription :week="selected_week" />
+        <SubmissionForm />
+        <AssignmentTable :week="selected_week" />
+        <StudentScore />
       </v-main>
     </v-container>
   </v-app>
