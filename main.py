@@ -28,6 +28,26 @@ app = Flask(
 CORS(app)
 
 
+# スクリプトを抽出する
+def extract_scripts(notebook_path, start_keyword="## 演習問題"):
+    with open(notebook_path, 'r', encoding='utf-8') as f:
+        nb = nbformat.read(f, as_version=4)
+    
+    code_cells = []
+    exercise_started = False
+
+    for cell in nb['cells']:
+        #Markdownセルの処理
+        if cell['cell_type'] == 'markdown':
+            if start_keyword in cell['source']:
+                exercise_started = True
+        elif cell['cell_type'] == 'code' and exercise_started:
+            code_cells.append(cell['source'])
+
+    return code_cells
+
+
+
 # 課題データを返すAPI
 @app.route('/api/submit', methods=['POST'])
 def submit_assignment():
@@ -49,7 +69,7 @@ def submit_assignment():
             nb = nbformat.read(f, as_version=4)
         
         results = []
-        code_cells = [cell['source'] for cell in nb['cells'] if cell['cell_type'] == 'code']
+        code_cells = extract_scripts(notebook_path)
         
         #print(code_cells)
 
@@ -102,4 +122,4 @@ def index():
 
 if __name__ == '__main__':
     webbrowser.open("http://localhost:5000/", new=2, autoraise=True)
-    app.run(debug=True, port=5000)
+    app.run(debug=False, port=5000)
