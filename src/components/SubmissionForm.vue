@@ -2,7 +2,7 @@
   <v-form>
     <v-file-input
       color="primary"
-      label="IPYNBファイルを選択する"
+      label=".ipynbファイルを選択する"
       v-model="file"
       @change="submitForm"
     ></v-file-input>
@@ -13,8 +13,10 @@
 import { ref } from 'vue'
 
 const file = ref<File | null>(null)
-const studentId = ref<string>('')
-const assignments = ref<Array<{ name: string, status: string }>>([]) // 既存の assignments を参照
+const assignments = ref<Array<{ name: string, status: string }>>([
+  { name: '課題1', status: '未提出' }, // サンプルデータ
+  { name: '課題2', status: '未提出' }
+])
 
 const submitForm = () => {
   if (!file.value) {
@@ -24,27 +26,26 @@ const submitForm = () => {
 
   const formData = new FormData()
   formData.append('file', file.value)
-  formData.append('studentId', studentId.value)
 
   fetch('http://localhost:5000/api/submit', {
     method: 'POST',
     body: formData
   })
     .then(response => response.json())
-    .then((data: any) => {
+    .then(data => {
       console.log(data)
-      updateAssignmentStatus(data)
+      updateAssignmentStatus(data.assignments)
     })
-    .catch((error: any) => {
+    .catch(error => {
       console.error('Error:', error)
     })
 }
 
-const updateAssignmentStatus = (results: Array<{ name: string, status: boolean }>) => {
+const updateAssignmentStatus = (results: Array<{ name: string, status: string }>) => {
   results.forEach(result => {
     const assignment = assignments.value.find(a => a.name === result.name)
     if (assignment) {
-      assignment.status = result.status ? '正解' : '不正解'
+      assignment.status = result.status === 'clear!' ? '正解' : '不正解'
     }
   })
 }
