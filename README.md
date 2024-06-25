@@ -3,6 +3,9 @@
 学生が作成したJupyterNotebook内の課題を自動評価するためのプログラム
 
 
+## メモ
+- Node.js 20.15.0
+- Python 3.12
 
 ## 要件
 - npm install axios vue-axios
