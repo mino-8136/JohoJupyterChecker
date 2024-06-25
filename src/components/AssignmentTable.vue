@@ -25,6 +25,10 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
+const prop = defineProps<{
+  week: number
+}>()
+
 interface Assignment {
   name: string;
   points: number;
@@ -38,11 +42,16 @@ const headers = [
   { text: '達成状況', value: 'status' }
 ]
 
-onMounted(() => {
-  fetch('static/problems/week1.json')
+// TODO : problemDescriptionと同じ内容
+function getWeekFileName(week: number): string {
+  return `static/problems/week${week + 1}.json`
+}
+
+function updateAssignmentStatus(week: number) {
+  fetch(getWeekFileName(week))
     .then((response) => {
       if (!response.ok) {
-        throw new Error('Network response was not ok')
+        throw new Error('課題データが読み込めませんでした！')
       }
       return response.json()
     })
@@ -55,10 +64,17 @@ onMounted(() => {
         }
       })
     })
-    .catch((error) => {
-      console.error('There was a problem with the fetch operation:', error)
-    })
+}
+
+onMounted(() => {
+  updateAssignmentStatus(prop.week)
 })
+
+defineExpose({
+  updateAssignmentStatus
+})
+
+
 </script>
 
 <style scoped>

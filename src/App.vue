@@ -8,7 +8,8 @@ import StudentScore from './components/StudentScore.vue'
 import { ref, watch } from 'vue'
 
 const selected_week = ref<number>(0)
-const childProblemDescription = ref<{ displayWeekData: (week: number) => void } | null>(null)
+const childProblemDescription = ref<typeof ProblemDescription | null>(null)
+const childAssignmentTable = ref<typeof AssignmentTable | null>(null)
 
 // 週の情報を設定する
 function catchWeek(week: number) {
@@ -17,13 +18,10 @@ function catchWeek(week: number) {
 }
 
 // selected_weekの変更を監視する
-watch(selected_week, (newVal) => {
-  if (childProblemDescription.value != null) 
-  {
-    childProblemDescription.value.displayWeekData(newVal)
-  }
+watch(selected_week, (newVal: number) => {
+    childProblemDescription.value?.displayWeekData(newVal)
+    childAssignmentTable.value?.updateAssignmentStatus(newVal)
 })
-
 </script>
 
 <template>
@@ -39,7 +37,7 @@ watch(selected_week, (newVal) => {
         <WeekSelector @callCatchWeek="catchWeek" />
         <ProblemDescription ref="childProblemDescription" :week="selected_week" />
         <SubmissionForm />
-        <AssignmentTable :week="selected_week" />
+        <AssignmentTable ref="childAssignmentTable" :week="selected_week" />
         <StudentScore />
       </v-main>
     </v-container>

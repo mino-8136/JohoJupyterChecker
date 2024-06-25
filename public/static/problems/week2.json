@@ -33,7 +33,7 @@
     },
     {
       "name": "課題5",
-      "points": 20,
+      "points": 40,
       "input_example": "10\n",
       "output_example": "55\n",
       "description": "与えられた数までのフィボナッチ数列の和を計算するプログラムを作成してください。"
