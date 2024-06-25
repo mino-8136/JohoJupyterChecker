@@ -9,7 +9,7 @@
 
 ## 要件
 - npm install axios vue-axios
-- pip install flask flask-cors nbformat nbconvert
+- pip install flask flask-cors nbformat ~~nbconvert~~
 - pip install jinja2==3.0.3
 - 内部サーバーはhttp://localhost:5000で融通
 

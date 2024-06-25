@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
-from nbconvert import PythonExporter
 from pathlib import Path
 import json
 import nbformat
@@ -20,20 +19,12 @@ def base_dir():
         # python コマンドで起動した場合、プロジェクトディレクトリを基点とする。
         return Path(".")
 
-# app = Flask(
-#     __name__,
-#     static_folder= base_dir() / 'dist/assets',
-#     template_folder= base_dir() / 'dist',
-#     )
 app = Flask(
     __name__, 
     static_folder= base_dir() /  "dist/static", 
     template_folder= base_dir() / "dist", 
     static_url_path="/static"
     )
-
-
-
 CORS(app)
 
 
@@ -47,55 +38,58 @@ def submit_assignment():
     if file.filename == '':
         return jsonify({"error": "No file provided"}), 400
     
-    # TODO: 仮実装
-    results = [
-        {'name': '課題1', 'status': 'clear!'},
-        {'name': '課題2', 'status': 'not clear!'}
-    ]
-    return jsonify({'assignments': results})
+    # 一時ファイルとしてJupyterNotebook全体を保存
+    with tempfile.NamedTemporaryFile(delete=False, suffix='.ipynb') as tmp:
+        file.save(tmp.name)
+        notebook_path = tmp.name
 
-    # # 一時ファイルとして保存
-    # with tempfile.NamedTemporaryFile(delete=False, suffix='.ipynb') as tmp:
-    #     file.save(tmp.name)
-    #     notebook_path = tmp.name
-
-    # try:
-    #     # NotebookファイルをPythonスクリプトに変換
-    #     with open(notebook_path, 'r', encoding='utf-8') as f:
-    #         nb = nbformat.read(f, as_version=4)
-
-    #     exporter = PythonExporter()
-    #     source, _ = exporter.from_notebook_node(nb)
-
-    #     # Pythonスクリプトとして一時ファイルに保存
-    #     with tempfile.NamedTemporaryFile(delete=False, suffix='.py') as tmp:
-    #         script_path = tmp.name
-    #         with open(script_path, 'w', encoding='utf-8') as script_file:
-    #             script_file.write(source)
-
-    #     # スクリプトを実行し、結果を収集
-    #     result = subprocess.run(['python', script_path], capture_output=True, text=True, timeout=10)
+    try:
+        # Notebookファイルをjsonとして読み込み、各スクリプトを取得
+        with open(notebook_path, 'r', encoding='utf-8') as f:
+            nb = nbformat.read(f, as_version=4)
         
-    #     # 出力結果を比較
-    #     output = result.stdout.strip()
-    #     results = []
-    #     for problem in problems['assignments']:
-    #         expected_output = problem['expected_output'].strip()
-    #         result_status = (output == expected_output)
-    #         results.append({
-    #             'name': problem['name'],
-    #             'status': result_status
-    #         })
+        results = []
+        code_cells = [cell['source'] for cell in nb['cells'] if cell['cell_type'] == 'code']
+        
+        #print(code_cells)
 
-    #     return jsonify(results)
+        # 各スクリプトを実行し、結果を収集
+        for code in code_cells:
 
-    # except Exception as e:
-    #     return jsonify({"error": str(e)}), 500
+            # 一時ファイルとしてスクリプトを保存 (名前に空白があるとつらい)
+            with tempfile.NamedTemporaryFile(delete=False, suffix='.py') as script_file:
+                script_file.write(code.encode('utf-8'))
+                script_path = script_file.name
+                #print(script_path)
+            
+            try:
+                result = subprocess.run(('python', script_path), capture_output=True, text=True, timeout=5)
+                output = result.stdout + result.stderr
+               
+            except subprocess.TimeoutExpired:
+                output = "Execution timed out."
+            except subprocess.CalledProcessError as e:
+                output = e.output
+            except Exception as e:
+                output = str(e)
+            
+            results.append({
+                "code": code,
+                "output": output
+            })
 
-    # finally:
-    #     # 一時ファイルを削除
-    #     os.remove(notebook_path)
-    #     os.remove(script_path)
+            os.remove(script_path)
+        
+        # 出力結果をjsonファイルでreturnする
+        print(results)
+        return jsonify(results)
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+    finally:
+        # 一時ファイルを削除
+        os.remove(notebook_path)
 
 @app.route("/")
 def index():
@@ -106,11 +100,6 @@ def index():
     """
     return render_template("index.html")
 
-
-
-
 if __name__ == '__main__':
     webbrowser.open("http://localhost:5000/", new=2, autoraise=True)
     app.run(debug=True, port=5000)
-
-
