@@ -36,11 +36,6 @@ interface Assignment {
 }
 
 const assignments = ref<Assignment[]>([])
-const headers = [
-  { text: '課題', value: 'name' },
-  { text: '課題点', value: 'points' },
-  { text: '達成状況', value: 'status' }
-]
 
 // TODO : problemDescriptionと同じ内容
 function getWeekFileName(week: number): string {
