@@ -20,11 +20,11 @@ function getWeekFileName(week: number): string {
   return `static/problems/week${week + 1}.json`
 }
 
-onMounted(() => {
-  fetch(getWeekFileName(prop.week))
+function displayWeekData(week: number) {
+  fetch(getWeekFileName(week))
     .then((response) => {
       if (!response.ok) {
-        throw new Error('Network response was not ok')
+        throw new Error('課題データが読み込めませんでした！')
       }
       return response.json()
     })
@@ -32,8 +32,14 @@ onMounted(() => {
       weekData.value.title = data.title
       weekData.value.description = data.description
     })
-    .catch((error) => {
-      console.error('There was a problem with the fetch operation:', error)
-    })
+}
+
+onMounted(() => {
+  displayWeekData(prop.week)
 })
+
+defineExpose({
+  displayWeekData
+})
+
 </script>

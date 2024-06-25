@@ -1,7 +1,7 @@
 {
   "week": "2週目",
-  "title":"【1週目】 Pythonの基本",
-  "description":"何事も最初が肝心。まずはソフトの操作方法から慣れていこう。",
+  "title": "【2週目】 Python文字列操作",
+  "description": "Pythonの文字列操作を学びます。",
   "assignments": [
     {
       "name": "課題1",
