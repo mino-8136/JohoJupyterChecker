@@ -1,5 +1,7 @@
 {
   "week": "1週目",
+  "title":"【1週目】 Pythonの基本",
+  "description":"何事も最初が肝心。まずはソフトの操作方法から慣れていこう。",
   "assignments": [
     {
       "name": "課題1",

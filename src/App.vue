@@ -1,8 +1,19 @@
 <script setup lang="ts">
 import WeekSelector from './components/WeekSelector.vue'
+import ProblemDescription from './components/ProblemDescription.vue'
 import AssignmentTable from './components/AssignmentTable.vue'
 import SubmissionForm from './components/SubmissionForm.vue'
 import StudentScore from './components/StudentScore.vue'
+
+import { ref } from 'vue'
+
+// 週の情報を設定する
+const selected_week = ref<number>(0)
+function catchWeek(week: number) {
+  selected_week.value = week
+  console.log(week)
+}
+
 </script>
 
 <template>
@@ -15,9 +26,8 @@ import StudentScore from './components/StudentScore.vue'
         </v-btn>
       </v-app-bar>
       <v-main>
-          <WeekSelector />
-          <h3 class="my-4">【1週目】Pythonの基本</h3>
-          <p>何事も最初が肝心。まずはソフトの操作方法から慣れていこう。</p>
+          <WeekSelector @callCatchWeek="catchWeek" />
+          <ProblemDescription :week=selected_week />
           <SubmissionForm />
           <AssignmentTable />
           <StudentScore />

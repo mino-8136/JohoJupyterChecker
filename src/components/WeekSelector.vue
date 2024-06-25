@@ -7,15 +7,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, defineEmits } from "vue";
 
-const selectedWeekIndex = ref(0);
+const emit = defineEmits(["selected-week"]); // 親に週情報を返すためのemit関数
+const selectedWeekIndex = ref(0); // 週の選択状態を管理
 const weeks = ['1週目', '2週目', '3週目', '4週目'];
 const changeWeek = (index: number) => {
   selectedWeekIndex.value = index;
-  const week = weeks[index];
-  // JSONファイルを読み込む処理を追加する
-  console.log(`Selected week: ${week}`);
+  
+  // 親に週情報を返す
+  emit("selected-week", selectedWeekIndex.value)
 };
 </script>
 
