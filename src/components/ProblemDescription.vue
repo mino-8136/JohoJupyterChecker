@@ -32,6 +32,10 @@ function displayWeekData(week: number) {
       weekData.value.title = data.title
       weekData.value.description = data.description
     })
+    .catch((error) => {
+      weekData.value.title = '未定',
+      weekData.value.description = 'まだ未定です！'
+    })
 }
 
 onMounted(() => {

@@ -55,6 +55,7 @@ function updateAssignmentStatus(week: number) {
       }
       return response.json()
     })
+
     .then((data) => {
       assignments.value = data.assignments.map((assignment: any) => {
         return {
@@ -63,6 +64,9 @@ function updateAssignmentStatus(week: number) {
           status: null // 初期状態では達成状況は未設定
         }
       })
+    })
+    .catch((error) => {
+      assignments.value = []
     })
 }
 
