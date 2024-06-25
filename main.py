@@ -20,11 +20,20 @@ def base_dir():
         # python コマンドで起動した場合、プロジェクトディレクトリを基点とする。
         return Path(".")
 
+# app = Flask(
+#     __name__,
+#     static_folder= base_dir() / 'dist/assets',
+#     template_folder= base_dir() / 'dist',
+#     )
 app = Flask(
-    __name__,
-    static_folder= base_dir() / 'dist/assets',
-    template_folder= base_dir() / 'dist',
+    __name__, 
+    static_folder= base_dir() /  "dist/static", 
+    template_folder= base_dir() / "dist", 
+    static_url_path="/static"
     )
+
+
+
 CORS(app)
 
 

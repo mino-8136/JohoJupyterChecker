@@ -39,7 +39,7 @@ const headers = [
 ]
 
 onMounted(() => {
-  fetch('problems/week1.json')
+  fetch('static/problems/week1.json')
     .then((response) => {
       if (!response.ok) {
         throw new Error('Network response was not ok')

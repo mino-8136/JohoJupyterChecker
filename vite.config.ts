@@ -8,8 +8,7 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 export default defineConfig({
   plugins: [vue(), VueDevTools()],
   build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
+    assetsDir: "static",
   },
 
   resolve: {
