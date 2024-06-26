@@ -12,8 +12,8 @@ const prop = defineProps<{
 
 // 画面に表示するための関数
 const weekData = ref({
-  title: '未定',
-  description: 'まだ未定です！'
+  title: 'Loading...',
+  description: 'Loading...'
 })
 
 function getWeekFileName(week: number): string {
