@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 
 const prop = defineProps<{
   week: number
@@ -78,8 +78,11 @@ onMounted(() => {
   getAssignments(prop.week)
 })
 
+watch(() => prop.week, (week) => {
+  getAssignments(week)
+})
+
 defineExpose({
-  getAssignments,
   updateAssignmentsStatus
 })
 

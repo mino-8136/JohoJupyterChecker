@@ -4,7 +4,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 
 const prop = defineProps<{
   week: number
@@ -38,12 +38,13 @@ function displayWeekData(week: number) {
     })
 }
 
+watch(() => prop.week, (week) => {
+  displayWeekData(week)
+})
+
 onMounted(() => {
   displayWeekData(prop.week)
 })
 
-defineExpose({
-  displayWeekData
-})
 
 </script>
