@@ -10,3 +10,8 @@ export const useCounterStore = defineStore('counter', () => {
 
   return { count, doubleCount, increment }
 })
+
+
+// 保持すべき値の候補
+// 現在の課題情報(読み出す機会が多い)
+// → output
