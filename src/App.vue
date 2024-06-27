@@ -17,11 +17,9 @@ function catchWeek(week: number) {
 }
 
 // 課題の状態を更新する(emit用)
-function catchAssignmentsStatus(data: Array<{ name: string, status: string }>) {
+function catchAssignmentsStatus(data: Array<{ name: string; status: string }>) {
   childAssignmentTable.value?.updateAssignmentsStatus(data)
 }
-
-
 </script>
 
 <template>
@@ -36,7 +34,7 @@ function catchAssignmentsStatus(data: Array<{ name: string, status: string }>) {
       <v-main>
         <WeekSelector @callCatchWeek="catchWeek" />
         <ProblemDescription :week="selected_week" />
-        <SubmissionForm @callCatchAssignmentsStatus="catchAssignmentsStatus"/>
+        <SubmissionForm @callCatchAssignmentsStatus="catchAssignmentsStatus" />
         <AssignmentTable ref="childAssignmentTable" :week="selected_week" />
         <StudentScore />
       </v-main>

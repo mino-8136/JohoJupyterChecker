@@ -1,25 +1,25 @@
 <template>
-    <v-table class="elevation-1">
-        <thead>
-            <tr class="header-row">
-                <th class="text-left">課題</th>
-                <th class="text-left">課題点</th>
-                <th class="text-left">達成状況</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for="assignment in assignments" :key="assignment.name">
-                <td>{{ assignment.name }}</td>
-                <td>{{ assignment.points }}</td>
-                <td>
-                    <v-chip v-if="assignment.status" color="success" dark>
-                        {{ assignment.status }}
-                    </v-chip>
-                    <v-chip v-else color="error" dark> 未完了 </v-chip>
-                </td>
-            </tr>
-        </tbody>
-    </v-table>
+  <v-table class="elevation-1">
+    <thead>
+      <tr class="header-row">
+        <th class="text-left">課題</th>
+        <th class="text-left">課題点</th>
+        <th class="text-left">達成状況</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="assignment in assignments" :key="assignment.name">
+        <td>{{ assignment.name }}</td>
+        <td>{{ assignment.points }}</td>
+        <td>
+          <v-chip v-if="assignment.status" color="success" dark>
+            {{ assignment.status }}
+          </v-chip>
+          <v-chip v-else color="error" dark> 未完了 </v-chip>
+        </td>
+      </tr>
+    </tbody>
+  </v-table>
 </template>
 
 <script setup lang="ts">
@@ -30,9 +30,9 @@ const prop = defineProps<{
 }>()
 
 interface Assignment {
-  name: string;
-  points: number;
-  status: string | null;
+  name: string
+  points: number
+  status: string | null
 }
 
 const assignments = ref<Assignment[]>([])
@@ -65,7 +65,6 @@ function getAssignments(week: number) {
     })
 }
 
-
 function updateAssignmentsStatus(status: Array<string>) {
   //assingmentsのstatusを更新する
   console.log(status)
@@ -78,19 +77,19 @@ onMounted(() => {
   getAssignments(prop.week)
 })
 
-watch(() => prop.week, (week) => {
-  getAssignments(week)
-})
+watch(
+  () => prop.week,
+  (week) => {
+    getAssignments(week)
+  }
+)
 
 defineExpose({
   updateAssignmentsStatus
 })
-
-
 </script>
 
 <style scoped>
-
 .v-table {
   margin: 3em 0em;
 }

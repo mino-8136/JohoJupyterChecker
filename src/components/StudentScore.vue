@@ -1,6 +1,6 @@
 <template>
-  <v-card class="my-4" >
-    <v-card-title > あなたの得点 </v-card-title>
+  <v-card class="my-4">
+    <v-card-title> あなたの得点 </v-card-title>
     <v-card-text>
       <v-row align="center" justify="center">
         <v-col cols="12" md="4">
@@ -24,7 +24,7 @@ import { ref } from 'vue'
 const score = ref(75)
 const studentId = ref('')
 
-const copyResult = () => {
+function copyResult() {
   const result = `Score: ${score.value}, ID: ${studentId.value}`
   navigator.clipboard.writeText(result).then(() => {
     alert('結果がクリップボードにコピーされました')

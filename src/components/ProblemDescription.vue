@@ -33,18 +33,18 @@ function displayWeekData(week: number) {
       weekData.value.description = data.description
     })
     .catch((error) => {
-      weekData.value.title = '未定',
-      weekData.value.description = 'まだ未定です！'
+      ;(weekData.value.title = '未定'), (weekData.value.description = 'まだ未定です！')
     })
 }
 
-watch(() => prop.week, (week) => {
-  displayWeekData(week)
-})
+watch(
+  () => prop.week,
+  (week) => {
+    displayWeekData(week)
+  }
+)
 
 onMounted(() => {
   displayWeekData(prop.week)
 })
-
-
 </script>

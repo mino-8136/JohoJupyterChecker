@@ -29,16 +29,15 @@ function submitForm() {
     method: 'POST',
     body: formData
   })
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       console.log(data)
       emit('callCatchAssignmentsStatus', data)
     })
-    .catch(error => {
+    .catch((error) => {
       console.error('Error:', error)
     })
 }
-
 </script>
 
 <style scoped>
