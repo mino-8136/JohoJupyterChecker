@@ -42,7 +42,7 @@ function getWeekFileName(week: number): string {
   return `static/problems/week${week + 1}.json`
 }
 
-function updateAssignmentStatus(week: number) {
+function getAssignments(week: number) {
   fetch(getWeekFileName(week))
     .then((response) => {
       if (!response.ok) {
@@ -65,12 +65,22 @@ function updateAssignmentStatus(week: number) {
     })
 }
 
+
+function updateAssignmentsStatus(status: Array<string>) {
+  //assingmentsのstatusを更新する
+  console.log(status)
+  assignments.value.forEach((assignment, index) => {
+    assignment.status = status[index]
+  })
+}
+
 onMounted(() => {
-  updateAssignmentStatus(prop.week)
+  getAssignments(prop.week)
 })
 
 defineExpose({
-  updateAssignmentStatus
+  getAssignments,
+  updateAssignmentsStatus
 })
 
 

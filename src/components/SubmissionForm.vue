@@ -13,12 +13,10 @@
 import { ref } from 'vue'
 
 const file = ref<File | null>(null)
-const assignments = ref<Array<{ name: string, status: string }>>([
-  { name: '課題1', status: '未提出' }, // サンプルデータ
-  { name: '課題2', status: '未提出' }
-])
+const emit = defineEmits(['callCatchAssignmentsStatus'])
 
-const submitForm = () => {
+// ファイルを選択してPythonに送信し、その結果をApp.vue経由でAssignmentTableに反映する
+function submitForm() {
   if (!file.value) {
     alert('ファイルを選択してください')
     return
@@ -34,21 +32,13 @@ const submitForm = () => {
     .then(response => response.json())
     .then(data => {
       console.log(data)
-      updateAssignmentStatus(data.assignments)
+      emit('callCatchAssignmentsStatus', data)
     })
     .catch(error => {
       console.error('Error:', error)
     })
 }
 
-const updateAssignmentStatus = (results: Array<{ name: string, status: string }>) => {
-  results.forEach(result => {
-    const assignment = assignments.value.find(a => a.name === result.name)
-    if (assignment) {
-      assignment.status = result.status === 'clear!' ? '正解' : '不正解'
-    }
-  })
-}
 </script>
 
 <style scoped>

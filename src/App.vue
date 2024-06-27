@@ -11,7 +11,7 @@ const selected_week = ref<number>(0)
 const childProblemDescription = ref<typeof ProblemDescription | null>(null)
 const childAssignmentTable = ref<typeof AssignmentTable | null>(null)
 
-// 週の情報を設定する
+// 週の情報を設定する(emit用)
 function catchWeek(week: number) {
   selected_week.value = week
   console.log(week)
@@ -20,8 +20,15 @@ function catchWeek(week: number) {
 // selected_weekの変更を監視する
 watch(selected_week, (newVal: number) => {
     childProblemDescription.value?.displayWeekData(newVal)
-    childAssignmentTable.value?.updateAssignmentStatus(newVal)
+    childAssignmentTable.value?.getAssignments(newVal)
 })
+
+// 課題の状態を更新する(emit用)
+function catchAssignmentsStatus(data: Array<{ name: string, status: string }>) {
+  childAssignmentTable.value?.updateAssignmentsStatus(data)
+}
+
+
 </script>
 
 <template>
@@ -36,7 +43,7 @@ watch(selected_week, (newVal: number) => {
       <v-main>
         <WeekSelector @callCatchWeek="catchWeek" />
         <ProblemDescription ref="childProblemDescription" :week="selected_week" />
-        <SubmissionForm />
+        <SubmissionForm @callCatchAssignmentsStatus="catchAssignmentsStatus"/>
         <AssignmentTable ref="childAssignmentTable" :week="selected_week" />
         <StudentScore />
       </v-main>
