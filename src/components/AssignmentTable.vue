@@ -65,11 +65,16 @@ function getAssignments(week: number) {
     })
 }
 
-function updateAssignmentsStatus(status: Array<string>) {
+// 配列データが返ってくると想定
+function updateAssignmentsStatus(result) {
+  const data = result
+
   //assingmentsのstatusを更新する
-  console.log(status)
+  console.log(data)
   assignments.value.forEach((assignment, index) => {
-    assignment.status = status[index]
+    if (data[index] != null){
+      assignment.status = data[index].is_correct
+    } 
   })
 }
 

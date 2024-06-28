@@ -61,8 +61,8 @@ async function submitForm() {
       body: formData
     })
     const data = await response.json()
+    console.log(data)
     emit('callCatchAssignmentsStatus', data)
-    // console.log(data)
   } catch (error) {
     console.error('Error:', error)
   }

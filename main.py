@@ -67,7 +67,7 @@ def submit_assignment():
     # 想定解の読み込み
     assignments = request.form['assignments']
     assignments = json.loads(assignments)
-    print(assignments)
+    # print(assignments)
 
 
     # 一時ファイルとしてJupyterNotebook全体を保存
@@ -86,34 +86,53 @@ def submit_assignment():
         #print(code_cells)
 
         # 各スクリプトを実行し、結果を収集
-        for code in code_cells:
+        for idx, code in enumerate(code_cells):
 
-            # 一時ファイルとしてスクリプトを保存 (名前に空白があるとつらい)
+            # インデックスに応じて入力例・出力例を取得
+            if idx < len(assignments):
+                input_example = assignments[idx]["input_example"]
+                output_example = assignments[idx]["output_example"]
+            else:
+                input_example = ""
+                output_example = ""
+
+            # 一時ファイルとしてスクリプトを保存
             with tempfile.NamedTemporaryFile(delete=False, suffix='.py') as script_file:
                 script_file.write(code.encode('utf-8'))
                 script_path = script_file.name
                 #print(script_path)
             
             try:
-                result = subprocess.run(('python', script_path), capture_output=True, text=True, timeout=5)
+                # TODO:引数がある場合の処理を追加する
+                result = subprocess.run(
+                    ('python', script_path), 
+                    input = input_example,
+                    capture_output=True, text=True, timeout=5)
                 output = result.stdout + result.stderr
+
+                # 出力結果と想定解を比較
+                is_correct = compare_output(output, output_example)
                
             except subprocess.TimeoutExpired:
                 output = "Execution timed out."
+                is_correct = False
             except subprocess.CalledProcessError as e:
                 output = e.output
+                is_correct = False
             except Exception as e:
                 output = str(e)
+                is_correct = False
             
             results.append({
-                "code": code,
-                "output": output
+                # "code": code,
+                "output": output,
+                "is_correct": is_correct,   
             })
 
             os.remove(script_path)
         
         # 出力結果をjsonファイルでreturnする
-        # print(results)
+        print(results)
         return jsonify(results)
 
     except Exception as e:

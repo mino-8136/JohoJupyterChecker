@@ -17,7 +17,7 @@ function catchWeek(week: number) {
 }
 
 // 課題の状態を更新する(emit用)
-function catchAssignmentsStatus(data: Array<{ name: string; status: string }>) {
+function catchAssignmentsStatus(data) {
   childAssignmentTable.value?.updateAssignmentsStatus(data)
 }
 </script>
