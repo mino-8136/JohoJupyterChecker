@@ -60,7 +60,7 @@ async function submitForm() {
       method: 'POST',
       body: formData
     })
-    const data = await response.json()
+    const data = await response.text()
     console.log(data)
     emit('callCatchAssignmentsStatus', data)
   } catch (error) {

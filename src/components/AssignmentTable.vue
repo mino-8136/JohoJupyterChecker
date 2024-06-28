@@ -65,9 +65,10 @@ function getAssignments(week: number) {
     })
 }
 
-// 配列データが返ってくると想定
+// JSON形式のテキストデータが返ってくると想定
 function updateAssignmentsStatus(result) {
-  const data = result
+  console.log(result)
+  const data = JSON.parse(result)
 
   //assingmentsのstatusを更新する
   console.log(data)
