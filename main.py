@@ -24,7 +24,7 @@ app = Flask(
     static_folder= base_dir() /  "dist/static", 
     template_folder= base_dir() / "dist", 
     static_url_path="/static"
-    )
+)
 CORS(app)
 
 
@@ -50,7 +50,10 @@ def extract_scripts(notebook_path, start_keyword="## 演習問題"):
 
 # outputと実行結果を比較する関数
 def compare_output(output, output_example):
-    return output == output_example
+    if output == output_example:
+        return True
+    else:
+        return False
 
 
 # 課題データを返すAPI
@@ -90,11 +93,12 @@ def submit_assignment():
 
             # インデックスに応じて入力例・出力例を取得
             if idx < len(assignments):
-                input_example = assignments[idx]["input_example"]
+                input_examples = assignments[idx]["input_example"]
                 output_example = assignments[idx]["output_example"]
             else:
-                input_example = ""
+                input_examples = ""
                 output_example = ""
+            # print(repr(input_examples))
 
             # 一時ファイルとしてスクリプトを保存
             with tempfile.NamedTemporaryFile(delete=False, suffix='.py') as script_file:
@@ -103,10 +107,10 @@ def submit_assignment():
                 #print(script_path)
             
             try:
-                # TODO:引数がある場合の処理を追加する
+                
                 result = subprocess.run(
                     ('python', script_path), 
-                    input = input_example,
+                    input = input_examples,
                     capture_output=True, text=True, timeout=5)
                 output = result.stdout + result.stderr
 
@@ -124,7 +128,7 @@ def submit_assignment():
                 is_correct = False
             
             results.append({
-                # "code": code,
+                "output_example": output_example,
                 "output": output,
                 "is_correct": is_correct,   
             })

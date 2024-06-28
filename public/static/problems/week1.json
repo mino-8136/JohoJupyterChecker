@@ -6,14 +6,14 @@
     {
       "name": "課題1",
       "points": 100,
-      "input_example": "1 2\n",
+      "input_example": "1\n2\n",
       "output_example": "3\n",
       "description": "二つの数の和を計算するプログラムを作成してください。"
     },
     {
       "name": "課題2",
       "points": 100,
-      "input_example": "3 5\n",
+      "input_example": "3\n5\n",
       "output_example": "15\n",
       "description": "二つの数の積を計算するプログラムを作成してください。"
     },
