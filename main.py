@@ -46,18 +46,30 @@ def extract_scripts(notebook_path, start_keyword="## 演習問題"):
 
     return code_cells
 
+# TODO:outputの正規化を行なう関数を実装する
+
+# outputと実行結果を比較する関数
+def compare_output(output, output_example):
+    return output == output_example
 
 
 # 課題データを返すAPI
 @app.route('/api/submit', methods=['POST'])
 def submit_assignment():
+
+    # 提出ファイルの読み込み
     if 'file' not in request.files:
         return jsonify({"error": "No file provided"}), 400
-
     file = request.files['file']
     if file.filename == '':
         return jsonify({"error": "No file provided"}), 400
     
+    # 想定解の読み込み
+    assignments = request.form['assignments']
+    assignments = json.loads(assignments)
+    print(assignments)
+
+
     # 一時ファイルとしてJupyterNotebook全体を保存
     with tempfile.NamedTemporaryFile(delete=False, suffix='.ipynb') as tmp:
         file.save(tmp.name)
@@ -101,7 +113,7 @@ def submit_assignment():
             os.remove(script_path)
         
         # 出力結果をjsonファイルでreturnする
-        print(results)
+        # print(results)
         return jsonify(results)
 
     except Exception as e:
@@ -113,13 +125,9 @@ def submit_assignment():
 
 @app.route("/")
 def index():
-    """フロントエンド側のページを表示する。
-
-    Returns:
-        str: HTML
-    """
     return render_template("index.html")
 
 if __name__ == '__main__':
-    webbrowser.open("http://localhost:5000/", new=2, autoraise=True)
-    app.run(debug=False, port=5000)
+    # TODO:開発中はコメントアウト
+    # webbrowser.open("http://localhost:5000/", new=2, autoraise=True)
+    app.run(debug=True, port=5000)

@@ -34,7 +34,7 @@ function catchAssignmentsStatus(data: Array<{ name: string; status: string }>) {
       <v-main>
         <WeekSelector @callCatchWeek="catchWeek" />
         <ProblemDescription :week="selected_week" />
-        <SubmissionForm @callCatchAssignmentsStatus="catchAssignmentsStatus" />
+        <SubmissionForm  :week="selected_week" @callCatchAssignmentsStatus="catchAssignmentsStatus" />
         <AssignmentTable ref="childAssignmentTable" :week="selected_week" />
         <StudentScore />
       </v-main>
