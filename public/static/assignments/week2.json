@@ -1,0 +1,82 @@
+{
+  "id": "2",
+  "title": "②文字列の操作",
+  "description": "Pythonの文字列操作を学びます。",
+  "problems": [
+    {
+      "name": "課題1",
+      "points": 100,
+      "examples": [
+        {
+          "input": "Hello World\n",
+          "output": "dlroW olleH\n"
+        },
+        {
+          "input": "Python\n",
+          "output": "nohtyP\n"
+        }
+      ],
+      "description": "与えられた文字列を逆順に表示するプログラムを作成してください。"
+    },
+    {
+      "name": "課題2",
+      "points": 100,
+      "examples": [
+        {
+          "input": "5 3\n",
+          "output": "8\n"
+        },
+        {
+          "input": "10 20\n",
+          "output": "30\n"
+        }
+      ],
+      "description": "二つの数の和を計算するプログラムを作成してください。"
+    },
+    {
+      "name": "課題3",
+      "points": 80,
+      "examples": [
+        {
+          "input": "7\n",
+          "output": "49\n"
+        },
+        {
+          "input": "9\n",
+          "output": "81\n"
+        }
+      ],
+      "description": "与えられた数の二乗を計算するプログラムを作成してください。"
+    },
+    {
+      "name": "課題4",
+      "points": 50,
+      "examples": [
+        {
+          "input": "2 3\n",
+          "output": "6\n"
+        },
+        {
+          "input": "4 5\n",
+          "output": "20\n"
+        }
+      ],
+      "description": "二つの数の積を計算するプログラムを作成してください。"
+    },
+    {
+      "name": "課題5",
+      "points": 40,
+      "examples": [
+        {
+          "input": "10\n",
+          "output": "55\n"
+        },
+        {
+          "input": "7\n",
+          "output": "13\n"
+        }
+      ],
+      "description": "与えられた数までのフィボナッチ数列の和を計算するプログラムを作成してください。"
+    }
+  ]
+}
