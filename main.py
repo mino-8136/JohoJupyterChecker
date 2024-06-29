@@ -32,7 +32,7 @@ CORS(app)
 @app.route('/api/assignments')
 def get_all_assignments():
     # 課題jsonファイルを読み込む
-    directory_path = 'public/static/problems'
+    directory_path = 'public/static/assignments'
     json_files = Path(directory_path).glob('*.json')
 
     all_data = []
