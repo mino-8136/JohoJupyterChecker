@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import WeekSelector from './components/WeekSelector.vue'
+import AssignmentSelector from './components/AssignmentSelector.vue'
 import ProblemDescription from './components/ProblemDescription.vue'
 import AssignmentTable from './components/AssignmentTable.vue'
 import SubmissionForm from './components/SubmissionForm.vue'
@@ -32,7 +32,7 @@ function catchAssignmentsStatus(data: string) {
         </v-btn>
       </v-app-bar>
       <v-main>
-        <WeekSelector @callCatchWeek="catchWeek" />
+        <AssignmentSelector @callCatchWeek="catchWeek" />
         <ProblemDescription :week="selected_week" />
         <SubmissionForm  :week="selected_week" @callCatchAssignmentsStatus="catchAssignmentsStatus" />
         <AssignmentTable ref="childAssignmentTable" :week="selected_week" />
