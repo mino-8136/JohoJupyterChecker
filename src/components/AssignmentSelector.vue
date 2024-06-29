@@ -1,12 +1,13 @@
 <template>
-  <v-tabs v-model="store.selectedAssignment.id" grow>
+  <v-tabs v-model="store.selectedAssignment.id" grow show-arrows>
     <v-tab
-      v-for="(assignment, index) in allAssignments"
-      :key="assignment.id"
-      @click="changeAssignment(index)"
+    v-for="(assignment, index) in allAssignments"
+    :key="assignment.id"
+    :value="assignment.id"
+    @click="changeAssignment(index)"
     >
-      {{ assignment.title }}
-    </v-tab>
+    {{ assignment.title }}
+  </v-tab>
   </v-tabs>
 </template>
 
@@ -31,7 +32,7 @@ function generateAssignmentTabs() {
       id: i,
       title: `${i}週目`,
       description: `${i}週目の課題です`,
-      assignments:[]
+      assignments: []
     })
   }
   allAssignments.value = AssignmentData
@@ -47,12 +48,11 @@ onMounted(() => {
   generateAssignmentTabs()
 })
 
-
+// 再読込時に指定されたタブを選択状態にする
 watch(
   () => route.params.id,
   (newId, oldId) => {
     console.log('Route param id changed from', oldId, 'to', newId)
-    // ここで必要な処理を行う
     if (newId) {
       store.selectedAssignment.id = parseInt(newId as string, 10)
     }
