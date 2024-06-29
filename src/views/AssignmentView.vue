@@ -17,8 +17,8 @@ import StudentScore from '../components/StudentScore.vue'
 <template>
     <v-container>
         <AssignmentDescription /> 
-        <!-- <SubmissionForm @callCatchAssignmentsStatus="catchAssignmentsStatus" />
-        <AssignmentTable ref="childAssignmentTable" /> -->
-        <StudentScore />
+        <SubmissionForm />
+        <!--<AssignmentTable ref="childAssignmentTable" /> -->
+        <!-- <StudentScore /> -->
     </v-container>
 </template>

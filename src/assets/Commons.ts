@@ -44,11 +44,15 @@ class Example {
 }
 
 class Results {
-  output: string
+  input: string
+  expected_output: string
+  received_output: string
   status: string
   
-  constructor(output: string, status: string) {
-    this.output = output
+  constructor(input:string, expected_output: string, received_output:string, status: string) {
+    this.input = input
+    this.expected_output = expected_output
+    this.received_output = received_output
     this.status = status
   }
 }
