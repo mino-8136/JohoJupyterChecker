@@ -1,8 +1,8 @@
 {
-  "week": "2週目",
-  "title": "【2週目】 Python文字列操作",
+  "id": "2",
+  "title": "②文字列の操作",
   "description": "Pythonの文字列操作を学びます。",
-  "assignments": [
+  "problems": [
     {
       "name": "課題1",
       "points": 100,

@@ -1,66 +1,63 @@
 <template>
-  <v-tabs v-model:active="selectedAssignmentIndex" grow>
+  <v-tabs v-model="store.selectedAssignment.id" grow>
     <v-tab
-      v-for="(assignment, index) in assignments"
+      v-for="(assignment, index) in allAssignments"
       :key="assignment.id"
       @click="changeAssignment(index)"
     >
-      {{ assignment.name }}
+      {{ assignment.title }}
     </v-tab>
   </v-tabs>
 </template>
 
 <script setup lang="ts">
-import { ref, defineEmits, onMounted } from 'vue'
+import { ref, watch, onMounted } from 'vue'
+import { useAssignmentStore } from '../stores/assignmentStore'
 import { useRouter, useRoute } from 'vue-router'
+import { Assignment } from '../assets/Commons'
 
-// TODO:Assignment型は共通化していい気がする
-interface Assignment {
-  id: number
-  name: string
-  link: string
-}
-
-const emit = defineEmits(['callCatchAssignmentId']) // 親に課題情報を返すためのemit関数
-const selectedAssignmentIndex = ref(0) // 課題の選択状態を管理
-const assignments = ref<Array<Assignment>>([])
 const router = useRouter() // Vue Routerのインスタンスを取得
-const route = useRoute() // 現在のルート情報を取得
+const route = useRoute() // Vue Routerのルート情報を取得
+const store = useAssignmentStore() // storeのインスタンスを取得
+const allAssignments = ref<Array<Assignment>>([]) // 全課題の情報をローカル管理
 
-// データの取得とリンクの生成
+// 全Assignmentデータの取得
+// TODO : JSONの中身を取得するようにするために、APIを叩くようにする
 function generateAssignmentTabs() {
   const numAssignments = 4
   const AssignmentData = []
   for (let i = 1; i <= numAssignments; i++) {
     AssignmentData.push({
       id: i,
-      name: `${i}週目`,
-      link: `public/static/problems/week${i}.json`
+      title: `${i}週目`,
+      description: `${i}週目の課題です`,
+      assignments:[]
     })
   }
-  assignments.value = AssignmentData
+  allAssignments.value = AssignmentData
 }
 
+// storeに現在の課題を保持したあと、ルーターを使ってページ遷移を行う
 function changeAssignment(index: number) {
-  selectedAssignmentIndex.value = index
-
-  // 親に週情報を返す -> storeに保持する
-  emit('callCatchAssignmentId', selectedAssignmentIndex.value)
-
-  // ルーターを使ってページ遷移を行う
-  router.push({ name: 'assignment', params: { id: assignments.value[index].id } })
+  store.selectedAssignment.id = allAssignments.value[index].id
+  router.push({ name: 'assignment', params: { id: allAssignments.value[index].id } })
 }
 
 onMounted(() => {
   generateAssignmentTabs()
-
-  // URLパラメータから初期値を設定
-  const initialId = parseInt(route.params.id as string, 10) - 1
-  if (initialId >= 0 && initialId < assignments.value.length) {
-    selectedAssignmentIndex.value = initialId
-  }
-  console.log(route.params, route.params.id, initialId)
 })
+
+
+watch(
+  () => route.params.id,
+  (newId, oldId) => {
+    console.log('Route param id changed from', oldId, 'to', newId)
+    // ここで必要な処理を行う
+    if (newId) {
+      store.selectedAssignment.id = parseInt(newId as string, 10)
+    }
+  }
+)
 </script>
 
 <style scoped>
