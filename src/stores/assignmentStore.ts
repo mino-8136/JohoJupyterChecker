@@ -10,7 +10,7 @@ export const useAssignmentStore = defineStore(
       id: 1,
       title: '',
       description: '',
-      assignments: []
+      problems: []
     })
 
     return {
