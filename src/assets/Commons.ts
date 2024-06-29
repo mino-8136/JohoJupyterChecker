@@ -13,7 +13,7 @@ export class Assignment {
 
   static fromJSON(json: any): Assignment {
     const problems = json.problems.map(
-      (p: any) => new Problem(p.name, p.points, p.input_example, p.output_example, p.description)
+      (p: any) => new Problem(p.name, p.points, p.examples, p.results)
     )
     return new Assignment(json.id, json.title, json.description, problems)
   }
@@ -22,21 +22,32 @@ export class Assignment {
 class Problem {
   name: string
   points: number
-  input_example: string
-  output_example: string
-  description: string
+  examples: Example[]
+  results: Results[]
 
-  constructor(
-    name: string,
-    points: number,
-    input_example: string,
-    output_example: string,
-    description: string
-  ) {
+  constructor(name: string, points: number, examples: Example[], results: Results[]) {
     this.name = name
     this.points = points
-    this.input_example = input_example
-    this.output_example = output_example
-    this.description = description
+    this.examples = examples
+    this.results = results
+  }
+}
+
+class Example {
+  input: string
+  output: string
+
+  constructor(input: string, output: string) {
+    this.input = input
+    this.output = output
+  }
+}
+
+class Results {
+  execution: string
+  judgement: string
+  constructor(execution: string, judgement: string) {
+    this.execution = execution
+    this.judgement = judgement
   }
 }

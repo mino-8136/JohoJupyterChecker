@@ -81,11 +81,9 @@ def submit_assignment():
     if file.filename == '':
         return jsonify({"error": "No file provided"}), 400
     
-    # 想定解の読み込み
-    assignments = request.form['assignments']
-    assignments = json.loads(assignments)
-    # print(assignments)
-
+    # 渡された課題データから問題を抽出する
+    assignments = json.loads(request.form['assignments'])
+    problems = assignments['problems']
 
     # 一時ファイルとしてJupyterNotebook全体を保存
     with tempfile.NamedTemporaryFile(delete=False, suffix='.ipynb') as tmp:
@@ -106,9 +104,9 @@ def submit_assignment():
         for idx, code in enumerate(code_cells):
 
             # インデックスに応じて入力例・出力例を取得
-            if idx < len(assignments):
-                input_examples = assignments[idx]["input_example"]
-                output_example = assignments[idx]["output_example"]
+            if idx < len(problems):
+                input_examples = problems[idx]["input_example"]
+                output_example = problems[idx]["output_example"]
             else:
                 input_examples = ""
                 output_example = ""
