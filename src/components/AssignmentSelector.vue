@@ -12,56 +12,57 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useAssignmentStore } from '../stores/assignmentStore'
 import { Assignment } from '../assets/Commons'
 
 const store = useAssignmentStore() // storeのインスタンスを取得
 const allAssignments = ref<Array<Assignment>>([]) // 全課題の情報をローカル管理
 
-// 課題のjsonファイルを取得する(TODO:後でAPIを叩くようにする)
-function getWeekFileName(assignmentId: number): string {
-  return `static/assignments/week${assignmentId}.json`
+// デフォルトのAssignmentインスタンスを生成する関数
+function createDefaultAssignment(id: number): Assignment {
+  return new Assignment(
+    id,
+    `課題${id}`,
+    `課題${id}はまだ未定です`,
+    []
+  )
 }
-async function getAssignmentData(assignmentId: number) {
+
+// JSONファイルから課題の情報を取得する
+async function getAssignmentDataFromJSON(assignmentId: number): Promise<Assignment> {
+  const jsonPath = `static/assignments/week${assignmentId}.json`
   try {
-    const response = await fetch(getWeekFileName(assignmentId))
+    const response = await fetch(jsonPath)
     if (!response.ok) {
-      throw new Error('課題データが読み込めませんでした！')
+      throw new Error('課題パスにアクセスできません')
     }
-    const data = await response.json()
-    store.selectedAssignment.title = data.title
-    store.selectedAssignment.description = data.description
+    const json = await response.json()
+    return Assignment.fromJSON(json)
   } catch (error) {
-    store.selectedAssignment.title = '未定'
-    store.selectedAssignment.description = 'まだ未定です！'
+    // console.error(`Failed to load JSON for assignment ${assignmentId}:`, error)
+    return createDefaultAssignment(assignmentId)
   }
 }
 
-// 全Assignmentデータの取得
-// TODO : JSONの中身を取得するようにするために、APIを叩くようにする
-function generateAssignmentTabs() {
+// 全Assignmentデータの取得(TODO: 本来はAPIから取得する。Pythonからファイル名一覧を取得し、JSONを読み込み、IDでソートする)
+async function generateAssignmentTabs() {
   const numAssignments = 4
-  const AssignmentData = []
+  const assignmentData: Assignment[] = []
   for (let i = 1; i <= numAssignments; i++) {
-    AssignmentData.push({
-      id: i,
-      title: `${i}週目`,
-      description: `${i}週目の課題です`,
-      assignments: []
-    })
+    const assignment = await getAssignmentDataFromJSON(i)
+    assignmentData.push(assignment)
   }
-  allAssignments.value = AssignmentData
+  allAssignments.value = assignmentData
 }
 
 // storeに現在の課題を保持する
 function changeAssignment(index: number) {
-  store.selectedAssignment.id = allAssignments.value[index].id
-  getAssignmentData(store.selectedAssignment.id)
+  store.selectedAssignment = allAssignments.value[index]
 }
 
-onMounted(() => {
-  generateAssignmentTabs()
+onMounted(async () => {
+  await generateAssignmentTabs()
 })
 </script>
 
