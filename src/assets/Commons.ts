@@ -44,10 +44,11 @@ class Example {
 }
 
 class Results {
-  execution: string
-  judgement: string
-  constructor(execution: string, judgement: string) {
-    this.execution = execution
-    this.judgement = judgement
+  output: string
+  status: string
+  
+  constructor(output: string, status: string) {
+    this.output = output
+    this.status = status
   }
 }
