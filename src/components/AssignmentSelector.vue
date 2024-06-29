@@ -1,5 +1,5 @@
 <template>
-  <v-tabs v-model="store.selectedAssignment.id" grow show-arrows>
+  <v-tabs v-model="selectedAssignmentId" grow show-arrows>
     <v-tab
       v-for="(assignment, index) in allAssignments"
       :key="assignment.id"
@@ -18,6 +18,7 @@ import { Assignment } from '../assets/Commons'
 
 const store = useAssignmentStore() // storeのインスタンスを取得
 const allAssignments = ref<Array<Assignment>>([]) // 全課題の情報をローカル管理
+const selectedAssignmentId = ref<number | null>(null) // 選択された課題のIDをローカルに管理
 
 // デフォルトのAssignmentインスタンスを生成する関数
 function createDefaultAssignment(id: number): Assignment {
@@ -40,7 +41,6 @@ async function getAssignmentDataFromJSON(assignmentId: number): Promise<Assignme
     const json = await response.json()
     return Assignment.fromJSON(json)
   } catch (error) {
-    // console.error(`Failed to load JSON for assignment ${assignmentId}:`, error)
     return createDefaultAssignment(assignmentId)
   }
 }
@@ -56,14 +56,17 @@ async function generateAssignmentTabs() {
   allAssignments.value = assignmentData
 }
 
-// storeに現在の課題を保持する
+// storeに現在の課題を保持すると同時に、選択された課題のIDをローカルに保持する
 function changeAssignment(index: number) {
   store.selectedAssignment = allAssignments.value[index]
+  selectedAssignmentId.value = allAssignments.value[index].id
 }
 
 onMounted(async () => {
   await generateAssignmentTabs()
+  changeAssignment(0) // 初期状態で最初の課題を選択
 })
+
 </script>
 
 <style scoped>
