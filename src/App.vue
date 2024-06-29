@@ -15,7 +15,7 @@ import AssignmentView from './views/AssignmentView.vue'
       </v-app-bar>
       <v-main>
         <AssignmentSelector />
-        <!-- <AssignmentView /> -->
+        <AssignmentView />
       </v-main>
     </v-container>
   </v-app>
