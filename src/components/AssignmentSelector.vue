@@ -14,11 +14,8 @@
 <script setup lang="ts">
 import { ref, watch, onMounted } from 'vue'
 import { useAssignmentStore } from '../stores/assignmentStore'
-import { useRouter, useRoute } from 'vue-router'
 import { Assignment } from '../assets/Commons'
 
-const router = useRouter() // Vue Routerのインスタンスを取得
-const route = useRoute() // Vue Routerのルート情報を取得
 const store = useAssignmentStore() // storeのインスタンスを取得
 const allAssignments = ref<Array<Assignment>>([]) // 全課題の情報をローカル管理
 
@@ -41,23 +38,12 @@ function generateAssignmentTabs() {
 // storeに現在の課題を保持したあと、ルーターを使ってページ遷移を行う
 function changeAssignment(index: number) {
   store.selectedAssignment.id = allAssignments.value[index].id
-  router.push({ name: 'assignment', params: { id: allAssignments.value[index].id } })
 }
 
 onMounted(() => {
   generateAssignmentTabs()
 })
 
-// 再読込時に指定されたタブを選択状態にする
-watch(
-  () => route.params.id,
-  (newId, oldId) => {
-    console.log('Route param id changed from', oldId, 'to', newId)
-    if (newId) {
-      store.selectedAssignment.id = parseInt(newId as string, 10)
-    }
-  }
-)
 </script>
 
 <style scoped>

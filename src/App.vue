@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AssignmentSelector from './components/AssignmentSelector.vue'
-// import AssignmentView from './views/AssignmentView.vue'
+import AssignmentView from './views/AssignmentView.vue'
 
 </script>
 

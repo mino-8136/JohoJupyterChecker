@@ -11,10 +11,9 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/assignment/:id',
+      path: '/assignment',
       name: 'assignment',
       component: AssignmentView,
-      props: true
     }
   ]
 })
