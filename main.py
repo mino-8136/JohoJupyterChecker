@@ -28,6 +28,21 @@ app = Flask(
 CORS(app)
 
 
+# 課題jsonのすべてのパスを取得するAPI(未完成)
+@app.route('/api/assignments')
+def get_all_assignments():
+    # 課題jsonファイルを読み込む
+    directory_path = 'public/static/problems'
+    json_files = Path(directory_path).glob('*.json')
+
+    all_data = []
+    for json_file in json_files:
+        with open(json_file, 'r', encoding='utf-8') as file:
+            data = json.load(file)
+            all_data.append(data)
+    
+    return all_data
+
 # スクリプトを抽出する
 def extract_scripts(notebook_path, start_keyword="## 演習問題"):
     with open(notebook_path, 'r', encoding='utf-8') as f:
@@ -54,7 +69,6 @@ def compare_output(output, output_example):
         return True
     else:
         return False
-
 
 # 課題データを返すAPI
 @app.route('/api/submit', methods=['POST'])

@@ -1,25 +1,17 @@
 <script setup lang="ts">
 import AssignmentSelector from './components/AssignmentSelector.vue'
-import ProblemDescription from './components/ProblemDescription.vue'
-import AssignmentTable from './components/AssignmentTable.vue'
-import SubmissionForm from './components/SubmissionForm.vue'
-import StudentScore from './components/StudentScore.vue'
+import AssignmentView from './views/AssignmentView.vue'
 
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-const selected_week = ref<number>(0)
-const childAssignmentTable = ref<typeof AssignmentTable | null>(null)
+const selectedAssignment = ref<number>(1)
 
 // 週の情報を設定する(emit用)
-function catchWeek(week: number) {
-  selected_week.value = week
-  console.log(week)
+function catchAssignmentId(assignmentId: number) {
+  selectedAssignment.value = assignmentId
+  console.log(assignmentId)
 }
 
-// 課題の状態を更新する(emit用)
-function catchAssignmentsStatus(data: string) {
-  childAssignmentTable.value?.updateAssignmentsStatus(data)
-}
 </script>
 
 <template>
@@ -32,11 +24,8 @@ function catchAssignmentsStatus(data: string) {
         </v-btn>
       </v-app-bar>
       <v-main>
-        <AssignmentSelector @callCatchWeek="catchWeek" />
-        <ProblemDescription :week="selected_week" />
-        <SubmissionForm  :week="selected_week" @callCatchAssignmentsStatus="catchAssignmentsStatus" />
-        <AssignmentTable ref="childAssignmentTable" :week="selected_week" />
-        <StudentScore />
+        <AssignmentSelector  @callCatchAssignmentId="catchAssignmentId" />
+        <AssignmentView />
       </v-main>
     </v-container>
   </v-app>
