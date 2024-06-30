@@ -35,7 +35,7 @@
 import { ref,computed } from 'vue'
 import { useAssignmentStore } from '../stores/assignmentStore'
 
-const score = ref(75)
+const store = useAssignmentStore()
 const studentId = ref('')
 
 function copyResult() {
