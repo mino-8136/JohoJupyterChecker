@@ -13,7 +13,7 @@ export class Assignment {
 
   static fromJSON(json: any): Assignment {
     const problems = json.problems.map(
-      (p: any) => new Problem(p.name, p.points, p.examples, p.results)
+      (p: any) => new Problem(p.name, p.points, p.examples)
     )
     return new Assignment(json.id, json.title, json.description, problems)
   }
@@ -25,11 +25,11 @@ class Problem {
   examples: Example[]
   results: Results[]
 
-  constructor(name: string, points: number, examples: Example[], results: Results[]) {
+  constructor(name: string, points: number, examples: Example[]) {
     this.name = name
     this.points = points
     this.examples = examples
-    this.results = results
+    this.results = [] // 最初は空の配列
   }
 }
 
