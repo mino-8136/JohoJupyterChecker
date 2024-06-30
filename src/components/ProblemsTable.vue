@@ -17,6 +17,7 @@
               v-for="result in problem.results"
               :key="result.input"
               :color="result.status ? 'success' : 'error'"
+              @click="openDialog(result)"
             >
               {{ result.status }}
             </v-chip>
@@ -25,11 +26,40 @@
       </tr>
     </tbody>
   </v-table>
+
+  <v-dialog v-model="dialog" width="auto" min-width="400px">
+    <v-card
+      prepend-icon="mdi-update"
+      title="実行結果"
+    >
+      <v-card-text>
+        <div v-if="selectedResult">
+          <p><strong>入力例:</strong></p><p>{{ selectedResult.input }}</p>
+          <p><strong>出力例:</strong></p><p>{{ selectedResult.received_output }}</p>
+          <p><strong>あなたの実行結果:</strong></p><p>{{selectedResult.received_output }}</p>
+        </div>
+      </v-card-text>
+      <template v-slot:actions>
+        <v-btn class="ms-auto" @click="dialog = false">Ok</v-btn>
+      </template>
+    </v-card>
+  </v-dialog>
+
 </template>
 
 <script setup lang="ts">
 import { useAssignmentStore } from '../stores/assignmentStore'
+import { Results } from '@/assets/Commons';
+import { ref } from 'vue';
+
 const store = useAssignmentStore()
+const dialog = ref(false)
+const selectedResult = ref<Results | null>(null)
+
+function openDialog(result: Results) {
+  selectedResult.value = result
+  dialog.value = true
+}
 </script>
 
 <style scoped>

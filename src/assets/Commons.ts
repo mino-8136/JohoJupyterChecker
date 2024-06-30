@@ -43,7 +43,7 @@ class Example {
   }
 }
 
-class Results {
+export class Results {
   input: string
   expected_output: string
   received_output: string
