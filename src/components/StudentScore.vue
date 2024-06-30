@@ -1,25 +1,39 @@
 <template>
   <v-card class="my-4">
-    <v-card-title> あなたの得点 </v-card-title>
+    <v-card-title class="header pa-4"> あなたの得点 </v-card-title>
+    <v-divider></v-divider>
     <v-card-text>
-      <v-row align="center" justify="center">
-        <v-col cols="12" md="4">
+      
+      <v-row align="center" justify="center" cols="12">
+        <v-col md="4">
           <v-progress-circular :value="score" :size="120" :width="15" color="primary">
             {{ score }}
           </v-progress-circular>
         </v-col>
-        <v-col cols="12" md="8">
+        <v-col md="8">
           <p>ほぼできています！お疲れさまでした。</p>
-          <v-text-field label="学年組番号の4桁" v-model="studentId"></v-text-field>
-          <v-btn color="primary" @click="copyResult">提出用に結果をコピー</v-btn>
         </v-col>
       </v-row>
+      <v-divider></v-divider>
+    </v-card-text>
+      <v-card-text>
+
+        <v-row align="center" justify="center" cols="12">
+          <v-col>
+            <v-text-field label="学年組番号の4桁" v-model="studentId"></v-text-field>
+          </v-col>
+          <v-col>
+            <v-btn color="primary" @click="copyResult">提出用に結果をコピー</v-btn>
+          </v-col>
+        </v-row>
+        
     </v-card-text>
   </v-card>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref,computed } from 'vue'
+import { useAssignmentStore } from '../stores/assignmentStore'
 
 const score = ref(75)
 const studentId = ref('')
@@ -31,3 +45,11 @@ function copyResult() {
   })
 }
 </script>
+
+<style scoped>
+.header {
+  background-color: #1867c0; /* ヘッダーの背景色を設定 */
+  color: white; /* ヘッダーの文字色を設定 */
+}
+
+</style>

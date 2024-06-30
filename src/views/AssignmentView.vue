@@ -11,6 +11,6 @@ import StudentScore from '../components/StudentScore.vue'
         <AssignmentDescription /> 
         <SubmissionForm />
         <ProblemsTable />
-        <!-- <StudentScore /> -->
+        <StudentScore />
     </v-container>
 </template>
