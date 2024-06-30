@@ -1,10 +1,17 @@
 <template>
   <v-form>
-    <v-file-input
+    <v-btn
       color="primary"
-      label=".ipynbファイルを採点する"
+      text=".ipynbファイルを採点する"
+      @click="select_file"
+      class="rounded-pill ma-8 d-flex mx-auto"
+    >
+    </v-btn>
+    <v-file-input
+      ref="file_input"
       v-model="file"
       @change="submitForm"
+      style="display:none;"
     ></v-file-input>
   </v-form>
 </template>
@@ -17,6 +24,13 @@ import { Assignment } from '../assets/Commons'
 const store = useAssignmentStore()
 const file = ref<File | null>(null)
 const assignments = ref<Assignment>()
+
+const file_input = ref<HTMLInputElement | null>(null)
+const select_file = () => {
+  if (file_input.value) {
+    file_input.value.click()
+  }
+}
 
 // ファイルを選択してPythonに送信し、その結果をStoreに保存する
 async function submitForm() {
