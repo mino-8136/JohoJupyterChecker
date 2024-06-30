@@ -48,12 +48,12 @@ async function getAssignmentDataFromJSON(assignmentId: number): Promise<Assignme
 // 全Assignmentデータの取得(TODO: 本来はAPIから取得する。Pythonからファイル名一覧を取得し、JSONを読み込み、IDでソートする)
 async function generateAssignmentTabs() {
   const numAssignments = 4
-  const assignmentData: Assignment[] = []
+  const assignmentsData: Assignment[] = []
   for (let i = 1; i <= numAssignments; i++) {
     const assignment = await getAssignmentDataFromJSON(i)
-    assignmentData.push(assignment)
+    assignmentsData.push(assignment)
   }
-  allAssignments.value = assignmentData
+  allAssignments.value = assignmentsData
 }
 
 // storeに現在の課題を保持すると同時に、選択された課題のIDをローカルに保持する
