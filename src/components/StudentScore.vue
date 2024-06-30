@@ -6,12 +6,12 @@
       
       <v-row align="center" justify="center" class="pb-4">
         <v-col cols="4">
-          <v-progress-circular :model-value="score/2.22222" :size="120" :width="15" color="primary">
-            {{ score }}
+          <v-progress-circular :model-value="currentScore/totalScore*100" :size="120" :width="15" color="primary">
+            {{ currentScore }}
           </v-progress-circular>
         </v-col>
         <v-col cols="8">
-          <p>ほぼできています！お疲れさまでした。</p>
+          <p>{{comment()}}</p>
         </v-col>
       </v-row>
       <v-divider></v-divider>
@@ -37,10 +37,24 @@ import { useAssignmentStore } from '../stores/assignmentStore'
 
 const store = useAssignmentStore()
 const studentId = ref('')
-const score = computed(() => store.getScore)
+const totalScore = computed(() => store.getTotalScore)
+const currentScore = computed(() => store.getCurrentScore)
+
+function comment(){
+  const grade = currentScore.value / totalScore.value
+  if(grade >= 0.99){
+    return "素晴らしい！満点です！"
+  }else if(grade >= 0.8){
+    return "ほぼできています！お疲れさまでした。"
+  }else if(grade >= 0.6){
+    return "あと一息です！"
+  }else{
+    return "頑張りましょう！"
+  }
+}
 
 function copyResult() {
-  const result = `Score: ${score.value}, ID: ${studentId.value}`
+  const result = `Score: ${currentScore.value}, ID: ${studentId.value}`
   navigator.clipboard.writeText(result).then(() => {
     alert('結果がクリップボードにコピーされました')
   })

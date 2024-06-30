@@ -13,14 +13,26 @@ export const useAssignmentStore = defineStore(
       problems: []
     })
 
-    // TODO:得点を計算する関数を実装する
-    const getScore = computed(() => {
-      return 100
+    // 総得点を計算する関数
+    const getTotalScore = computed(() => {
+      return selectedAssignment.value.problems.reduce((total, problem) => total + problem.points, 0)
     })
 
+    // 現在の得点を計算する関数
+    const getCurrentScore = computed(() => {
+      return selectedAssignment.value.problems.reduce((totalScore, problem) => {
+        if (problem.results.length > 0) {
+          const correctResultsCount = problem.results.filter((result) => result.status).length
+          const problemScore = (correctResultsCount / problem.results.length) * problem.points
+          return totalScore + problemScore
+        }
+        return totalScore
+      }, 0)
+    })
     return {
       selectedAssignment,
-      getScore
+      getTotalScore,
+      getCurrentScore
     }
   },
 

@@ -47,7 +47,7 @@ export class Results {
   input: string
   expected_output: string
   received_output: string
-  status: string
+  status: boolean
   
   constructor(input:string, expected_output: string, received_output:string, status: string) {
     this.input = input
