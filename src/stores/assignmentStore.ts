@@ -13,10 +13,17 @@ export const useAssignmentStore = defineStore(
       problems: []
     })
 
+    // TODO:得点を計算する関数を実装する
+    const getScore = computed(() => {
+      return 100
+    })
+
     return {
-      selectedAssignment
+      selectedAssignment,
+      getScore
     }
   },
+
   {
     persist: true
   }
