@@ -1,18 +1,13 @@
 <template>
-  <v-form>
-    <v-btn
-      color="primary"
-      text=".ipynbファイルを採点する"
-      @click="select_file"
-      class="rounded-pill ma-8 d-flex mx-auto"
-    >
+  <v-form v-if="store.selectedAssignment.problems.length">
+    <v-btn color="primary" text=".ipynbファイルを採点する" :loading="loading" @click="(() => {
+      select_file()
+    })" class="rounded-pill ma-8 d-flex mx-auto">
+      <template v-slot:loader >
+        <v-progress-circular indeterminate width="2"></v-progress-circular>
+      </template>
     </v-btn>
-    <v-file-input
-      ref="file_input"
-      v-model="file"
-      @change="submitForm"
-      style="display:none;"
-    ></v-file-input>
+    <v-file-input ref="file_input" v-model="file" @change="submitForm" style="display:none;"></v-file-input>
   </v-form>
 </template>
 
@@ -24,7 +19,7 @@ import { Assignment } from '../assets/Commons'
 const store = useAssignmentStore()
 const file = ref<File | null>(null)
 const assignments = ref<Assignment>()
-
+const loading = ref(false)
 const file_input = ref<HTMLInputElement | null>(null)
 const select_file = () => {
   if (file_input.value) {
@@ -44,6 +39,7 @@ async function submitForm() {
   assignments.value = store.selectedAssignment
   formData.append('file', file.value)
   formData.append('assignments', JSON.stringify(assignments.value))
+  loading.value = true
 
   try {
     const response = await fetch('http://localhost:5000/api/submit', {
@@ -63,6 +59,7 @@ async function submitForm() {
 
   // 読み込みが終わったらファイルをクリアする
   file.value = null
+  loading.value = false;
 }
 </script>
 
