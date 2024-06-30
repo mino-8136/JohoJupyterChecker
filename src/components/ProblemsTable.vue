@@ -1,5 +1,5 @@
 <template>
-  <v-table class="elevation-1">
+  <v-table v-if="store.selectedAssignment.problems.length" class="elevation-2">
     <thead>
       <tr class="header-row">
         <th class="text-left" width="25%">課題</th>
@@ -75,8 +75,7 @@ function openDialog(result: Results) {
 }
 
 .header-row {
-  background-color: #1867c0; /* ヘッダーの背景色を設定 */
-  color: white; /* ヘッダーの文字色を設定 */
+  background-color: #ededed; /* ヘッダーの背景色を設定 */
 }
 
 .chip-container {

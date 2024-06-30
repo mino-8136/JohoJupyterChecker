@@ -7,7 +7,7 @@ import AssignmentView from './views/AssignmentView.vue'
 <template>
   <v-app>
     <v-container>
-      <v-app-bar app color="primary">
+      <v-app-bar app color="primary" class="py-2">
         <v-toolbar-title>課題自動ジャッジシステム v1.0</v-toolbar-title>
         <v-btn icon>
           <v-icon>mdi-menu</v-icon>

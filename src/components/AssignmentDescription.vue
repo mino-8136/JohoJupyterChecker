@@ -1,6 +1,6 @@
 <template>
-  <h3 class="my-4">{{ store.selectedAssignment.title }}</h3>
-  <p>{{ store.selectedAssignment.description }}</p>
+  <h2 class="my-4 text-center" >{{ store.selectedAssignment.title }}</h2>
+  <p class="text-center"> {{ store.selectedAssignment.description }}</p>
 </template>
 
 <script setup lang="ts">

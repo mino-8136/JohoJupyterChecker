@@ -1,8 +1,8 @@
 <template>
-  <v-card class="py-8">
+  <v-card v-if="store.selectedAssignment.problems.length" class="pb-8 elevation-8">
     <v-card-title class="header pa-4"> あなたの得点 </v-card-title>
     <v-divider></v-divider>
-    <v-card-text>
+    <v-card-text class="mx-4">
       
       <v-row align="center" justify="center" class="pb-4">
         <v-col cols="4">
@@ -23,7 +23,7 @@
             <v-text-field label="学年組番号の4桁" v-model="studentId"></v-text-field>
           </v-col>
           <v-col cols="6">
-            <v-btn color="primary"  @click="copyResult">提出用に結果をコピー</v-btn>
+            <v-btn color="primary"  @click="copyResult" class="rounded-pill" >提出用に結果をコピー</v-btn>
           </v-col>
         </v-row>
         
