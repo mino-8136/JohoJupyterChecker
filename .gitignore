@@ -14,9 +14,11 @@ dist-ssr
 coverage
 *.local
 
-# Pythonキャッシュ
+# Pythonキャッシュと開発環境とビルドデータ
 *.pyc
 __pycache__/
+.venv
+build
 
 /cypress/videos/
 /cypress/screenshots/
