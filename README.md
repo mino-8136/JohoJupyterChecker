@@ -49,19 +49,21 @@ npm install
 npm run dev
 ```
 
-### アプリケーションのビルド
-
+### 仮想環境の用意
 ```sh
-npm run build
+python -m venv .venv
+.venv\Scripts\activate
 ```
+
 ### Python経由での起動
 ```
-python main.py
+npm run build
+python exe化
 ```
 
-### 仮想環境の用意とビルド
+### アプリケーションのビルド
 ```
-python -m venv .venv
+npm run build
 .venv\Scripts\activate
 (いろいろなライブラリのインストール)
 pyinstaller --onefile main.py --clean --add-data "dist;dist" -n JohoJudgeSystem
