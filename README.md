@@ -28,7 +28,7 @@ a, b = input()
 ## 開発要件
 - Python 3.12
 - Node.js 20.15.0
-- npm install axios vue-axios
+- npm install axios vue-axios crypto-js
 - pip install flask flask-cors nbformat
 - pip install jinja2==3.0.3  (バージョン指定必要？)
 - 内部サーバーは http://localhost:5000 で融通
