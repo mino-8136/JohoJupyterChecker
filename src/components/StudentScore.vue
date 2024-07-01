@@ -26,6 +26,23 @@
       </v-text-field>
     </v-card-text>
   </v-card>
+
+  <v-dialog v-model="dialog" width="auto" min-width="400px">
+    <v-card>
+      <v-card-title class="bg-correct py-2">
+        <v-icon icon="mdi-check-bold" class="me-2"></v-icon>
+        成功！
+      </v-card-title>
+      <v-card-text>
+        <p>データがクリップボードにコピーされました。</p>
+        <p>このままPC室のFormリンクか、<br>Teamsの課題に貼り付けて提出してください。</p>
+      </v-card-text>
+      <v-divider></v-divider>
+      <template v-slot:actions>
+        <v-btn class="ms-auto" @click="dialog = false">Ok</v-btn>
+      </template>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script setup lang="ts">
@@ -36,12 +53,12 @@ import CryptoJS from 'crypto-js'
 const store = useAssignmentStore()
 const totalScore = computed(() => store.getTotalScore)
 const currentScore = computed(() => store.getCurrentScore)
+const dialog = ref(false)
 
 const studentId = ref('')
 const rules = {
   number: (v: string) => v === '' || /^\d{4}$/.test(v) || '4桁の半角数字で入力',
 }
-
 const isStudentIdValid = computed(() => {
   return /^\d{4}$/.test(studentId.value)
 })
@@ -83,7 +100,7 @@ function copyResult() {
   };
   
   navigator.clipboard.writeText(JSON.stringify(result)).then(() => {
-    alert('データがクリップボードにコピーされました');
+    dialog.value = true;
   }).catch(err => {
     console.error('コピーに失敗しました:', err);
   });
