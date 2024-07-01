@@ -8,9 +8,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="problem in store.selectedAssignment.problems" :key="problem.name">
-        <td>{{ problem.name }}</td>
-        <td>0 / {{ problem.points }}</td>
+      <tr v-for="(problem, index) in store.selectedAssignment.problems" :key="problem.name">
+        <td>
+          <v-chip
+            variant="text"
+            :text="problem.name"
+            @click="openDescriptionDialog(problem)"
+          ></v-chip>
+        </td>
+        <td>{{ store.getProblemScore(index) }} / {{ problem.points }}</td>
         <td>
           <div class="chip-container">
             <v-chip
@@ -29,6 +35,23 @@
       </tr>
     </tbody>
   </v-table>
+
+ <v-dialog v-model="descriptionDialog" width="auto" min-width="400px">
+    <v-card>
+      <v-card-title class="pt-6 text-center" >
+        {{ selectedProblem?.name }}
+      </v-card-title>
+      <v-card-text>
+        <div v-if="selectedProblem">
+          <p>{{ selectedProblem.description }}</p>
+        </div>
+      </v-card-text>
+      <v-divider></v-divider>
+      <template v-slot:actions>
+        <v-btn class="ms-auto" @click="descriptionDialog = false">閉じる</v-btn>
+      </template>
+    </v-card>
+  </v-dialog>
 
   <v-dialog v-model="dialog" width="auto" min-width="400px">
     <v-card>
@@ -56,12 +79,15 @@
 
 <script setup lang="ts">
 import { useAssignmentStore } from '../stores/assignmentStore'
-import { TestCase, Status } from '@/assets/Commons'
+import { TestCase, Problem, Status } from '@/assets/Commons'
 import { ref, computed } from 'vue'
 
 const store = useAssignmentStore()
 const dialog = ref(false)
 const selectedTestCase = ref<TestCase | null>(null)
+const descriptionDialog = ref(false)
+const selectedProblem = ref<Problem | null>(null)
+
 
 const StatusInfo = {
   [Status.Correct]: {
@@ -101,6 +127,11 @@ function getStatusInfo(status: Status) {
 const statusInfo = computed(() => {
   return getStatusInfo(selectedTestCase.value?.status ?? Status.Unanswered)
 })
+
+function openDescriptionDialog(problem: Problem) {
+  selectedProblem.value = problem
+  descriptionDialog.value = true
+}
 
 function openDialog(result: TestCase) {
   selectedTestCase.value = result

@@ -19,7 +19,7 @@ export class Assignment {
   }
 }
 
-class Problem {
+export class Problem {
   name: string
   points: number
   description: string
