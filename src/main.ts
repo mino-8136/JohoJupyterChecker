@@ -14,10 +14,6 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import "@mdi/font/css/materialdesignicons.css";
 
-// Axios
-import axios from 'axios'
-import VueAxios from 'vue-axios'
-
 const vuetify = createVuetify({
   components,
   directives,
@@ -26,14 +22,17 @@ const vuetify = createVuetify({
       light: {
         colors: {
           primary: '#1976d2',
+          correct: '#4CAF50',
+          error: '#FF5252',
         }
       }
     }
   }
 })
 
-// Electron
-
+// Axios
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 const app = createApp(App)
 

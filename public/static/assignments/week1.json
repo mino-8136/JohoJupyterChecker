@@ -6,7 +6,7 @@
     {
       "name": "課題1",
       "points": 100,
-      "examples": [
+      "testCases": [
         {
           "input": "1\n2\n",
           "output": "3\n"
@@ -21,7 +21,7 @@
     {
       "name": "課題2",
       "points": 100,
-      "examples": [
+      "testCases": [
         {
           "input": "3\n5\n",
           "output": "15\n"
@@ -36,7 +36,7 @@
     {
       "name": "課題3",
       "points": 80,
-      "examples": [
+      "testCases": [
         {
           "input": "5\n",
           "output": "120\n"
@@ -51,7 +51,7 @@
     {
       "name": "課題4",
       "points": 50,
-      "examples": [
+      "testCases": [
         {
           "input": "4\n",
           "output": "16\n"
@@ -66,7 +66,7 @@
     {
       "name": "課題5",
       "points": 20,
-      "examples": [
+      "testCases": [
         {
           "input": "6\n",
           "output": "720\n"

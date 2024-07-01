@@ -13,7 +13,7 @@ export class Assignment {
 
   static fromJSON(json: any): Assignment {
     const problems = json.problems.map(
-      (p: any) => new Problem(p.name, p.points, p.examples)
+      (p: any) => new Problem(p.name, p.points, p.description, p.testCases)
     )
     return new Assignment(json.id, json.title, json.description, problems)
   }
@@ -22,44 +22,34 @@ export class Assignment {
 class Problem {
   name: string
   points: number
-  examples: Example[]
-  results: Results[]
+  description: string
+  testCases: TestCase[]
 
-  constructor(name: string, points: number, examples: Example[]) {
+  constructor(name: string, points: number, description: string, testCases: TestCase[]) {
     this.name = name
     this.points = points
-    this.examples = examples
-    this.results = [] // 最初は空の配列
+    this.description = description
+    this.testCases = testCases
   }
 }
 
-class Example {
+export class TestCase {
   input: string
   output: string
+  output_user: string
+  status: Status
 
   constructor(input: string, output: string) {
     this.input = input
     this.output = output
+    this.output_user = ''
+    this.status = Status.Unanswered
   }
 }
 
-export class Results {
-  input: string
-  expected_output: string
-  received_output: string
-  status: Status
-
-  constructor(input: string, expected_output: string, received_output: string, status: Status) {
-    this.input = input
-    this.expected_output = expected_output
-    this.received_output = received_output
-    this.status = status
-  }
-}
-
-enum Status {
-  Correct = '正解',
-  Incorrect = '不正解',
-  Error = 'エラー',
-  Unanswered = '未回答'
+export enum Status {
+    Correct = '正解',
+    Incorrect = '不正解',
+    Error = 'エラー',
+    Unanswered = '未回答',
 }

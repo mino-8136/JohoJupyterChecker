@@ -51,7 +51,7 @@ async function submitForm() {
 
     // Storeに結果を保存
     store.selectedAssignment.problems.forEach((problem, index) => {
-      problem.results = data[index].results
+      problem.testCases = data[index].results
     })
   } catch (error) {
     console.error('Error:', error)
