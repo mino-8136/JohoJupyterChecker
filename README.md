@@ -58,7 +58,7 @@ python -m venv .venv
 ### Python経由での起動
 ```
 npm run build
-python exe化
+python main.py
 ```
 
 ### アプリケーションのビルド
@@ -70,3 +70,8 @@ pyinstaller --onefile main.py --clean --add-data "dist;dist" -n JohoJudgeSystem
 ```
 
 - コンソールはあったほうが生徒の質問対応がしやすいかも
+
+### その他
+- git fetch -p
+- git branch -d 削除ブランチ名 
+- git branch -D 強制削除ブランチ名
