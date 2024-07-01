@@ -80,7 +80,12 @@ def evaluate_submission(notebook_path, problems):
                     input=input,
                     capture_output=True, text=True, timeout=3)
                 output_user = result.stdout + result.stderr
-                status = compare_output(output_user, output)
+
+                # エラーの取得と判定
+                if result.returncode != 0:
+                    status = Status.Error
+                else:
+                    status = compare_output(output_user, output)
             
             # エラー処理
             except subprocess.TimeoutExpired:
@@ -100,6 +105,7 @@ def evaluate_submission(notebook_path, problems):
                 "output_user": output_user,
                 "status": status.value
             })
+            print(status.value)
 
         os.remove(script_path)
         total_results.append(unit_results)

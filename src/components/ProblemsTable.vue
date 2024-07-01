@@ -73,8 +73,8 @@ const StatusInfo = {
   },
   [Status.Incorrect]: {
     icon: 'mdi-exclamation-thick',
-    color: 'incorrect',
-    bgColor: 'bg-incorrect',
+    color: 'orange-darken-1',
+    bgColor: 'bg-orange-darken-1',
     comment: '結果の見直しが必要です',
     symbol: '不正解'
   },
