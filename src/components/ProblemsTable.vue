@@ -14,12 +14,12 @@
         <td>
           <div class="chip-container">
             <v-chip
-              v-for="result in problem.results"
-              :key="result.input"
-              :color="result.status ? 'success' : 'error'"
-              @click="openDialog(result)"
+              v-for="testCase in problem.testCases"
+              :key="testCase.input"
+              :color="getColor(testCase.status)"
+              @click="openDialog(testCase)"
             >
-              {{ result.status }}
+              {{ testCase.status }}
             </v-chip>
           </div>
         </td>
@@ -29,21 +29,21 @@
 
   <v-dialog v-model="dialog" width="auto" min-width="400px">
     <v-card>
-      <v-card-title :class="selectedResult?.status ? 'bg-success' : 'bg-warning'" class="py-4">
+      <v-card-title :class="selectedTestCase?.status ? 'bg-success' : 'bg-warning'" class="py-4">
         <v-icon
-          :icon="selectedResult?.status ? 'mdi-check-bold' : 'mdi-exclamation-thick'"
+          :icon="selectedTestCase?.status ? 'mdi-check-bold' : 'mdi-exclamation-thick'"
           class="me-2"
         ></v-icon>
-        {{ selectedResult?.status ? '正解です' : '結果の見直しが必要です' }}
+        {{ selectedTestCase?.status ? '正解です' : '結果の見直しが必要です' }}
       </v-card-title>
       <v-card-text>
-        <div v-if="selectedResult">
+        <div v-if="selectedTestCase">
           <p><strong>入力例:</strong></p>
-          <p class="mb-2">{{ selectedResult.input }}</p>
+          <p class="mb-2">{{ selectedTestCase.input }}</p>
           <p><strong>出力例:</strong></p>
-          <p class="mb-2">{{ selectedResult.expected_output }}</p>
+          <p class="mb-2">{{ selectedTestCase.output }}</p>
           <p><strong>あなたの実行結果:</strong></p>
-          <p class="mb-2">{{ selectedResult.received_output }}</p>
+          <p class="mb-2">{{ selectedTestCase.output_user }}</p>
         </div>
       </v-card-text>
       <v-divider></v-divider>
@@ -56,15 +56,26 @@
 
 <script setup lang="ts">
 import { useAssignmentStore } from '../stores/assignmentStore'
-import { Results } from '@/assets/Commons'
+import { TestCase, Status } from '@/assets/Commons'
 import { ref } from 'vue'
 
 const store = useAssignmentStore()
 const dialog = ref(false)
-const selectedResult = ref<Results | null>(null)
+const selectedTestCase = ref<TestCase | null>(null)
 
-function openDialog(result: Results) {
-  selectedResult.value = result
+function getColor(status: Status){
+  switch (status){
+    case Status.Correct:
+      return 'success'
+    case Status.Incorrect:
+      return 'error'
+    default:
+      return 'grey'
+  }
+}
+
+function openDialog(result: TestCase) {
+  selectedTestCase.value = result
   dialog.value = true
 }
 </script>
