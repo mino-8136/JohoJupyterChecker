@@ -2,15 +2,25 @@ import subprocess
 import os
 import tempfile
 import nbformat
+from enum import Enum
 
 # TODO:outputの正規化を行なう関数を実装する
 
+# TypeScriptのStatus列挙型に対応するPythonのStatus列挙型(Common.tsと同様の定義)
+class Status(Enum):
+    Correct = '正解'
+    Incorrect = '不正解'
+    Error = 'エラー'
+    Unanswered = '未回答'
+
 # outputと実行結果を比較する関数
-def compare_output(output, output_example):
-    if output == output_example:
-        return True
+def compare_output(output_user, output_test):
+    if output_user == output_test:
+        return Status.Correct
+    elif output_user == "":
+        return Status.Unanswered
     else:
-        return False
+        return Status.Incorrect
     
 
 # スクリプトを抽出する関数
@@ -48,52 +58,51 @@ def evaluate_submission(notebook_path, problems):
         # 問題データから入出力例を取得
         if idx < len(problems):
             problem = problems[idx]
-            examples = problem["examples"]
+            test_cases = problem["testCases"]
         else:
-            examples = []
-        # print(examples)
+            test_cases = []
 
-       # 各入出力例に対するテスト結果を格納するリスト
+        # 各入出力例に対するテスト結果を格納するリスト
         unit_results = {
             "problem": problem.get("name", f"Problem {idx + 1}"),
             "results": []
         }
 
         # 各入出力例を用いてテストを実施
-        for example in examples:
-            input_example = example["input"]
-            output_example = example["output"]
+        for test_case in test_cases:
+            input = test_case["input"]
+            output = test_case["output"]
 
             # コードを実行して評価
             try:
                 result = subprocess.run(
                     ('python', script_path),
-                    input=input_example,
+                    input=input,
                     capture_output=True, text=True, timeout=3)
-                output = result.stdout + result.stderr
-                status = compare_output(output, output_example)
+                output_user = result.stdout + result.stderr
+                status = compare_output(output_user, output)
             
             # エラー処理
             except subprocess.TimeoutExpired:
-                output = "Execution timed out."
-                status = False
+                output_user = "Execution timed out."
+                status = Status.Error
             except subprocess.CalledProcessError as e:
-                output = e.output
-                status = False
+                output_user = e.output
+                status = Status.Error
             except Exception as e:
-                output = str(e)
-                status = False
+                output_user = str(e)
+                status = Status.Error
             
             # 結果の追加
             unit_results["results"].append({
-                "input": input_example,
-                "expected_output": output_example,
-                "received_output": output,
-                "status": status
+                "input": input,
+                "output": output,
+                "output_user": output_user,
+                "status": status.value
             })
 
         os.remove(script_path)
         total_results.append(unit_results)
 
-    print(total_results)
+    # print(total_results)
     return total_results
