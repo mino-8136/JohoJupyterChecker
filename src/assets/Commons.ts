@@ -47,12 +47,19 @@ export class Results {
   input: string
   expected_output: string
   received_output: string
-  status: boolean
-  
-  constructor(input:string, expected_output: string, received_output:string, status: string) {
+  status: Status
+
+  constructor(input: string, expected_output: string, received_output: string, status: Status) {
     this.input = input
     this.expected_output = expected_output
     this.received_output = received_output
     this.status = status
   }
+}
+
+enum Status {
+  Correct = '正解',
+  Incorrect = '不正解',
+  Error = 'エラー',
+  Unanswered = '未回答'
 }

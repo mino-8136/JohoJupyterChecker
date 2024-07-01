@@ -10,7 +10,7 @@
     <tbody>
       <tr v-for="problem in store.selectedAssignment.problems" :key="problem.name">
         <td>{{ problem.name }}</td>
-        <td>{{ problem.points }}</td>
+        <td> 0 / {{ problem.points }}</td>
         <td>
           <div class="chip-container">
             <v-chip
