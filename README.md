@@ -66,3 +66,5 @@ python -m venv .venv
 (いろいろなライブラリのインストール)
 pyinstaller --onefile main.py --clean --add-data "dist;dist" -n JohoJudgeSystem
 ```
+
+- コンソールはあったほうが生徒の質問対応がしやすいかも
