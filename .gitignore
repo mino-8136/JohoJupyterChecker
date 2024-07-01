@@ -13,7 +13,10 @@ dist
 dist-ssr
 coverage
 *.local
-utils/__pycache__/
+
+# Pythonキャッシュ
+*.pyc
+__pycache__/
 
 /cypress/videos/
 /cypress/screenshots/

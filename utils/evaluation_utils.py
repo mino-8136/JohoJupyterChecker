@@ -110,5 +110,5 @@ def evaluate_submission(notebook_path, problems):
         os.remove(script_path)
         total_results.append(unit_results)
 
-    # print(total_results)
+    print(total_results)
     return total_results
