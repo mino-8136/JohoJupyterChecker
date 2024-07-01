@@ -6,6 +6,8 @@ import os
 import sys
 import tempfile
 import webbrowser
+import webview
+import threading
 
 from utils.file_utils import base_dir, get_all_assignments
 from utils.evaluation_utils import compare_output, evaluate_submission
@@ -57,7 +59,20 @@ def submit_assignment():
 def index():
     return render_template("index.html")
 
+def start_server():
+    app.run(port=5000, debug=False)
+
 if __name__ == '__main__':
-    # TODO:開発中はコメントアウト
-    webbrowser.open("http://localhost:5000/", new=2, autoraise=True)
-    app.run(debug=False, port=5000)
+    # WebBrowser版の場合
+    #webbrowser.open("http://localhost:5000/", new=2, autoraise=True)
+    #app.run(debug=True, port=5000)
+
+    # Flaskサーバーをバックグラウンドで実行
+    thread = threading.Thread(target=start_server)
+    thread.daemon = True
+    thread.start()
+
+    # Pywebviewウィンドウを開く
+    webview.create_window("JohoJudgeSystem", "http://localhost:5000/")
+    webview.start()
+    sys.exit()
