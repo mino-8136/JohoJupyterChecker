@@ -23,7 +23,7 @@ const vuetify = createVuetify({
         colors: {
           primary: '#1976d2',
           correct: '#4CAF50',
-          error: '#FF5252'
+          error: '#FF5252',
         }
       }
     }
