@@ -29,7 +29,7 @@
 
   <v-dialog v-model="dialog" width="auto" min-width="400px">
     <v-card>
-      <v-card-title :class="selectedResult?.status ? 'success-title' : 'error-title'" class="py-4">
+      <v-card-title :class="selectedResult?.status ? 'bg-success' : 'bg-warning'" class="py-4">
         <v-icon
           :icon="selectedResult?.status ? 'mdi-check-bold' : 'mdi-exclamation-thick'"
           class="me-2"
@@ -82,15 +82,5 @@ function openDialog(result: Results) {
   display: flex;
   flex-wrap: wrap;
   gap: 8px; /* チップ間のスペースを設定 */
-}
-
-.success-title {
-  background-color: #4caf50; /* 背景色を緑に設定 */
-  color: white;
-}
-
-.error-title {
-  background-color: #f44336; /* 赤色の背景 */
-  color: white;
 }
 </style>

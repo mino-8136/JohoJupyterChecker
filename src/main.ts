@@ -20,7 +20,16 @@ import VueAxios from 'vue-axios'
 
 const vuetify = createVuetify({
   components,
-  directives
+  directives,
+  theme: {
+    themes: {
+      light: {
+        colors: {
+          primary: '#1976d2',
+        }
+      }
+    }
+  }
 })
 
 // Electron

@@ -1,6 +1,6 @@
 <template>
   <v-card v-if="store.selectedAssignment.problems.length" class="pb-8 elevation-8">
-    <v-card-title class="header pa-4"> あなたの得点 </v-card-title>
+    <v-card-title class="bg-primary pa-4"> あなたの得点 </v-card-title>
     <v-divider></v-divider>
     <v-card-text class="mx-4">
       
@@ -60,11 +60,3 @@ function copyResult() {
   })
 }
 </script>
-
-<style scoped>
-.header {
-  background-color: #1867c0; /* ヘッダーの背景色を設定 */
-  color: white; /* ヘッダーの文字色を設定 */
-}
-
-</style>
