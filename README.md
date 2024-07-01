@@ -30,7 +30,7 @@ a, b = input()
 - Node.js 20.15.0
 - npm install axios vue-axios crypto-js
 - pip install flask flask-cors nbformat
-- pip install jinja2==3.0.3  (バージョン指定必要？)
+- pip install pyinstaller
 - 内部サーバーは http://localhost:5000 で融通
 
 
@@ -56,4 +56,11 @@ npm run build
 ### Python経由での起動
 ```
 python main.py
+```
+
+### 仮想環境の用意とビルド
+```
+python -m venv .venv
+.venv\Scripts\activate
+pyinstaller -F -w main.py
 ```

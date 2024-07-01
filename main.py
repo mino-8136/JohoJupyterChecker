@@ -59,5 +59,5 @@ def index():
 
 if __name__ == '__main__':
     # TODO:開発中はコメントアウト
-    # webbrowser.open("http://localhost:5000/", new=2, autoraise=True)
-    app.run(debug=True, port=5000)
+    webbrowser.open("http://localhost:5000/", new=2, autoraise=True)
+    app.run(debug=False, port=5000)
