@@ -7,8 +7,6 @@ import sys
 import tempfile
 import webbrowser
 import webview
-import multiprocessing
-import time
 
 from utils.file_utils import base_dir, get_all_assignments
 from utils.evaluation_utils import compare_output, evaluate_submission
@@ -60,20 +58,7 @@ def submit_assignment():
 def index():
     return render_template("index.html")
 
-def start_app():
-    app.run(debug=False, port=5000)
-
 if __name__ == '__main__':
     # # TODO:開発中はコメントアウト
-    # webbrowser.open("http://localhost:5000/", new=2, autoraise=True)
-    # app.run(debug=False, port=5000)
-
-    # Flaskサーバーを別スレッドで開始
-    server_process = multiprocessing.Process(target=start_app)
-    server_process.start()
-
-    # webviewでアプリケーションを開始
-    webview.create_window("課題判定", url="http://localhost:5000/")
-    webview.start(debug=False)
-    server_process.terminate()
-    server_process.join()
+    webbrowser.open("http://localhost:5000/", new=2, autoraise=True)
+    app.run(debug=True, port=5000)

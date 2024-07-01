@@ -64,5 +64,5 @@ python main.py
 python -m venv .venv
 .venv\Scripts\activate
 (いろいろなライブラリのインストール)
-pyinstaller -F main.py
+pyinstaller --onefile main.py --clean --add-data "dist;dist" -n JohoJudgeSystem
 ```
