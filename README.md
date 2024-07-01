@@ -29,7 +29,8 @@ a, b = input()
 - Python 3.12
 - Node.js 20.15.0
 - npm install axios vue-axios crypto-js
-- pip install flask flask-cors nbformat
+- pip install flask flask-cors nbformat pywebview
+- pip install jinja2==3.0.3
 - pip install pyinstaller
 - 内部サーバーは http://localhost:5000 で融通
 
@@ -62,5 +63,6 @@ python main.py
 ```
 python -m venv .venv
 .venv\Scripts\activate
-pyinstaller -F -w main.py
+(いろいろなライブラリのインストール)
+pyinstaller -F main.py
 ```
