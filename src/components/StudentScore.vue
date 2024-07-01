@@ -72,7 +72,7 @@ function copyResult() {
   // 暫定的に、文字列とassignmentTitleと入力IDとスコアをアンダーバーで繋いだものをキーとして使用
   const encryptionKey = `kadaiJudge_${assignmentTitle}_${studentId.value}_${score}`;
   
-  // 入力IDとスコアをキーとしてstore.selectedAssignmentを暗号化
+  // 入力IDとスコアをキーとしてstore.selectedAssignmentを暗号化(TODO : バックエンドへ移す)
   const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(assignmentData), encryptionKey).toString();
   
   const result = {
