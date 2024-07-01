@@ -105,10 +105,10 @@ def evaluate_submission(notebook_path, problems):
                 "output_user": output_user,
                 "status": status.value
             })
-            print(status.value)
+            # print(status.value)
 
         os.remove(script_path)
         total_results.append(unit_results)
 
-    print(total_results)
+    # print(total_results)
     return total_results
