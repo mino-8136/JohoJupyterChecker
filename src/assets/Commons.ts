@@ -48,8 +48,8 @@ export class TestCase {
 }
 
 export enum Status {
-  Correct = '正解',
-  Incorrect = '不正解',
-  Error = 'エラー',
-  Unanswered = '未回答'
+    Correct = '正解',
+    Incorrect = '不正解',
+    Error = 'エラー',
+    Unanswered = '未回答',
 }
