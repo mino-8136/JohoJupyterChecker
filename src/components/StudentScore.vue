@@ -1,0 +1,62 @@
+<template>
+  <v-card v-if="store.selectedAssignment.problems.length" class="pb-8 elevation-8">
+    <v-card-title class="bg-primary pa-4"> あなたの得点 </v-card-title>
+    <v-divider></v-divider>
+    <v-card-text class="mx-4">
+      
+      <v-row align="center" justify="center" class="pb-4">
+        <v-col cols="4">
+          <v-progress-circular :model-value="currentScore/totalScore*100" :size="120" :width="15" color="primary">
+            {{ currentScore }}
+          </v-progress-circular>
+        </v-col>
+        <v-col cols="8">
+          <p>{{comment()}}</p>
+        </v-col>
+      </v-row>
+      <v-divider></v-divider>
+    </v-card-text>
+      <v-card-text>
+
+        <v-row align="center" justify="center" cols="12">
+          <v-col cols="6">
+            <v-text-field label="学年組番号の4桁" v-model="studentId"></v-text-field>
+          </v-col>
+          <v-col cols="6">
+            <v-btn color="primary"  @click="copyResult" class="rounded-pill" >提出用に結果をコピー</v-btn>
+          </v-col>
+        </v-row>
+        
+      </v-card-text>
+  </v-card>
+</template>
+
+<script setup lang="ts">
+import { ref,computed } from 'vue'
+import { useAssignmentStore } from '../stores/assignmentStore'
+
+const store = useAssignmentStore()
+const studentId = ref('')
+const totalScore = computed(() => store.getTotalScore)
+const currentScore = computed(() => store.getCurrentScore)
+
+function comment(){
+  const grade = currentScore.value / totalScore.value
+  if(grade >= 0.99){
+    return "素晴らしい！満点です！"
+  }else if(grade >= 0.8){
+    return "ほぼできています！お疲れさまでした。"
+  }else if(grade >= 0.6){
+    return "あと一息です！"
+  }else{
+    return "頑張りましょう！"
+  }
+}
+
+function copyResult() {
+  const result = `Score: ${currentScore.value}, ID: ${studentId.value}`
+  navigator.clipboard.writeText(result).then(() => {
+    alert('結果がクリップボードにコピーされました')
+  })
+}
+</script>
