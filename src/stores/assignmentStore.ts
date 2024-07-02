@@ -1,6 +1,6 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import { Assignment, Status } from '../assets/Commons'
+import { Assignment, Status } from '../components/utils/Commons'
 
 // 現在読み込んでいる課題の状況を管理するストア
 export const useAssignmentStore = defineStore(

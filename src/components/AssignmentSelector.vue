@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useAssignmentStore } from '../stores/assignmentStore'
-import { Assignment } from '../assets/Commons'
+import { Assignment } from './utils/Commons'
 
 const store = useAssignmentStore() // storeのインスタンスを取得
 const allAssignments = ref<Array<Assignment>>([]) // 全課題の情報をローカル管理
