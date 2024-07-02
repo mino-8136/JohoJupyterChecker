@@ -79,7 +79,7 @@
 
 <script setup lang="ts">
 import { useAssignmentStore } from '../stores/assignmentStore'
-import { TestCase, Problem, Status } from '@/assets/Commons'
+import { TestCase, Problem, Status } from './utils/Commons'
 import { ref, computed } from 'vue'
 
 const store = useAssignmentStore()
