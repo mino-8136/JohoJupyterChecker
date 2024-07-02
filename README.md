@@ -30,7 +30,6 @@ a, b = input()
 - Node.js 20.15.0
 - npm install axios vue-axios crypto-js
 - pip install flask flask-cors nbformat pywebview
-- pip install jinja2==3.0.3
 - pip install pyinstaller
 - 内部サーバーは http://localhost:5000 で融通
 
@@ -53,6 +52,7 @@ npm run dev
 ```sh
 python -m venv .venv
 .venv\Scripts\activate
+(いろいろなライブラリのインストール)
 ```
 
 ### Python経由での起動
@@ -65,8 +65,7 @@ python main.py
 ```
 npm run build
 .venv\Scripts\activate
-(いろいろなライブラリのインストール)
-pyinstaller --onefile main.py --clean --add-data "dist;dist" -n JohoJudgeSystem
+pyinstaller main.py --onefile --distpath application --clean --add-data "dist;dist" -n JohoJudgeSystem
 ```
 
 - コンソールはあったほうが生徒の質問対応がしやすいかも
