@@ -4,6 +4,7 @@
       v-for="(assignment, index) in allAssignments"
       :key="assignment.id"
       :value="assignment.id"
+      style="text-transform: none"
       @click="changeAssignment(index)"
     >
       {{ assignment.title }}

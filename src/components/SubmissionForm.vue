@@ -1,6 +1,6 @@
 <template>
   <v-form v-if="store.selectedAssignment.problems.length">
-    <v-btn color="primary" text=".ipynbファイルを採点する" :loading="loading" @click="(() => {
+    <v-btn color="primary" text=".ipynbファイルを採点する" style="text-transform: none" :loading="loading" @click="(() => {
       select_file()
     })" class="rounded-pill ma-8 d-flex mx-auto">
       <template v-slot:loader >
