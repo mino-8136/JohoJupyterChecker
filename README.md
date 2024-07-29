@@ -24,6 +24,7 @@ a, b = input()
 ## 授業利用時のメモ
 - プログラム動作時にpythonを叩くので、cmdから「python」が実行できるようにPATHを通す必要がある
 - プログラムが実行できない場合、パスの日本語状態が問題になっている可能性があるのでローカルアカウントの作成をする
+- pip install flask flask-cors noformat pywebview を実行しないと実行評価ができない？
 
 ## 開発要件
 - Python 3.12
