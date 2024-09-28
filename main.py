@@ -73,6 +73,6 @@ if __name__ == '__main__':
     thread.start()
 
     # Pywebviewウィンドウを開く
-    webview.create_window("JohoJudgeSystem", "http://localhost:5000/", width=600, height=800, min_size=(500, 300))
+    webview.create_window("JohoJupyterChecker", "http://localhost:5000/", width=600, height=800, min_size=(500, 300))
     webview.start()
     sys.exit()

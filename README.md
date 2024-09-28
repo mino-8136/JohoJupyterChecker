@@ -1,4 +1,4 @@
-# joho-judge-system
+# JohoJupyterChecker
 
 学生が作成したJupyterNotebook内の課題を自動評価するためのプログラム
 
@@ -66,7 +66,7 @@ python main.py
 ```
 npm run build
 .venv\Scripts\activate
-pyinstaller main.py --onefile --distpath application --clean --add-data "dist;dist" -n JohoJudgeSystem
+pyinstaller main.py --onefile --distpath application --clean --add-data "dist;dist" -n JohoJupyterChecker
 ```
 
 - コンソールはあったほうが生徒の質問対応がしやすいかも
