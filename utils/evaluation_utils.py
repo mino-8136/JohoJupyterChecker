@@ -30,7 +30,6 @@ def get_python_command():
     elif shutil.which("python"):
         return "python"
     else:
-        print("Pythonがインストールされていません")
         return 
 
 # スクリプトを抽出する関数
@@ -57,6 +56,11 @@ def evaluate_submission(notebook_path, problems):
     total_results = []
     code_cells = extract_scripts(notebook_path)
     cmd_command = get_python_command()
+
+    # コマンドが見つからない場合はエラーを返す
+    if cmd_command is None:
+        print("Pythonが見つかりませんでした。")
+        return 
 
     # 各提出コードに対してテストを実施する
     for idx, code in enumerate(code_cells):
