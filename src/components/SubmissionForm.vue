@@ -1,13 +1,25 @@
 <template>
   <v-form v-if="store.selectedAssignment.problems.length">
-    <v-btn color="primary" text=".ipynbファイルを採点する" style="text-transform: none" :loading="loading" @click="(() => {
-      select_file()
-    })" class="rounded-pill ma-8 d-flex mx-auto">
-      <template v-slot:loader >
+    <v-btn
+      text=".ipynbファイルを採点する"
+      color="primary"
+      class="rounded-pill ma-8 d-flex mx-auto"
+      style="text-transform: none"
+      @click="select_file()"
+      @dragover.prevent
+      @drop.prevent="dropFile"
+      :loading="loading"
+      >
+      <template v-slot:loader>
         <v-progress-circular indeterminate width="2"></v-progress-circular>
       </template>
     </v-btn>
-    <v-file-input ref="file_input" v-model="file" @change="submitForm" style="display:none;"></v-file-input>
+    <v-file-input
+      ref="file_input"
+      v-model="file"
+      @change="submitForm"
+      style="display: none"
+    ></v-file-input>
   </v-form>
 </template>
 
@@ -17,14 +29,26 @@ import { useAssignmentStore } from '../stores/assignmentStore'
 import { Assignment } from './utils/Commons'
 
 const store = useAssignmentStore()
-const file = ref<File | null>(null)
+
 const assignments = ref<Assignment>()
-const loading = ref(false)
+const file = ref<File | null>(null)
 const file_input = ref<HTMLInputElement | null>(null)
-const select_file = () => {
+const loading = ref(false)
+
+function select_file() {
   if (file_input.value) {
     file_input.value.click()
   }
+}
+
+// ファイルのドロップ関連の処理
+function dropFile(event: DragEvent) {
+  event.preventDefault()
+  const droppedFile = event.dataTransfer?.files[0]
+  if (droppedFile) {
+    file.value = droppedFile
+  }
+  submitForm()
 }
 
 // ファイルを選択してPythonに送信し、その結果をStoreに保存する
@@ -59,7 +83,7 @@ async function submitForm() {
 
   // 読み込みが終わったらファイルをクリアする
   file.value = null
-  loading.value = false;
+  loading.value = false
 }
 </script>
 

@@ -59,7 +59,7 @@ python -m venv .venv
 ### Python経由での起動
 ```
 npm run build
-python main.py
+py main.py
 ```
 
 ### アプリケーションのビルド
