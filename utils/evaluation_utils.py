@@ -1,4 +1,5 @@
 import subprocess
+import shutil
 import os
 import tempfile
 import nbformat
@@ -21,7 +22,16 @@ def compare_output(output_user, output_test):
         return Status.Unanswered
     else:
         return Status.Incorrect
-    
+
+# 実行するpythonコマンドを決定する関数
+def get_python_command():
+    if shutil.which("py"):
+        return "py"
+    elif shutil.which("python"):
+        return "python"
+    else:
+        print("Pythonがインストールされていません")
+        return 
 
 # スクリプトを抽出する関数
 def extract_scripts(notebook_path, start_keyword="## 演習問題"):
@@ -46,6 +56,7 @@ def extract_scripts(notebook_path, start_keyword="## 演習問題"):
 def evaluate_submission(notebook_path, problems):
     total_results = []
     code_cells = extract_scripts(notebook_path)
+    cmd_command = get_python_command()
 
     # 各提出コードに対してテストを実施する
     for idx, code in enumerate(code_cells):
@@ -76,7 +87,7 @@ def evaluate_submission(notebook_path, problems):
             # コードを実行して評価
             try:
                 result = subprocess.run(
-                    ('python', script_path),
+                    (cmd_command, script_path),
                     input=input,
                     capture_output=True, text=True, timeout=3)
                 output_user = result.stdout + result.stderr
