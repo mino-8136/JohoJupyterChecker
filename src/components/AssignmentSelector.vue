@@ -6,6 +6,7 @@
       :value="assignment.id"
       style="text-transform: none"
       @click="changeAssignment(index)"
+      show-arrows
     >
       {{ assignment.title }}
     </v-tab>
