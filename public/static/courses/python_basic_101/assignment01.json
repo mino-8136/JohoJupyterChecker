@@ -54,7 +54,7 @@
       "testCases": [
         {
           "input": "",
-          "output": "240\n"
+          "output": "240.0\n"
         }
       ]
     },
@@ -87,7 +87,7 @@
       "testCases": [
         {
           "input": "",
-          "output": "4050\n"
+          "output": "4050.0\n"
         }
       ]
     },
