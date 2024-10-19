@@ -16,7 +16,7 @@ def get_all_courses():
     # coursesディレクトリのパスを取得
     courses_dir = base_dir() / "public/static/courses"
     # coursesディレクトリ内のディレクトリ名を取得
-    courses = [course.name for course in courses_dir.iterdir() if course.is_dir()]
+    courses = [course.name for course in courses_dir.iterdir() if course.is_dir() and not course.name.startswith('.')]
     return courses
 
 # 指定されたディレクトリ内のすべての課題jsonファイルを取得する
