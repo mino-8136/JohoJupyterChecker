@@ -11,18 +11,29 @@ def base_dir():
         # python コマンドで起動した場合、プロジェクトディレクトリを基点とする。
         return Path(".")
 
+# coursesディレクトリ内の全てのディレクトリ名を取得する
+def get_all_courses():
+    # coursesディレクトリのパスを取得
+    courses_dir = base_dir() / "public/static/courses"
+    # coursesディレクトリ内のディレクトリ名を取得
+    courses = [course.name for course in courses_dir.iterdir() if course.is_dir()]
+    return courses
 
-
-# 課題jsonのすべてのパスを取得するAPI(未完成)
-def get_all_assignments():
-    # 課題jsonファイルを読み込む
-    directory_path = 'public/static/assignments'
-    json_files = Path(directory_path).glob('*.json')
-
-    all_data = []
-    for json_file in json_files:
-        with open(json_file, 'r', encoding='utf-8') as file:
-            data = json.load(file)
-            all_data.append(data)
+# 指定されたディレクトリ内のすべての課題jsonファイルを取得する
+def get_all_assignments(course_name):
+    # 指定されたディレクトリ内のjsonファイルを取得
+    courses_dir = base_dir() / "public/static/courses" / course_name
+    assignments = []
     
-    return all_data
+    # ディレクトリ内のjsonファイルを読み込む
+    for assignment in courses_dir.iterdir():
+        if assignment.is_file() and assignment.suffix == ".json":
+            with assignment.open('r', encoding='utf-8') as f:
+                # jsonファイルの内容を読み込み、リストに追加
+                try:
+                    data = json.load(f)
+                    assignments.append(data)
+                except json.JSONDecodeError:
+                    print(f"ファイルの読み込みに失敗しました: {assignment.name}")
+                    
+    return assignments

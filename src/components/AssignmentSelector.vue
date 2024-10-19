@@ -1,4 +1,6 @@
 <template>
+  <v-select label="コース選択" :items="allCourses" v-model="selectedCourse" variant="outlined">
+  </v-select>
   <v-tabs v-model="selectedAssignmentId" grow show-arrows>
     <v-tab
       v-for="(assignment, index) in allAssignments"
@@ -13,48 +15,54 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useAssignmentStore } from '../stores/assignmentStore'
 import { Assignment } from './utils/Commons'
 
 const store = useAssignmentStore() // storeのインスタンスを取得
+const allCourses = ref<string[]>([])
+const selectedCourse = ref<string | null>(null)
+
 const allAssignments = ref<Array<Assignment>>([]) // 全課題の情報をローカル管理
 const selectedAssignmentId = ref<number | null>(null) // 選択された課題のIDをローカルに管理
 
-// デフォルトのAssignmentインスタンスを生成する関数
-function createDefaultAssignment(id: number): Assignment {
-  return new Assignment(
-    id,
-    `課題${id}`,
-    `課題${id}はまだ未定です`,
-    []
-  )
-}
-
-// JSONファイルから課題の情報を取得する
-async function getAssignmentDataFromJSON(assignmentId: number): Promise<Assignment> {
-  const jsonPath = `static/assignments/week${assignmentId}.json`
+// Pythonからcourse内のディレクトリ名を取得する
+async function getCourseDirectories() {
   try {
-    const response = await fetch(jsonPath)
+    const response = await fetch('http://localhost:5000/api/courses', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    })
     if (!response.ok) {
-      throw new Error('課題パスにアクセスできません')
+      throw new Error('コースデータの取得に失敗しました')
     }
-    const json = await response.json()
-    return Assignment.fromJSON(json)
-  } catch (error) {
-    return createDefaultAssignment(assignmentId)
+
+    const data = await response.json()
+    data.forEach((course: string) => {
+      allCourses.value.push(course)
+    })
+  } catch (e) {
+    console.error(e)
   }
 }
 
-// 全Assignmentデータの取得(TODO: 本来はAPIから取得する。Pythonからファイル名一覧を取得し、JSONを読み込み、IDでソートする)
-async function generateAssignmentTabs() {
-  const numAssignments = 4
-  const assignmentsData: Assignment[] = []
-  for (let i = 1; i <= numAssignments; i++) {
-    const assignment = await getAssignmentDataFromJSON(i)
-    assignmentsData.push(assignment)
+// 指定コース内の全Assignmentデータを取得する
+async function getAllAssignments(course: string | null) {
+  try {
+    const response = await fetch('http://localhost:5000/api/assignments', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ course })
+    })
+    if (!response.ok) {
+      throw new Error('課題データの取得に失敗しました')
+    }
+
+    const data = await response.json()
+    allAssignments.value = data
+  } catch (e) {
+    console.error(e)
   }
-  allAssignments.value = assignmentsData
 }
 
 // storeに現在の課題を保持すると同時に、選択された課題のIDをローカルに保持する
@@ -63,11 +71,26 @@ function changeAssignment(index: number) {
   selectedAssignmentId.value = allAssignments.value[index].id
 }
 
-onMounted(async () => {
-  await generateAssignmentTabs()
-  changeAssignment(0) // 初期状態で最初の課題を選択
+watch(selectedCourse, async (newCourse) => {
+  if (newCourse) {
+    await getAllAssignments(newCourse)
+    changeAssignment(0) // コースが変更されたら最初の課題を選択
+  }
 })
 
+onMounted(async () => {
+  // コース一覧の取得と初期コースの設定
+  await getCourseDirectories()
+  const defaultCourse = 'python_basic_101'
+  const findDefaultCourse = allCourses.value.find((course) => course === defaultCourse)
+  if (findDefaultCourse) {
+    selectedCourse.value = defaultCourse
+  }
+
+  // 課題一覧の取得
+  await getAllAssignments(selectedCourse.value)
+  changeAssignment(0) // 初期状態で最初の課題を選択
+})
 </script>
 
 <style scoped>
