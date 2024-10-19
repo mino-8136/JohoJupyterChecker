@@ -67,10 +67,12 @@ function comment() {
   const grade = currentScore.value / totalScore.value
   if (grade >= 0.99) {
     return '素晴らしい！満点です！'
-  } else if (grade >= 0.8) {
+  } else if (grade >= 0.9) {
+    return 'よくできました！'
+  } else if (grade >= 0.7) {
     return 'ほぼできています！お疲れさまでした。'
-  } else if (grade >= 0.6) {
-    return 'あと一息です！'
+  } else if (grade >= 0.5) {
+    return 'その調子です！'
   } else {
     return '頑張りましょう！'
   }

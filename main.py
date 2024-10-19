@@ -9,7 +9,7 @@ import webbrowser
 import webview
 import threading
 
-from utils.file_utils import base_dir, get_all_assignments
+from utils.file_utils import base_dir, get_all_assignments, get_all_courses
 from utils.evaluation_utils import compare_output, evaluate_submission
 
 app = Flask(
@@ -20,10 +20,17 @@ app = Flask(
 )
 CORS(app)
 
-# ファイル一覧を取得するAPI
-@app.route('/api/assignments')
+
+# コース一覧を取得するAPI
+@app.route('/api/courses')
+def api_get_all_courses():
+    return jsonify(get_all_courses())
+
+# 指定コース内のファイル一覧を取得するAPI
+@app.route('/api/assignments', methods=['POST'])
 def api_get_all_assignments():
-    return jsonify(get_all_assignments())
+    course = request.json['course']
+    return jsonify(get_all_assignments(course))
 
 # 課題データを返すAPI
 @app.route('/api/submit', methods=['POST'])

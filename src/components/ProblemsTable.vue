@@ -2,7 +2,7 @@
   <v-table v-if="store.selectedAssignment.problems.length" class="elevation-2">
     <thead>
       <tr class="header-row">
-        <th class="text-left" width="25%">課題</th>
+        <th class="text-left" width="25%"><v-chip variant="text"> 課題 </v-chip></th>
         <th class="text-left" width="25%">課題点</th>
         <th class="text-left">達成状況</th>
       </tr>
@@ -36,9 +36,9 @@
     </tbody>
   </v-table>
 
- <v-dialog v-model="descriptionDialog" width="auto" min-width="400px">
+  <v-dialog v-model="descriptionDialog" width="auto" min-width="400px">
     <v-card>
-      <v-card-title class="pt-6 text-center" >
+      <v-card-title class="pt-6 text-center">
         {{ selectedProblem?.name }}
       </v-card-title>
       <v-card-text>
@@ -87,7 +87,6 @@ const dialog = ref(false)
 const selectedTestCase = ref<TestCase | null>(null)
 const descriptionDialog = ref(false)
 const selectedProblem = ref<Problem | null>(null)
-
 
 const StatusInfo = {
   [Status.Correct]: {

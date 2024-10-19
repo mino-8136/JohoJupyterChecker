@@ -1,10 +1,11 @@
 import subprocess
+import shutil
 import os
 import tempfile
 import nbformat
+import unicodedata
+import re
 from enum import Enum
-
-# TODO:outputの正規化を行なう関数を実装する
 
 # TypeScriptのStatus列挙型に対応するPythonのStatus列挙型(Common.tsと同様の定義)
 class Status(Enum):
@@ -13,15 +14,35 @@ class Status(Enum):
     Error = 'エラー'
     Unanswered = '未回答'
 
+# outputの正規化を行なう関数
+# 半角文字への統一、文字列中の空白の削除、改行コードの統一
+def normalize_output(output):
+    output = unicodedata.normalize('NFKC', output) # 全角文字を半角文字に変換
+    output = re.sub(r'\s+', '', output) # 空白文字を削除
+    output = output.replace('\r\n', '\n').replace('\r', '\n') # 改行コードを統一
+    return output
+
 # outputと実行結果を比較する関数
 def compare_output(output_user, output_test):
+    # outputの正規化を行う
+    output_user = normalize_output(output_user)
+    output_test = normalize_output(output_test)
+
     if output_user == output_test:
         return Status.Correct
-    elif output_user == "":
+    elif output_user == "" or output_user == "\n":
         return Status.Unanswered
     else:
         return Status.Incorrect
-    
+
+# 実行するpythonコマンドを決定する関数
+def get_python_command():
+    if shutil.which("py"):
+        return "py"
+    elif shutil.which("python"):
+        return "python"
+    else:
+        return 
 
 # スクリプトを抽出する関数
 def extract_scripts(notebook_path, start_keyword="## 演習問題"):
@@ -46,6 +67,12 @@ def extract_scripts(notebook_path, start_keyword="## 演習問題"):
 def evaluate_submission(notebook_path, problems):
     total_results = []
     code_cells = extract_scripts(notebook_path)
+    cmd_command = get_python_command()
+
+    # コマンドが見つからない場合はエラーを返す
+    if cmd_command is None:
+        print("Pythonが見つかりませんでした。")
+        return 
 
     # 各提出コードに対してテストを実施する
     for idx, code in enumerate(code_cells):
@@ -76,7 +103,7 @@ def evaluate_submission(notebook_path, problems):
             # コードを実行して評価
             try:
                 result = subprocess.run(
-                    ('python', script_path),
+                    (cmd_command, script_path),
                     input=input,
                     capture_output=True, text=True, timeout=3)
                 output_user = result.stdout + result.stderr
