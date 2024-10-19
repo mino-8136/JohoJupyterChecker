@@ -1,0 +1,139 @@
+{
+  "id": "1",
+  "title": "Lesson 1: 画面表示と四則演算",
+  "description": "Pythonの基本的な画面表示と四則演算の演習を通して、文字列と数値の扱いを理解します。",
+  "problems": [
+    {
+      "name": "課題1",
+      "description": "文字列`こんにちは`を表示するプログラムを作成してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "",
+          "output": "こんにちは\n"
+        }
+      ]
+    },
+    {
+      "name": "課題2",
+      "description": "数値`1024`を表示するプログラムを作成してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "",
+          "output": "1024\n"
+        }
+      ]
+    },
+    {
+      "name": "課題3",
+      "description": "次のコードを修正して、`Hello World!`を正しく表示するプログラムを作成してください。\n\nコード:\n```\nprint(Hello World!)\n```",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "",
+          "output": "Hello World!\n"
+        }
+      ]
+    },
+    {
+      "name": "課題4",
+      "description": "次のコードを修正して、`8`を正しく表示するプログラムを作成してください。\n\nコード:\n```\nprint(5 + \"3\")\n```",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "",
+          "output": "8\n"
+        }
+      ]
+    },
+    {
+      "name": "課題5",
+      "description": "1200を5で割った結果を表示するプログラムを作成してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "",
+          "output": "240\n"
+        }
+      ]
+    },
+    {
+      "name": "課題6",
+      "description": "1日の予算が13500円で、5日間の旅行の予算を計算して表示するプログラムを作成してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "",
+          "output": "67500\n"
+        }
+      ]
+    },
+    {
+      "name": "課題7",
+      "description": "`(2 + 3) * 4`の計算結果を表示するプログラムを作成してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "",
+          "output": "20\n"
+        }
+      ]
+    },
+    {
+      "name": "課題8",
+      "description": "1冊の価格が1500円で、3冊購入した際の合計金額を計算し、さらに1割引きの後の価格を表示するプログラムを作成してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "",
+          "output": "4050\n"
+        }
+      ]
+    },
+    {
+      "name": "課題9",
+      "description": "`print`関数を使って、`Age: 15`と表示するプログラムを作成してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "",
+          "output": "Age: 15\n"
+        }
+      ]
+    },
+    {
+      "name": "課題10",
+      "description": "`25+25の合計は50`と1行で表示するプログラムを作成してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "",
+          "output": "25+25の合計は50\n"
+        }
+      ]
+    },
+    {
+      "name": "課題11",
+      "description": "2の16乗を計算して表示するプログラムを作成してください。ヒント: 累乗は`**`を使います。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "",
+          "output": "65536\n"
+        }
+      ]
+    },
+    {
+      "name": "課題12",
+      "description": "10を3で割った商と余りを計算して、`商: 3 余り: 1`と表示するプログラムを作成してください。ヒント: 商は`//`、余りは`%`を使います。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "",
+          "output": "商: 3 余り: 1\n"
+        }
+      ]
+    }
+  ]
+}
