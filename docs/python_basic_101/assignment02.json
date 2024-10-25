@@ -1,0 +1,84 @@
+{
+  "id": "2",
+  "title": "Lesson 2: 変数の活用",
+  "description": "変数を用いたデータの操作方法を学びます。",
+  "problems": [
+    {
+      "name": "課題1",
+      "description": "aに10、bに20を代入し、aとbの足し算の結果を表示してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "",
+          "output": "30\n"
+        }
+      ]
+    },
+    {
+      "name": "課題2",
+      "description": "変数xに15、変数yに5を代入し、xとyの引き算の結果を表示してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "",
+          "output": "10\n"
+        }
+      ]
+    },
+    {
+      "name": "課題3",
+      "description": "変数num1に20、変数num2に4を代入し、割り算の結果を表示してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "",
+          "output": "5.0\n"
+        }
+      ]
+    },
+    {
+      "name": "課題4",
+      "description": "次のコードを修正して、正しく名前を表示できるようにしてください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "",
+          "output": "名前は太郎です。\n"
+        }
+      ]
+    },
+    {
+      "name": "課題5",
+      "description": "変数aに15、変数bに25、変数cに35を代入し、その平均値を計算してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "",
+          "output": "平均値は25.0\n"
+        }
+      ]
+    },
+    {
+      "name": "課題6",
+      "description": "円の半径radiusに5を代入し、円の面積を計算して表示してください。円周率は3.14とします。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "",
+          "output": "78.5\n"
+        }
+      ]
+    },
+    {
+      "name": "課題7",
+      "description": "変数aに7を、変数bに3を代入してあります。aとbの値を入れ替えた結果を出力してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "",
+          "output": "3 7\n"
+        }
+      ]
+    }
+  ]
+}

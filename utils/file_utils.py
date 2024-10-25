@@ -11,7 +11,7 @@ def base_dir():
         # python コマンドで起動した場合、プロジェクトディレクトリを基点とする。
         return Path(".")
 
-# coursesディレクトリ内の全てのディレクトリ名を取得する
+# coursesディレクトリ内の全てのディレクトリ名を取得する(TODO: distとpublicのどちらを使うか検討)
 def get_all_courses():
     # coursesディレクトリのパスを取得
     courses_dir = base_dir() / "dist/static/courses"
