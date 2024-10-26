@@ -6,6 +6,7 @@ import { Assignment, Status } from '../components/utils/Commons'
 export const useAssignmentStore = defineStore(
   'assignment',
   () => {
+    const allCoursesJSON = ref<Object>('')
     const selectedCourse = ref<string>('python_basic_101')
     const selectedAssignment = ref<Assignment>({
       id: 1,
@@ -13,6 +14,16 @@ export const useAssignmentStore = defineStore(
       description: '',
       problems: []
     })
+
+    // 読み込まれている課題を初期化する関数
+    const initiateSelectedAssignment = () => {
+      selectedAssignment.value = {
+        id: 1,
+        title: '',
+        description: '',
+        problems: []
+      }
+    }
 
     // 各課題の得点を計算する関数
     const getProblemScore = (problemIndex: number) => {
@@ -44,15 +55,13 @@ export const useAssignmentStore = defineStore(
       }, 0)
     })
     return {
+      allCoursesJSON,
       selectedCourse,
       selectedAssignment,
       getProblemScore,
       getTotalScore,
-      getCurrentScore
+      getCurrentScore,
+      initiateSelectedAssignment
     }
-  },
-
-  {
-    persist: true
   }
 )
