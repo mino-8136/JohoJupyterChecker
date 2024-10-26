@@ -29,8 +29,8 @@ import { useAssignmentStore } from '@/stores/assignmentStore'
 const store = useAssignmentStore()
 const allCourses = ref<string[]>([])
 
-// Pythonからcourse内のディレクトリ名を取得する
-async function getCourseDirectories() {
+// Pythonからコース一覧を取得し、jsonをstoreに設定する
+async function getAllCourses() {
   try {
     const response = await fetch('http://localhost:5000/api/courses', {
       method: 'GET',
@@ -41,9 +41,13 @@ async function getCourseDirectories() {
     }
 
     const data = await response.json()
-    data.forEach((course: string) => {
+    store.allCoursesJSON = data
+
+    // App.vueからコース一覧を選べるように抽出する
+    Object.keys(data).forEach((course: string) => {
       allCourses.value.push(course)
     })
+
   } catch (e) {
     console.error(e)
   }
@@ -51,7 +55,7 @@ async function getCourseDirectories() {
 
 onMounted(async () => {
   // コース一覧の取得と初期コースの設定
-  await getCourseDirectories()
+  await getAllCourses()
   const defaultCourse = 'python_basic_101'
   const findDefaultCourse = allCourses.value.find((course) => course === defaultCourse)
   if (findDefaultCourse) {

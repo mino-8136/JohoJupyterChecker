@@ -6,7 +6,9 @@ import { Assignment, Status } from '../components/utils/Commons'
 export const useAssignmentStore = defineStore(
   'assignment',
   () => {
+    const allCoursesJSON = ref<Object>('')
     const selectedCourse = ref<string>('python_basic_101')
+
     const selectedAssignment = ref<Assignment>({
       id: 1,
       title: '',
@@ -44,6 +46,7 @@ export const useAssignmentStore = defineStore(
       }, 0)
     })
     return {
+      allCoursesJSON,
       selectedCourse,
       selectedAssignment,
       getProblemScore,
