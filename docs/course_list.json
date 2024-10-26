@@ -2,10 +2,12 @@
   ".development": {
     "assignments": [
       {
+        "title": "Week 1",
         "filename": "week1.json",
         "url": "https://mino-8136.github.io/JohoJupyterChecker/.development/week1.json"
       },
       {
+        "title": "Week 2",
         "filename": "week2.json",
         "url": "https://mino-8136.github.io/JohoJupyterChecker/.development/week2.json"
       }
@@ -14,14 +16,17 @@
   "python_basic_101": {
     "assignments": [
       {
+        "title": "Lesson 1: 画面表示と四則演算",
         "filename": "assignment01.json",
         "url": "https://mino-8136.github.io/JohoJupyterChecker/python_basic_101/assignment01.json"
       },
       {
+        "title": "Lesson 2: 変数の活用と標準入力",
         "filename": "assignment02.json",
         "url": "https://mino-8136.github.io/JohoJupyterChecker/python_basic_101/assignment02.json"
       },
       {
+        "title": "Lesson 3: 条件分岐",
         "filename": "assignment03.json",
         "url": "https://mino-8136.github.io/JohoJupyterChecker/python_basic_101/assignment03.json"
       }
