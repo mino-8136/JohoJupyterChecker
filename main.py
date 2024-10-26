@@ -12,7 +12,7 @@ import threading
 import urllib
 import urllib.request
 
-from utils.file_utils import base_dir, get_all_assignments
+from utils.file_utils import base_dir
 from utils.evaluation_utils import evaluate_submission
 
 app = Flask(
@@ -35,11 +35,17 @@ def api_get_all_courses():
     except urllib.error.HTTPError as e:
         return jsonify({"error": f"HTTPError: {e.code}"}), 500
     
-# 指定コース内のファイル一覧を取得するAPI
+# 指定されたURLから課題ファイルを取得するAPI
 @app.route('/api/assignments', methods=['POST'])
 def api_get_all_assignments():
-    course = request.json['course']
-    return jsonify(get_all_assignments(course))
+    url = request.json['url']
+    try:
+        response = urllib.request.urlopen(url)
+        data = json.loads(response.read().decode('utf-8'))
+        return jsonify(data)
+    except urllib.error.HTTPError as e:
+        return jsonify({"error": f"HTTPError: {e.code}"}), 500
+
 
 # 課題データを返すAPI
 @app.route('/api/submit', methods=['POST'])

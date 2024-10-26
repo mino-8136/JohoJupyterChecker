@@ -19,7 +19,7 @@ def get_all_courses():
     courses = [course.name for course in courses_dir.iterdir() if course.is_dir() and not course.name.startswith('.')]
     return courses
 
-# 指定されたディレクトリ内のすべての課題jsonファイルを取得する
+# 指定されたディレクトリ内のすべての課題jsonファイルを取得する(オフライン用につき未使用)
 def get_all_assignments(course_name):
     # 指定されたディレクトリ内のjsonファイルを取得
     courses_dir = base_dir() / "dist/static/courses" / course_name

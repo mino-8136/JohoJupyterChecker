@@ -8,13 +8,22 @@ export const useAssignmentStore = defineStore(
   () => {
     const allCoursesJSON = ref<Object>('')
     const selectedCourse = ref<string>('python_basic_101')
-
     const selectedAssignment = ref<Assignment>({
       id: 1,
       title: '',
       description: '',
       problems: []
     })
+
+    // 読み込まれている課題を初期化する関数
+    const initiateSelectedAssignment = () => {
+      selectedAssignment.value = {
+        id: 1,
+        title: '',
+        description: '',
+        problems: []
+      }
+    }
 
     // 各課題の得点を計算する関数
     const getProblemScore = (problemIndex: number) => {
@@ -51,11 +60,8 @@ export const useAssignmentStore = defineStore(
       selectedAssignment,
       getProblemScore,
       getTotalScore,
-      getCurrentScore
+      getCurrentScore,
+      initiateSelectedAssignment
     }
-  },
-
-  {
-    persist: true
   }
 )

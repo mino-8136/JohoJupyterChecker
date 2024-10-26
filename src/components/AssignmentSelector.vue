@@ -14,53 +14,68 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue'
+import { ref } from 'vue'
 import { useAssignmentStore } from '../stores/assignmentStore'
 import { Assignment } from './utils/Commons'
 
 const store = useAssignmentStore()
-const allAssignments = ref<Array<Assignment>>([]) // 全課題の情報をローカル管理
+const allAssignments = ref<Array<Assignment>>([]) // 全課題の情報をローカル管理(storeしない)
 const selectedAssignmentId = ref<number | null>(null) // 選択された課題のIDをローカルに管理
 
-// 指定コース内の全Assignmentデータを取得する
-async function getAllAssignments(course: string | null) {
-  try {
-    const response = await fetch('http://localhost:5000/api/assignments', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ course })
-    })
-    if (!response.ok) {
-      throw new Error('課題データの取得に失敗しました')
-    }
+// store.allCoursesのキーの型を定義する
+interface AllCoursesJSON {
+  [key: string]: any
+}
+interface AllAssignmentsJSON {
+  url: string
+}
 
-    const data = await response.json()
-    allAssignments.value = data
-  } catch (e) {
-    console.error(e)
-  }
+// 指定コース内の全Assignmentデータを取得する(親コンポーネントから呼び出し)
+async function getAllAssignments(course: string) {
+  // 既に読み込まれている課題データを初期化
+  allAssignments.value = []
+  store.initiateSelectedAssignment()
+
+  // store.allCoursesJSONから指定コース名をもとに、課題データを取得
+  const allCourses: AllCoursesJSON = store.allCoursesJSON
+  allCourses[course].assignments.forEach(async (assignment: AllAssignmentsJSON) => {
+    try {
+      // 指定されたURLから課題データを取得し、allAssignmentsに格納
+      const url = assignment.url
+      const response = await fetch('http://localhost:5000/api/assignments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url })
+      })
+      if (!response.ok) {
+        throw new Error('課題データの取得に失敗しました')
+      }
+
+      const data = await response.json()
+      allAssignments.value.push(data)
+      allAssignments.value.sort((a, b) => a.id - b.id)
+
+      changeAssignment(0)
+    } catch (e) {
+      console.error(e)
+    }
+  })
 }
 
 // storeに現在の課題を保持すると同時に、選択された課題のIDをローカルに保持する
 function changeAssignment(index: number) {
-  store.selectedAssignment = allAssignments.value[index]
-  selectedAssignmentId.value = allAssignments.value[index].id
+  // 課題が存在するか確認
+  if (allAssignments.value.length > 0 && allAssignments.value[index]) {
+    store.selectedAssignment = allAssignments.value[index]
+    selectedAssignmentId.value = allAssignments.value[index].id
+  } else {
+    console.error(`Assignment at index ${index} not found.`)
+  }
 }
 
-watch(
-  () => store.selectedCourse,
-  async (newCourse) => {
-    if (newCourse) {
-      await getAllAssignments(newCourse)
-      changeAssignment(0) // コースが変更されたら最初の課題を選択
-    }
-  }
-)
-
-onMounted(async () => {
-  // 課題一覧の取得
-  await getAllAssignments(store.selectedCourse)
-  changeAssignment(0) // 初期状態で最初の課題を選択
+defineExpose({
+  getAllAssignments,
+  changeAssignment
 })
 </script>
 
