@@ -1,32 +1,30 @@
 {
-  "courses": {
-    ".development": {
-      "assignments": [
-        {
-          "filename": "week1.json",
-          "url": "https://mino-8136.github.io/JohoJupyterChecker/.development/week1.json"
-        },
-        {
-          "filename": "week2.json",
-          "url": "https://mino-8136.github.io/JohoJupyterChecker/.development/week2.json"
-        }
-      ]
-    },
-    "python_basic_101": {
-      "assignments": [
-        {
-          "filename": "assignment01.json",
-          "url": "https://mino-8136.github.io/JohoJupyterChecker/python_basic_101/assignment01.json"
-        },
-        {
-          "filename": "assignment02.json",
-          "url": "https://mino-8136.github.io/JohoJupyterChecker/python_basic_101/assignment02.json"
-        },
-        {
-          "filename": "assignment03.json",
-          "url": "https://mino-8136.github.io/JohoJupyterChecker/python_basic_101/assignment03.json"
-        }
-      ]
-    }
+  ".development": {
+    "assignments": [
+      {
+        "filename": "week1.json",
+        "url": "https://mino-8136.github.io/JohoJupyterChecker/.development/week1.json"
+      },
+      {
+        "filename": "week2.json",
+        "url": "https://mino-8136.github.io/JohoJupyterChecker/.development/week2.json"
+      }
+    ]
+  },
+  "python_basic_101": {
+    "assignments": [
+      {
+        "filename": "assignment01.json",
+        "url": "https://mino-8136.github.io/JohoJupyterChecker/python_basic_101/assignment01.json"
+      },
+      {
+        "filename": "assignment02.json",
+        "url": "https://mino-8136.github.io/JohoJupyterChecker/python_basic_101/assignment02.json"
+      },
+      {
+        "filename": "assignment03.json",
+        "url": "https://mino-8136.github.io/JohoJupyterChecker/python_basic_101/assignment03.json"
+      }
+    ]
   }
 }
