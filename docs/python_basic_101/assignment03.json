@@ -19,14 +19,6 @@
         {
           "input": "YES\n",
           "output": ""
-        },
-        {
-          "input": "yes\n",
-          "output": "Yes\n"
-        },
-        {
-          "input": "maybe\n",
-          "output": ""
         }
       ]
     },
@@ -36,12 +28,8 @@
       "points": 100,
       "testCases": [
         {
-          "input": "80\n",
+          "input": "100\n",
           "output": "合格です\n"
-        },
-        {
-          "input": "50\n",
-          "output": "不合格です\n"
         },
         {
           "input": "70\n",
@@ -52,8 +40,12 @@
           "output": "不合格です\n"
         },
         {
-          "input": "100\n",
-          "output": "合格です\n"
+          "input": "69\n",
+          "output": "不合格です\n"
+        },
+        {
+          "input": "-50\n",
+          "output": "不合格です\n"
         }
       ]
     },
@@ -191,7 +183,8 @@
           "output": "7は49の約数です\n"
         }
       ]
-    },    {
+    },
+    {
       "name": "課題8",
       "description": "エラーを直そう：次のコードを修正して、0のときに'Zero'、1のときに'One'、2のときに'Two'、それ以外では'Other'と正しく実行できるようにしてください。",
       "points": 100,
