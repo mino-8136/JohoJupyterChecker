@@ -191,6 +191,194 @@
           "output": "7は49の約数です\n"
         }
       ]
+    },    {
+      "name": "課題8",
+      "description": "エラーを直そう：次のコードを修正して、0のときに'Zero'、1のときに'One'、2のときに'Two'、それ以外では'Other'と正しく実行できるようにしてください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "0\n",
+          "output": "Zero\n"
+        },
+        {
+          "input": "1\n",
+          "output": "One\n"
+        },
+        {
+          "input": "2\n",
+          "output": "Two\n"
+        },
+        {
+          "input": "3\n",
+          "output": "Other\n"
+        },
+        {
+          "input": "-1\n",
+          "output": "Other\n"
+        }
+      ]
+    },
+    {
+      "name": "課題9",
+      "description": "numberという変数にユーザーから数値を入力させ、その数値が0より大きければ'正'、0より小さければ'負'と表示し、0であれば'0'と表示してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "5\n",
+          "output": "正\n"
+        },
+        {
+          "input": "-3\n",
+          "output": "負\n"
+        },
+        {
+          "input": "0\n",
+          "output": "0\n"
+        },
+        {
+          "input": "100\n",
+          "output": "正\n"
+        },
+        {
+          "input": "-50\n",
+          "output": "負\n"
+        }
+      ]
+    },
+    {
+      "name": "課題10",
+      "description": "scoreという変数にユーザーから点数を入力させ、その点数が90以上なら'A'、80以上なら'B'、70以上なら'C'、60以上なら'D'、それ以下なら'E'と表示してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "95\n",
+          "output": "A\n"
+        },
+        {
+          "input": "85\n",
+          "output": "B\n"
+        },
+        {
+          "input": "75\n",
+          "output": "C\n"
+        },
+        {
+          "input": "65\n",
+          "output": "D\n"
+        },
+        {
+          "input": "55\n",
+          "output": "E\n"
+        }
+      ]
+    },
+    {
+      "name": "課題11",
+      "description": "ユーザーから曜日を入力させ、その曜日が'土'または'日'なら'週末です'、それ以外の曜日なら'平日です'、存在しない曜日なら'エラーです'と表示してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "土\n",
+          "output": "週末です\n"
+        },
+        {
+          "input": "日\n",
+          "output": "週末です\n"
+        },
+        {
+          "input": "月\n",
+          "output": "平日です\n"
+        },
+        {
+          "input": "火\n",
+          "output": "平日です\n"
+        },
+        {
+          "input": "abc\n",
+          "output": "エラーです\n"
+        }
+      ]
+    },
+    {
+      "name": "課題12",
+      "description": "monthという変数にユーザーから月を入力させ、その月が12、1、2なら'冬'、3、4、5なら'春'、6、7、8なら'夏'、9、10、11なら'秋'と表示してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "1\n",
+          "output": "冬\n"
+        },
+        {
+          "input": "4\n",
+          "output": "春\n"
+        },
+        {
+          "input": "7\n",
+          "output": "夏\n"
+        },
+        {
+          "input": "10\n",
+          "output": "秋\n"
+        },
+        {
+          "input": "12\n",
+          "output": "冬\n"
+        }
+      ]
+    },
+    {
+      "name": "課題13",
+      "description": "ユーザーに3つの数値を入力させ、それらの数値のうち最も大きな数値を表示してください。もし3つの数値が等しい場合は'すべての数値は等しいです'と表示してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "5\n5\n5\n",
+          "output": "すべての数値は等しいです\n"
+        },
+        {
+          "input": "10\n20\n30\n",
+          "output": "最大の数値は 30 です\n"
+        },
+        {
+          "input": "100\n50\n25\n",
+          "output": "最大の数値は 100 です\n"
+        },
+        {
+          "input": "1\n1\n2\n",
+          "output": "最大の数値は 2 です\n"
+        },
+        {
+          "input": "3\n3\n1\n",
+          "output": "最大の数値は 3 です\n"
+        }
+      ]
+    },
+    {
+      "name": "課題14",
+      "description": "3つの数値の最小値と最大値を計算し、それを表示してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "10\n20\n30\n",
+          "output": "最小値は 10 最大値は 30\n"
+        },
+        {
+          "input": "5\n3\n8\n",
+          "output": "最小値は 3 最大値は 8\n"
+        },
+        {
+          "input": "0\n-1\n1\n",
+          "output": "最小値は -1 最大値は 1\n"
+        },
+        {
+          "input": "100\n50\n200\n",
+          "output": "最小値は 50 最大値は 200\n"
+        },
+        {
+          "input": "25\n25\n25\n",
+          "output": "最小値は 25 最大値は 25\n"
+        }
+      ]
     }
   ]
 }
