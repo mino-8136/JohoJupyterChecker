@@ -1,14 +1,14 @@
 {
   "courses": {
-    ".development": {
+    "development": {
       "assignments": [
         {
           "filename": "week1.json",
-          "url": "https://mino-8136.github.io/JohoJupyterChecker/.development/week1.json"
+          "url": "https://mino-8136.github.io/JohoJupyterChecker/development/week1.json"
         },
         {
           "filename": "week2.json",
-          "url": "https://mino-8136.github.io/JohoJupyterChecker/.development/week2.json"
+          "url": "https://mino-8136.github.io/JohoJupyterChecker/development/week2.json"
         }
       ]
     },
