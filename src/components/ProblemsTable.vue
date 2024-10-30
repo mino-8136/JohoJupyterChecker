@@ -61,12 +61,12 @@
       </v-card-title>
       <v-card-text>
         <div v-if="selectedTestCase">
-          <p><strong>入力例:</strong></p>
+          <p><strong>▼入力例</strong></p>
           <p class="mb-2">{{ selectedTestCase.input }}</p>
-          <p><strong>出力例:</strong></p>
-          <p class="mb-2">{{ selectedTestCase.output }}</p>
-          <p><strong>あなたの実行結果:</strong></p>
-          <p class="mb-2">{{ selectedTestCase.output_user }}</p>
+          <p><strong>▼出力例</strong></p>
+          <p class="mb-2" style="white-space: pre-wrap">{{ selectedTestCase.output }}</p>
+          <p><strong>▼あなたの実行結果</strong></p>
+          <p class="mb-2" style="white-space: pre-wrap">{{ selectedTestCase.output_user }}</p>
         </div>
       </v-card-text>
       <v-divider></v-divider>
