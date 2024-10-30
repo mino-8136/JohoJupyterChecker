@@ -22,6 +22,11 @@ def normalize_output(output):
     output = output.replace('\r\n', '\n').replace('\r', '\n') # 改行コードを統一
     return output
 
+# input() 関数のメッセージ部分を空にする
+def remove_input_message(code):
+    modified_code = re.sub(r'input\s*\((.*?)\)', 'input()', code)
+    return modified_code
+
 # outputと実行結果を比較する関数
 def compare_output(output_user, output_test):
     # outputの正規化を行う
@@ -79,7 +84,7 @@ def evaluate_submission(notebook_path, problems):
 
         # 各コードを一時ファイルに保存する
         with tempfile.NamedTemporaryFile(delete=False, suffix='.py') as script_file:
-            modified_code = code.replace('input', 'lambda _: ""') # input関数を置き換える
+            modified_code = remove_input_message(code) # input関数を置き換える
             script_file.write(modified_code.encode('utf-8'))
             script_path = script_file.name
 
