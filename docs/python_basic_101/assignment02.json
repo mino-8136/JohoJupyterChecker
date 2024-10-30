@@ -1,7 +1,7 @@
 {
   "id": "2",
-  "title": "②基本的な入力と出力の練習",
-  "description": "Pythonで基本的な入力と出力の操作を練習します。",
+  "title": "Lesson 2: 変数の活用とユーザー入力",
+  "description": "Pythonで変数操作と入力の方法を練習します。",
   "problems": [
     {
       "name": "課題1",
