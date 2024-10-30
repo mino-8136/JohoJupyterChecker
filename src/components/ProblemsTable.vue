@@ -150,6 +150,7 @@ function openDialog(result: TestCase) {
 .chip-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px; /* チップ間のスペースを設定 */
+  gap: 2px 8px; /* チップ間のスペースを設定 */
+  padding: 8px 0px ;
 }
 </style>
