@@ -79,7 +79,8 @@ def evaluate_submission(notebook_path, problems):
 
         # 各コードを一時ファイルに保存する
         with tempfile.NamedTemporaryFile(delete=False, suffix='.py') as script_file:
-            script_file.write(code.encode('utf-8'))
+            modified_code = code.replace('input', 'lambda _: ""') # input関数を置き換える
+            script_file.write(modified_code.encode('utf-8'))
             script_path = script_file.name
 
         # 問題データから入出力例を取得
