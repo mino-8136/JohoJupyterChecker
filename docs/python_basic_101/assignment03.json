@@ -1,8 +1,196 @@
 {
-  "id": "99",
-  "title": "Lesson 99: 未定",
-  "description": "現在作成中です",
+  "id": "3",
+  "title": "Lesson 3: 条件分岐とelse",
+  "description": "Pythonでif文とelse文を使った条件分岐を学びます。",
   "problems": [
-    
+    {
+      "name": "課題1",
+      "description": "次のコードを修正して、正しく実行できるようにしてください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "yes\n",
+          "output": "Yes\n"
+        },
+        {
+          "input": "no\n",
+          "output": ""
+        },
+        {
+          "input": "YES\n",
+          "output": ""
+        },
+        {
+          "input": "yes\n",
+          "output": "Yes\n"
+        },
+        {
+          "input": "maybe\n",
+          "output": ""
+        }
+      ]
+    },
+    {
+      "name": "課題2",
+      "description": "scoreという変数にユーザーからテストの点数を入力させ、70点以上なら合格です、それ以下なら不合格ですと表示してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "80\n",
+          "output": "合格です\n"
+        },
+        {
+          "input": "50\n",
+          "output": "不合格です\n"
+        },
+        {
+          "input": "70\n",
+          "output": "合格です\n"
+        },
+        {
+          "input": "0\n",
+          "output": "不合格です\n"
+        },
+        {
+          "input": "100\n",
+          "output": "合格です\n"
+        }
+      ]
+    },
+    {
+      "name": "課題3",
+      "description": "ユーザーに正の整数を入力させ、その数値が10の倍数であれば10の倍数、そうでなければ10の倍数ではないと表示してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "10\n",
+          "output": "10の倍数\n"
+        },
+        {
+          "input": "25\n",
+          "output": "10の倍数ではない\n"
+        },
+        {
+          "input": "100\n",
+          "output": "10の倍数\n"
+        },
+        {
+          "input": "7\n",
+          "output": "10の倍数ではない\n"
+        },
+        {
+          "input": "30\n",
+          "output": "10の倍数\n"
+        }
+      ]
+    },
+    {
+      "name": "課題4",
+      "description": "エラーを直そう：次のコードを修正して、入力がhelloの時にhelloと実行できるようにしてください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "hello\n",
+          "output": "hello\n"
+        },
+        {
+          "input": "world\n",
+          "output": ""
+        },
+        {
+          "input": "HELLO\n",
+          "output": ""
+        },
+        {
+          "input": "hello\n",
+          "output": "hello\n"
+        },
+        {
+          "input": "test\n",
+          "output": ""
+        }
+      ]
+    },
+    {
+      "name": "課題5",
+      "description": "エラーを直そう：次のコードを修正して、入力がexitの時以外はRunningと実行できるようにしてください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "exit\n",
+          "output": ""
+        },
+        {
+          "input": "run\n",
+          "output": "Running\n"
+        },
+        {
+          "input": "start\n",
+          "output": "Running\n"
+        },
+        {
+          "input": "EXIT\n",
+          "output": "Running\n"
+        },
+        {
+          "input": "done\n",
+          "output": "Running\n"
+        }
+      ]
+    },
+    {
+      "name": "課題6",
+      "description": "ユーザーから整数を入力させ、その数値が偶数か奇数かを表示してください。負の整数にも対応させてください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "2\n",
+          "output": "偶数\n"
+        },
+        {
+          "input": "5\n",
+          "output": "奇数\n"
+        },
+        {
+          "input": "-4\n",
+          "output": "偶数\n"
+        },
+        {
+          "input": "-9\n",
+          "output": "奇数\n"
+        },
+        {
+          "input": "0\n",
+          "output": "偶数\n"
+        }
+      ]
+    },
+    {
+      "name": "課題7",
+      "description": "2以上の整数`a`, `b`を受け取り、`a`が`b`の約数であればaはbの約数ですと表示し、そうでなければaはbの約数ではありませんと表示してください。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "2\n10\n",
+          "output": "2は10の約数です\n"
+        },
+        {
+          "input": "3\n9\n",
+          "output": "3は9の約数です\n"
+        },
+        {
+          "input": "4\n10\n",
+          "output": "4は10の約数ではありません\n"
+        },
+        {
+          "input": "5\n25\n",
+          "output": "5は25の約数です\n"
+        },
+        {
+          "input": "7\n49\n",
+          "output": "7は49の約数です\n"
+        }
+      ]
+    }
   ]
 }
