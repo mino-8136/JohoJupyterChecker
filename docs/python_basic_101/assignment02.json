@@ -92,23 +92,23 @@
       "testCases": [
         {
           "input": "10\n20\n",
-          "output": "合計は30です。\n"
+          "output": "合計：30\n"
         },
         {
           "input": "5\n7\n",
-          "output": "合計は12です。\n"
+          "output": "合計：12\n"
         },
         {
           "input": "100\n200\n",
-          "output": "合計は300です。\n"
+          "output": "合計：300\n"
         },
         {
           "input": "1\n99\n",
-          "output": "合計は100です。\n"
+          "output": "合計：100\n"
         },
         {
           "input": "45\n55\n",
-          "output": "合計は100です。\n"
+          "output": "合計：100\n"
         }
       ]
     },
@@ -154,7 +154,7 @@
         },
         {
           "input": "1.60\n60\n",
-          "output": "あなたのBMIは23.4375\n"
+          "output": "あなたのBMIは23.437499999999996\n"
         },
         {
           "input": "1.55\n50\n",
