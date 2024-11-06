@@ -18,13 +18,15 @@ class Status(Enum):
 # 半角文字への統一、文字列中の空白の削除、改行コードの統一
 def normalize_output(output):
     output = unicodedata.normalize('NFKC', output) # 全角文字を半角文字に変換
+    output = re.sub(r'[。、]', '', output)  # 文末の句読点を除去
     output = re.sub(r'\s+', '', output) # 空白文字を削除
     output = output.replace('\r\n', '\n').replace('\r', '\n') # 改行コードを統一
     return output
 
 # input() 関数のメッセージ部分を空にする
 def remove_input_message(code):
-    modified_code = re.sub(r'input\s*\((.*?)\)', 'input()', code)
+    pattern = r'input\s*\(\s*(?P<quote>[\'"])(?:\\.|[^\\])*?(?P=quote)\s*\)'
+    modified_code = re.sub(pattern, 'input()', code)
     return modified_code
 
 # outputと実行結果を比較する関数
