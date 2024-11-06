@@ -1,0 +1,277 @@
+{
+  "id": "4",
+  "title": "文字列操作と条件判定",
+  "description": "Pythonでの文字列操作や条件判定を行う課題です。",
+  "problems": [
+    {
+      "name": "課題1",
+      "description": "Inputで文字列が渡される。その文字列の文字数を出力せよ。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "Hello\n",
+          "output": "5\n"
+        },
+        {
+          "input": "Python\n",
+          "output": "6\n"
+        },
+        {
+          "input": "こんにちは\n",
+          "output": "5\n"
+        },
+        {
+          "input": "World!\n",
+          "output": "6\n"
+        },
+        {
+          "input": "文字列操作\n",
+          "output": "4\n"
+        }
+      ]
+    },
+    {
+      "name": "課題2",
+      "description": "2つのInputで文字列Tと数値Nが渡される。文字列TのN番目の文字を出力せよ。ただし、番号は先頭が0とし、指定された番号が文字列を超える場合は「エラー」と出力せよ。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "Hello\n1\n",
+          "output": "e\n"
+        },
+        {
+          "input": "Python\n5\n",
+          "output": "n\n"
+        },
+        {
+          "input": "Python\n6\n",
+          "output": "エラー\n"
+        },
+        {
+          "input": "abcde\n0\n",
+          "output": "a\n"
+        },
+        {
+          "input": "プログラム\n8\n",
+          "output": "エラー\n"
+        }
+      ]
+    },
+    {
+      "name": "課題3",
+      "description": "Inputで文字列が渡される。その文字列を逆順にして出力せよ。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "Hello World!\n",
+          "output": "!dlroW olleH\n"
+        },
+        {
+          "input": "Python\n",
+          "output": "nohtyP\n"
+        },
+        {
+          "input": "abcde\n",
+          "output": "edcba\n"
+        },
+        {
+          "input": "こんにちは\n",
+          "output": "はちにんこ\n"
+        },
+        {
+          "input": "文字列操作\n",
+          "output": "作操列字文\n"
+        }
+      ]
+    },
+    {
+      "name": "課題4",
+      "description": "Inputで文字列が渡される。その文字列の先頭の文字と最後の文字をつなげて出力せよ。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "Hello\n",
+          "output": "Ho\n"
+        },
+        {
+          "input": "Python\n",
+          "output": "Pn\n"
+        },
+        {
+          "input": "文字列\n",
+          "output": "文字\n"
+        },
+        {
+          "input": "あいうえお\n",
+          "output": "あお\n"
+        },
+        {
+          "input": "さようなら\n",
+          "output": "さら\n"
+        }
+      ]
+    },
+    {
+      "name": "課題5",
+      "description": "2つのInputで文字列Tと数値Nが渡される。文字列Tを「数値N」の回数だけ繰り返した文章を出力せよ。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "Hello\n3\n",
+          "output": "HelloHelloHello\n"
+        },
+        {
+          "input": "abc\n2\n",
+          "output": "abcabc\n"
+        },
+        {
+          "input": "Python\n1\n",
+          "output": "Python\n"
+        },
+        {
+          "input": "文字\n4\n",
+          "output": "文字文字文字文字\n"
+        },
+        {
+          "input": "Repeat\n0\n",
+          "output": "\n"
+        }
+      ]
+    },
+    {
+      "name": "課題6",
+      "description": "2つのInputで文字列A・Bが渡される。文字列Aの中に文字列Bが含まれるときに「ある」、含まれなければ「ない」を出力せよ。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "すいどうばし\nいどう\n",
+          "output": "ある\n"
+        },
+        {
+          "input": "きたかんとう\nかだん\n",
+          "output": "ない\n"
+        },
+        {
+          "input": "こんにちは\nにち\n",
+          "output": "ある\n"
+        },
+        {
+          "input": "あいうえお\nえか\n",
+          "output": "ない\n"
+        },
+        {
+          "input": "プログラミング\nグラ\n",
+          "output": "ある\n"
+        }
+      ]
+    },
+    {
+      "name": "課題7",
+      "description": "2つのInputで長文の文字列Tと、文字Cが渡される。文字列Tの中に文字Cが何回含まれるかを出力せよ。ただし、大文字と小文字の区別は行わない。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "Hello World\nl\n",
+          "output": "3\n"
+        },
+        {
+          "input": "Python Programming\np\n",
+          "output": "2\n"
+        },
+        {
+          "input": "Apple Pie\np\n",
+          "output": "3\n"
+        },
+        {
+          "input": "banana\nA\n",
+          "output": "3\n"
+        },
+        {
+          "input": "こんにちは\nこ\n",
+          "output": "1\n"
+        }
+      ]
+    },
+    {
+      "name": "課題8",
+      "description": "5つのInputで、長文の文字列Tと、文字列C・D・E・Fが渡される。文字列Tの中に含まれる文字列C・D・E・Fのうち、最も登場回数の多い文字列を出力せよ。なお、この問題では各文字の登場回数はすべて異なる。また、大文字と小文字の区別は行わない。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "banana\nb\na\nn\nk\n",
+          "output": "a\n"
+        },
+        {
+          "input": "apple pie\np\ne\na\ni\n",
+          "output": "p\n"
+        },
+        {
+          "input": "chocolate\nc\no\na\ne\n",
+          "output": "c\n"
+        },
+        {
+          "input": "mississippi\ns\np\nm\ni\n",
+          "output": "s\n"
+        },
+        {
+          "input": "abcdabcd\nb\na\nd\nc\n",
+          "output": "b\n"
+        }
+      ]
+    },
+    {
+      "name": "課題9",
+      "description": "あなたは新規サービスを立ち上げ、ユーザーアカウント登録機能を作成している。Inputで入力されたユーザー名Aのうち、1以下の条件をすべて満たす文字列については「許可」と表示し、そうでない場合は「不可」と表示せよ。1. 文字数は6文字以上 2. 英数字のみ 3. 全ての文字が同一でない",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "tokyo1234\n",
+          "output": "許可\n"
+        },
+        {
+          "input": "地元じゃ最強\n",
+          "output": "不可\n"
+        },
+        {
+          "input": "XXXXXX\n",
+          "output": "不可\n"
+        },
+        {
+          "input": "XxxxxxX\n",
+          "output": "許可\n"
+        },
+        {
+          "input": "123456\n",
+          "output": "許可\n"
+        }
+      ]
+    },
+    {
+      "name": "課題10",
+      "description": "あなたはチャットの検閲機能の作成を行う。今回の仮想世界ではカニについて述べることを禁じられている。入力された文章のうち、検閲ワードである「かに」・「カニ」を「●●」に置き換えて出力せよ。",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "確かにお前の言う通り、どこかに置いてきたのかもしれないな\n",
+          "output": "確●●お前の言う通り、どこ●●置いてきたのかもしれないな\n"
+        },
+        {
+          "input": "寒くなってきたしカニとか食べたいね\n",
+          "output": "寒くなってきたし●●とか食べたいね\n"
+        },
+        {
+          "input": "最近はエレクトロニカとかにハマってるよ\n",
+          "output": "最近はエレクトロニ●●とか●●ハマってるよ\n"
+        },
+        {
+          "input": "カニカカニカニ力二カニ力ニかにｶにｶﾆ\n",
+          "output": "●●●●●●力二●●力二●●ｶにｶﾆ\n"
+        },
+        {
+          "input": "蟹は蟹でもカニじゃない\n",
+          "output": "蟹は蟹でも●●じゃない\n"
+        }
+      ]
+    }
+  ]
+}
