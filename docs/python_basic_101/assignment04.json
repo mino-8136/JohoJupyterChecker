@@ -10,23 +10,23 @@
       "testCases": [
         {
           "input": "早起きは三文の徳\n",
-          "output": "9\n"
+          "output": "8\n"
         },
         {
           "input": "情けは人の為ならず\n",
-          "output": "11\n"
+          "output": "9\n"
         },
         {
           "input": "明日は明日の風が吹く\n",
-          "output": "11\n"
+          "output": "10\n"
         },
         {
           "input": "初心忘るべからず\n",
-          "output": "9\n"
+          "output": "8\n"
         },
         {
           "input": "笑う門には福来る\n",
-          "output": "9\n"
+          "output": "8\n"
         },
         {
           "input": "猿も木から落ちる\n",
@@ -34,19 +34,19 @@
         },
         {
           "input": "花より団子\n",
-          "output": "6\n"
+          "output": "5\n"
         },
         {
           "input": "二兎を追う者は一兎をも得ず\n",
-          "output": "14\n"
+          "output": "13\n"
         },
         {
           "input": "雨降って地固まる\n",
-          "output": "9\n"
+          "output": "8\n"
         },
         {
           "input": "時は金なり\n",
-          "output": "6\n"
+          "output": "5\n"
         }
       ]
     },
@@ -65,7 +65,7 @@
         },
         {
           "input": "プログラミングは楽しい\n5\n",
-          "output": "ミ\n"
+          "output": "ン\n"
         },
         {
           "input": "日本の首都は東京です\n10\n",
@@ -73,7 +73,7 @@
         },
         {
           "input": "空が青いですね\n3\n",
-          "output": "青\n"
+          "output": "い\n"
         },
         {
           "input": "寿司が食べたい\n7\n",
@@ -85,14 +85,14 @@
         },
         {
           "input": "美味しいケーキ\n4\n",
-          "output": "い\n"
+          "output": "ケ\n"
         },
         {
-          "input": "映画を見に行きます\n8\n",
+          "input": "映画を見に行きます\n12\n",
           "output": "エラー\n"
         },
         {
-          "input": "宿題が終わりました\n5\n",
+          "input": "宿題が終わりました\n3\n",
           "output": "終\n"
         }
       ]
@@ -104,7 +104,7 @@
       "testCases": [
         {
           "input": "明日は明日の風が吹く\n",
-          "output": "く吹が風の日のは日明\n"
+          "output": "く吹が風の日明は日明\n"
         },
         {
           "input": "情けは人の為ならず\n",
@@ -128,7 +128,7 @@
         },
         {
           "input": "初心忘るべからず\n",
-          "output": "ずらからべる忘心初\n"
+          "output": "ずらかべる忘心初\n"
         },
         {
           "input": "笑う門には福来る\n",
@@ -292,7 +292,7 @@
       "testCases": [
         {
           "input": "すもももももももものうち\nも\n",
-          "output": "9\n"
+          "output": "8\n"
         },
         {
           "input": "隣の客はよく柿食う客だ\n客\n",
@@ -301,14 +301,6 @@
         {
           "input": "生麦生米生卵\n生\n",
           "output": "3\n"
-        },
-        {
-          "input": "私は学生です。\nは\n",
-          "output": "2\n"
-        },
-        {
-          "input": "おはようございます\nお\n",
-          "output": "2\n"
         },
         {
           "input": "坊主が屏風に上手に坊主の絵を描いた\n坊\n",
@@ -321,14 +313,6 @@
         {
           "input": "プログラミング\nグ\n",
           "output": "2\n"
-        },
-        {
-          "input": "ありがとう\nあ\n",
-          "output": "2\n"
-        },
-        {
-          "input": "カタカナとひらがな\nか\n",
-          "output": "3\n"
         }
       ]
     },
