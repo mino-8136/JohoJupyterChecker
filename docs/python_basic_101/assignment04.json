@@ -9,24 +9,44 @@
       "points": 100,
       "testCases": [
         {
-          "input": "Hello\n",
-          "output": "5\n"
+          "input": "早起きは三文の徳\n",
+          "output": "9\n"
         },
         {
-          "input": "Python\n",
+          "input": "情けは人の為ならず\n",
+          "output": "11\n"
+        },
+        {
+          "input": "明日は明日の風が吹く\n",
+          "output": "11\n"
+        },
+        {
+          "input": "初心忘るべからず\n",
+          "output": "9\n"
+        },
+        {
+          "input": "笑う門には福来る\n",
+          "output": "9\n"
+        },
+        {
+          "input": "猿も木から落ちる\n",
+          "output": "8\n"
+        },
+        {
+          "input": "花より団子\n",
           "output": "6\n"
         },
         {
-          "input": "こんにちは\n",
-          "output": "5\n"
+          "input": "二兎を追う者は一兎をも得ず\n",
+          "output": "14\n"
         },
         {
-          "input": "World!\n",
+          "input": "雨降って地固まる\n",
+          "output": "9\n"
+        },
+        {
+          "input": "時は金なり\n",
           "output": "6\n"
-        },
-        {
-          "input": "文字列操作\n",
-          "output": "5\n"
         }
       ]
     },
@@ -36,24 +56,44 @@
       "points": 100,
       "testCases": [
         {
-          "input": "Hello\n1\n",
-          "output": "e\n"
+          "input": "今日も元気です\n2\n",
+          "output": "も\n"
         },
         {
-          "input": "Python\n5\n",
-          "output": "n\n"
+          "input": "猫が好きです。\n6\n",
+          "output": "。\n"
         },
         {
-          "input": "Python\n6\n",
+          "input": "プログラミングは楽しい\n5\n",
+          "output": "ミ\n"
+        },
+        {
+          "input": "日本の首都は東京です\n10\n",
           "output": "エラー\n"
         },
         {
-          "input": "abcde\n0\n",
-          "output": "a\n"
+          "input": "空が青いですね\n3\n",
+          "output": "青\n"
         },
         {
-          "input": "プログラム\n8\n",
+          "input": "寿司が食べたい\n7\n",
           "output": "エラー\n"
+        },
+        {
+          "input": "これはペンです\n0\n",
+          "output": "こ\n"
+        },
+        {
+          "input": "美味しいケーキ\n4\n",
+          "output": "い\n"
+        },
+        {
+          "input": "映画を見に行きます\n8\n",
+          "output": "エラー\n"
+        },
+        {
+          "input": "宿題が終わりました\n5\n",
+          "output": "終\n"
         }
       ]
     },
@@ -63,24 +103,44 @@
       "points": 100,
       "testCases": [
         {
-          "input": "Hello World!\n",
-          "output": "!dlroW olleH\n"
+          "input": "明日は明日の風が吹く\n",
+          "output": "く吹が風の日のは日明\n"
         },
         {
-          "input": "Python\n",
-          "output": "nohtyP\n"
+          "input": "情けは人の為ならず\n",
+          "output": "ずらな為の人はけ情\n"
         },
         {
-          "input": "abcde\n",
-          "output": "edcba\n"
+          "input": "猿も木から落ちる\n",
+          "output": "るち落らか木も猿\n"
         },
         {
-          "input": "いろはにほへと\n",
-          "output": "とへほにはろい\n"
+          "input": "花より団子\n",
+          "output": "子団りよ花\n"
         },
         {
-          "input": "文字列操作\n",
-          "output": "作操列字文\n"
+          "input": "二兎を追う者は一兎をも得ず\n",
+          "output": "ず得もを兎一は者う追を兎二\n"
+        },
+        {
+          "input": "雨降って地固まる\n",
+          "output": "るま固地てっ降雨\n"
+        },
+        {
+          "input": "初心忘るべからず\n",
+          "output": "ずらからべる忘心初\n"
+        },
+        {
+          "input": "笑う門には福来る\n",
+          "output": "る来福はに門う笑\n"
+        },
+        {
+          "input": "時は金なり\n",
+          "output": "りな金は時\n"
+        },
+        {
+          "input": "早起きは三文の徳\n",
+          "output": "徳の文三はき起早\n"
         }
       ]
     },
@@ -90,24 +150,44 @@
       "points": 100,
       "testCases": [
         {
-          "input": "Hello\n",
-          "output": "Ho\n"
+          "input": "こんにちは\n",
+          "output": "こは\n"
         },
         {
-          "input": "Python\n",
-          "output": "Pn\n"
+          "input": "プログラミング\n",
+          "output": "プグ\n"
         },
         {
-          "input": "文字列\n",
-          "output": "文列\n"
+          "input": "私は学生です。\n",
+          "output": "私。\n"
         },
         {
-          "input": "あいうえお\n",
-          "output": "あお\n"
+          "input": "おはようございます\n",
+          "output": "おす\n"
         },
         {
-          "input": "さようなら\n",
-          "output": "さら\n"
+          "input": "東京タワー\n",
+          "output": "東ー\n"
+        },
+        {
+          "input": "すもももももももものうち\n",
+          "output": "すち\n"
+        },
+        {
+          "input": "寿限無寿限無五劫の擦り切れ\n",
+          "output": "寿れ\n"
+        },
+        {
+          "input": "坊主が屏風に上手に坊主の絵を描いた\n",
+          "output": "坊た\n"
+        },
+        {
+          "input": "隣の客はよく柿食う客だ\n",
+          "output": "隣だ\n"
+        },
+        {
+          "input": "生麦生米生卵\n",
+          "output": "生卵\n"
         }
       ]
     },
@@ -117,24 +197,44 @@
       "points": 100,
       "testCases": [
         {
-          "input": "Hello\n3\n",
-          "output": "HelloHelloHello\n"
+          "input": "早起きは三文の徳\n2\n",
+          "output": "早起きは三文の徳早起きは三文の徳\n"
         },
         {
-          "input": "abc\n2\n",
-          "output": "abcabc\n"
+          "input": "情けは人の為ならず\n3\n",
+          "output": "情けは人の為ならず情けは人の為ならず情けは人の為ならず\n"
         },
         {
-          "input": "Python\n1\n",
-          "output": "Python\n"
+          "input": "明日は明日の風が吹く\n1\n",
+          "output": "明日は明日の風が吹く\n"
         },
         {
-          "input": "文字\n4\n",
-          "output": "文字文字文字文字\n"
-        },
-        {
-          "input": "Repeat\n0\n",
+          "input": "初心忘るべからず\n0\n",
           "output": "\n"
+        },
+        {
+          "input": "笑う門には福来る\n4\n",
+          "output": "笑う門には福来る笑う門には福来る笑う門には福来る笑う門には福来る\n"
+        },
+        {
+          "input": "猿も木から落ちる\n5\n",
+          "output": "猿も木から落ちる猿も木から落ちる猿も木から落ちる猿も木から落ちる猿も木から落ちる\n"
+        },
+        {
+          "input": "花より団子\n2\n",
+          "output": "花より団子花より団子\n"
+        },
+        {
+          "input": "二兎を追う者は一兎をも得ず\n1\n",
+          "output": "二兎を追う者は一兎をも得ず\n"
+        },
+        {
+          "input": "雨降って地固まる\n3\n",
+          "output": "雨降って地固まる雨降って地固まる雨降って地固まる\n"
+        },
+        {
+          "input": "時は金なり\n4\n",
+          "output": "時は金なり時は金なり時は金なり時は金なり\n"
         }
       ]
     },
@@ -144,78 +244,118 @@
       "points": 100,
       "testCases": [
         {
-          "input": "すいどうばし\nいどう\n",
+          "input": "早起きは三文の徳\n早起き\n",
           "output": "ある\n"
         },
         {
-          "input": "きたかんとう\nかだん\n",
+          "input": "情けは人の為ならず\n情け\n",
+          "output": "ある\n"
+        },
+        {
+          "input": "明日は明日の風が吹く\n今日\n",
           "output": "ない\n"
         },
         {
-          "input": "こんにちは\nにち\n",
+          "input": "初心忘るべからず\n初心\n",
           "output": "ある\n"
         },
         {
-          "input": "あいうえお\nえか\n",
+          "input": "笑う門には福来る\n涙\n",
           "output": "ない\n"
         },
         {
-          "input": "プログラミング\nグラ\n",
+          "input": "猿も木から落ちる\n猿\n",
           "output": "ある\n"
+        },
+        {
+          "input": "花より団子\n花火\n",
+          "output": "ない\n"
+        },
+        {
+          "input": "二兎を追う者は一兎をも得ず\n三兎\n",
+          "output": "ない\n"
+        },
+        {
+          "input": "雨降って地固まる\n地\n",
+          "output": "ある\n"
+        },
+        {
+          "input": "時は金なり\n銀\n",
+          "output": "ない\n"
         }
       ]
     },
     {
       "name": "課題7",
-      "description": "2つのInputで長文の文字列Tと、文字Cが渡される。文字列Tの中に文字Cが何回含まれるかを出力せよ。ただし、大文字と小文字の区別は行わない。",
+      "description": "2つのInputで日本語の文字列Tと、文字Cが渡される。文字列Tの中に文字Cが何回含まれるかを出力せよ。",
       "points": 100,
       "testCases": [
         {
-          "input": "Hello World\nl\n",
-          "output": "3\n"
+          "input": "すもももももももものうち\nも\n",
+          "output": "9\n"
         },
         {
-          "input": "Python Programming\np\n",
+          "input": "隣の客はよく柿食う客だ\n客\n",
           "output": "2\n"
         },
         {
-          "input": "Apple Pie\np\n",
+          "input": "生麦生米生卵\n生\n",
           "output": "3\n"
         },
         {
-          "input": "banana\nA\n",
-          "output": "3\n"
+          "input": "私は学生です。\nは\n",
+          "output": "2\n"
         },
         {
-          "input": "こんにちは\nこ\n",
-          "output": "1\n"
+          "input": "おはようございます\nお\n",
+          "output": "2\n"
+        },
+        {
+          "input": "坊主が屏風に上手に坊主の絵を描いた\n坊\n",
+          "output": "2\n"
+        },
+        {
+          "input": "寿限無寿限無五劫の擦り切れ\n無\n",
+          "output": "2\n"
+        },
+        {
+          "input": "プログラミング\nグ\n",
+          "output": "2\n"
+        },
+        {
+          "input": "ありがとう\nあ\n",
+          "output": "2\n"
+        },
+        {
+          "input": "カタカナとひらがな\nか\n",
+          "output": "3\n"
         }
       ]
     },
     {
       "name": "課題8",
-      "description": "5つのInputで、長文の文字列Tと、文字列C・D・E・Fが渡される。文字列Tの中に含まれる文字列C・D・E・Fのうち、最も登場回数の多い文字列を出力せよ。なお、この問題では各文字の登場回数はすべて異なる。また、大文字と小文字の区別は行わない。",
+      "description": "5つのInputで、日本語の文字列Tと、文字C・D・E・Fが渡される。文字列Tの中に含まれる文字列C・D・E・Fのうち、最も登場回数の多い文字列を出力せよ。なお、この問題では各文字の登場回数はすべて異なる。",
       "points": 100,
       "testCases": [
         {
-          "input": "banana\nb\na\nn\nk\n",
-          "output": "a\n"
+          "input": "すもももももももものうち\nも\nの\nう\nち\n",
+          "output": "も\n"
         },
         {
-          "input": "apple pie\np\ne\na\ni\n",
-          "output": "p\n"
+          "input": "隣の客はよく柿食う客だ\n客\n柿\nく\nか\n",
+          "output": "客\n"
         },
         {
-          "input": "chocolate\nc\no\na\ne\n",
-          "output": "c\n"
+          "input": "生麦生米生卵\n生\n麦\n米\n卵\n",
+          "output": "生\n"
         },
         {
-          "input": "mississippi\ns\np\nm\ni\n",
-          "output": "s\n"
+          "input": "プログラミング\nプ\nグ\nラ\nミ\n",
+          "output": "グ\n"
         },
         {
-          "input": "abcdabcd\nb\na\nd\nc\n",
-          "output": "b\n"
+          "input": "東京タワーとスカイツリー\n東\nス\nタ\nー\n",
+          "output": "ー\n"
         }
       ]
     },
@@ -225,11 +365,31 @@
       "points": 100,
       "testCases": [
         {
+          "input": "password123\n",
+          "output": "許可\n"
+        },
+        {
+          "input": "aaaaaa\n",
+          "output": "不可\n"
+        },
+        {
+          "input": "123456\n",
+          "output": "許可\n"
+        },
+        {
+          "input": "パスワード\n",
+          "output": "不可\n"
+        },
+        {
           "input": "tokyo1234\n",
           "output": "許可\n"
         },
         {
-          "input": "地元じゃ最強\n",
+          "input": "useruser\n",
+          "output": "許可\n"
+        },
+        {
+          "input": "111111\n",
           "output": "不可\n"
         },
         {
@@ -241,8 +401,8 @@
           "output": "許可\n"
         },
         {
-          "input": "123456\n",
-          "output": "許可\n"
+          "input": "ユーザー123\n",
+          "output": "不可\n"
         }
       ]
     },
@@ -252,8 +412,20 @@
       "points": 100,
       "testCases": [
         {
+          "input": "かにを食べたよ\n",
+          "output": "●●を食べたよ\n"
+        },
+        {
+          "input": "かにかにかにかに\n",
+          "output": "●●●●●●●●\n"
+        },
+        {
           "input": "確かにお前の言う通り、どこかに置いてきたのかもしれないな\n",
           "output": "確●●お前の言う通り、どこ●●置いてきたのかもしれないな\n"
+        },
+        {
+          "input": "カニは美味しいですが、かに座は星座です\n",
+          "output": "●●は美味しいですが、●●座は星座です\n"
         },
         {
           "input": "寒くなってきたしカニとか食べたいね\n",
@@ -266,6 +438,10 @@
         {
           "input": "カニカカニカニ力二カニ力ニかにｶにｶﾆ\n",
           "output": "●●カ●●●●力二●●力ニ●●ｶにｶﾆ\n"
+        },
+        {
+          "input": "これは検閲テストです\n",
+          "output": "これは検閲テストです\n"
         },
         {
           "input": "いかに基本をおろそかにしているかに熟考する\n",
