@@ -13,14 +13,14 @@ b = input()
 ```
 
 ### 課題の追加方法
-- Markdownセルで「## 演習問題」というセル以降の課題が評価されるようになっているので、その1行が必要。
-- docs/course_list.json に登録されているコース情報を取得しているので、課題追加時はそこも追記。
-  - ローカルのオフラインモードでアプリケーションで実行する場合、実行exeと同階層のdocsフォルダが参照されます。
+- Markdownセルで「## 演習問題」というセル以降の課題が評価されるようになっているので、ipynbファイルにその1行が必要。
+- 現行のオンライン版では、https://mino-8136.github.io/JohoJupyterChecker/course_list.json に登録されているコース情報を取得している。
+- (対応中)オフライン版では、実行exeと同階層のdocsフォルダが参照されます。
 
 ## 授業利用時の手順
 - 公式サイトからPythonをインストールする。インストール時には「Use admin prilileges when installing py.exe」にチェックを入れる。
   - Microsoft Store版だとうまく動かない？
-- 公式サイトからVisual Studioをインストールする。初期設定のままでOK。
+- 公式サイトからVisual Studio Codeをインストールする。初期設定のままでOK。
 - Visual Studio Codeに以下の拡張機能をインストールする。
   - Japanese Language Pack for Visual Studio Code
   - Python
