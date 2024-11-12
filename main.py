@@ -12,13 +12,15 @@ import threading
 import urllib
 import urllib.request
 
-from utils.file_utils import base_dir
+from utils.file_utils import base_dir, get_all_courses, get_all_assignments
 from utils.evaluation_utils import evaluate_submission
+
+is_online = False
 
 app = Flask(
     __name__, 
-    static_folder= base_dir() /  "dist/static", 
     template_folder= base_dir() / "dist", 
+    static_folder= base_dir() /  "dist/static", 
     static_url_path="/static"
 )
 CORS(app)
@@ -27,6 +29,10 @@ CORS(app)
 # 指定されたURLからコース一覧ファイルを取得するAPI
 @app.route('/api/courses')
 def api_get_all_courses():
+    # TODO: オンラインモードの場合と、オフラインモードの場合で処理を分ける
+    # オフラインモードの場合
+
+    # オンラインモードの場合
     url = "https://mino-8136.github.io/JohoJupyterChecker/course_list.json"
     try:
         response = urllib.request.urlopen(url)
