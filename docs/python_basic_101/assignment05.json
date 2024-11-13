@@ -97,7 +97,7 @@
     {
       "name": "課題8",
       "description": "FizzBuzz問題を解答してください。1から100まで数を数え、条件に応じて出力を変えてください。",
-      "points": 200,
+      "points": 222,
       "testCases": [
         {
           "input": "",
