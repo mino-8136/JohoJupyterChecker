@@ -6,32 +6,32 @@
     {
       "name": "課題1",
       "description": "0から20までの整数を順番に1行ずつ表示し、終了後に「終了」と表示するプログラムを修正してください。",
-      "points": 50,
+      "points": 100,
       "testCases": [
         {
           "input": "",
-          "output": "0\n1\n2\n...20\n終了\n"
+          "output": "0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n終了\n"
         }
       ]
     },
     {
       "name": "課題2",
       "description": "50から100までの整数を1行ずつ表示してください。",
-      "points": 50,
+      "points": 100,
       "testCases": [
         {
           "input": "",
-          "output": "50\n51\n52\n...100\n"
+          "output": "50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100"
         }
       ]
     },
     {
       "name": "課題3",
       "description": "入力で数値Nを受け取り、0からN-1までの数値を1行ずつ表示してください。",
-      "points": 50,
+      "points": 100,
       "testCases": [
         { "input": "5\n", "output": "0\n1\n2\n3\n4\n" },
-        { "input": "10\n", "output": "0\n1\n...9\n" },
+        { "input": "10\n", "output": "0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n" },
         { "input": "1\n", "output": "0\n" },
         { "input": "3\n", "output": "0\n1\n2\n" },
         { "input": "0\n", "output": "" }
@@ -40,19 +40,25 @@
     {
       "name": "課題4",
       "description": "入力で数値Nを受け取り、N匹目まで「羊が◯匹」と表示し、最後に「zzz」を出力してください。",
-      "points": 50,
+      "points": 100,
       "testCases": [
         { "input": "3\n", "output": "羊が1匹\n羊が2匹\n羊が3匹\nzzz\n" },
         { "input": "1\n", "output": "羊が1匹\nzzz\n" },
-        { "input": "5\n", "output": "羊が1匹\n...羊が5匹\nzzz\n" },
+        {
+          "input": "5\n",
+          "output": "羊が 1 匹\n羊が 2 匹\n羊が 3 匹\n羊が 4 匹\n羊が 5 匹\nzzz\n"
+        },
         { "input": "0\n", "output": "zzz\n" },
-        { "input": "10\n", "output": "羊が1匹\n...羊が10匹\nzzz\n" }
+        {
+          "input": "10\n",
+          "output": "羊が 1 匹\n羊が 2 匹\n羊が 3 匹\n羊が 4 匹\n羊が 5 匹\n羊が 6 匹\n羊が 7 匹\n羊が 8 匹\n羊が 9 匹\n羊が 10 匹\nzzz\n"
+        }
       ]
     },
     {
       "name": "課題5",
       "description": "入力で数値Nを受け取り、1からNまでの総和を求めて出力してください。",
-      "points": 50,
+      "points": 100,
       "testCases": [
         { "input": "5\n", "output": "15\n" },
         { "input": "10\n", "output": "55\n" },
@@ -64,7 +70,7 @@
     {
       "name": "課題6",
       "description": "5から75までの奇数を表示するプログラムを修正してください。",
-      "points": 50,
+      "points": 100,
       "testCases": [
         {
           "input": "",
@@ -75,11 +81,11 @@
     {
       "name": "課題7",
       "description": "1から100までの数値のうち、3の倍数かつ5の倍数の数値を1行ずつ表示してください。",
-      "points": 50,
+      "points": 100,
       "testCases": [
         {
           "input": "",
-          "output": "15\n30\n45\n...90\n"
+          "output": "5\n7\n9\n11\n13\n15\n17\n19\n21\n23\n25\n27\n29\n31\n33\n35\n37\n39\n41\n43\n45\n47\n49\n51\n53\n55\n57\n59\n61\n63\n65\n67\n69\n71\n73\n75\n"
         }
       ]
     },
@@ -90,14 +96,14 @@
       "testCases": [
         {
           "input": "",
-          "output": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz\n...100\n"
+          "output": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz\n16\n17\nFizz\n19\nBuzz\nFizz\n22\n23\nFizz\nBuzz\n26\nFizz\n28\n29\nFizzBuzz\n31\n32\nFizz\n34\nBuzz\nFizz\n37\n38\nFizz\nBuzz\n41\nFizz\n43\n44\nFizzBuzz\n46\n47\nFizz\n49\nBuzz\nFizz\n52\n53\nFizz\nBuzz\n56\nFizz\n58\n59\nFizzBuzz\n61\n62\nFizz\n64\nBuzz\nFizz\n67\n68\nFizz\nBuzz\n71\nFizz\n73\n74\nFizzBuzz\n76\n77\nFizz\n79\nBuzz\nFizz\n82\n83\nFizz\nBuzz\n86\nFizz\n88\n89\nFizzBuzz\n91\n92\nFizz\n94\nBuzz\nFizz\n97\n98\nFizz\nBuzz\n"
         }
       ]
     },
     {
       "name": "課題9",
       "description": "入力で2以上の整数Nを受け取り、2で何回割り切れるかを求めてください。",
-      "points": 50,
+      "points": 100,
       "testCases": [
         { "input": "16\n", "output": "4回\n" },
         { "input": "100\n", "output": "2回\n" },
@@ -112,10 +118,10 @@
       "points": 50,
       "testCases": [
         { "input": "90\n20\n", "output": "A: 90 ■■■■■■■■■\nB: 20 ■■\n" },
-        { "input": "50\n30\n", "output": "A: 50 ■■■■\nB: 30 ■■■\n" },
-        { "input": "100\n100\n", "output": "A: 100 ■■■■■■■■■\nB: 100 ■■■■■■■■■\n" },
+        { "input": "50\n30\n", "output": "A: 50 ■■■■■\nB: 30 ■■■\n" },
+        { "input": "100\n100\n", "output": "A: 100 ■■■■■■■■■■\nB: 100 ■■■■■■■■■■\n" },
         { "input": "0\n10\n", "output": "A: 0 \nB: 10 ■\n" },
-        { "input": "70\n60\n", "output": "A: 70 ■■■■■■\nB: 60 ■■■■■\n" }
+        { "input": "70\n60\n", "output": "A: 70 ■■■■■■■\nB: 60 ■■■■■■\n" }
       ]
     },
     {
@@ -137,7 +143,7 @@
       "testCases": [
         {
           "input": "",
-          "output": "2\n3\n5\n7\n...499\n"
+          "output": "2\n3\n5\n7\n11\n13\n17\n19\n23\n29\n31\n37\n41\n43\n47\n53\n59\n61\n67\n71\n73\n79\n83\n89\n97\n101\n103\n107\n109\n113\n127\n131\n137\n139\n149\n151\n157\n163\n167\n173\n179\n181\n191\n193\n197\n199\n211\n223\n227\n229\n233\n239\n241\n251\n257\n263\n269\n271\n277\n281\n283\n293\n307\n311\n313\n317\n331\n337\n347\n349\n353\n359\n367\n373\n379\n383\n389\n397\n401\n409\n419\n421\n431\n433\n439\n443\n449\n457\n461\n463\n467\n479\n487\n491\n499\n"
         }
       ]
     },
