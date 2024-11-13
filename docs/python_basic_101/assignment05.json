@@ -108,7 +108,7 @@
     {
       "name": "課題9",
       "description": "入力で2以上の整数Nを受け取り、2で何回割り切れるかを求めてください。",
-      "points": 100,
+      "points": 111,
       "testCases": [
         { "input": "16\n", "output": "4回\n" },
         { "input": "200\n", "output": "3回\n" },
