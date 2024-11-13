@@ -1,0 +1,26 @@
+{
+  "id": "",
+  "title": "",
+  "description": "",
+  "problems": [
+    {
+      "name": "課題1",
+      "description": "",
+      "points": 100,
+      "testCases": [
+        {
+          "input": "yes\n",
+          "output": "Yes\n"
+        },
+        {
+          "input": "no\n",
+          "output": ""
+        },
+        {
+          "input": "YES\n",
+          "output": ""
+        }
+      ]
+    }
+  ]
+}
