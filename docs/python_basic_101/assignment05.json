@@ -74,7 +74,7 @@
       "testCases": [
         {
           "input": "",
-          "output": "5\n7\n9\n...75\n"
+          "output": "5\n7\n9\n11\n13\n15\n17\n19\n21\n23\n25\n27\n29\n31\n33\n35\n37\n39\n41\n43\n45\n47\n49\n51\n53\n55\n57\n59\n61\n63\n65\n67\n69\n71\n73\n75\n\n"
         }
       ]
     },
@@ -85,7 +85,7 @@
       "testCases": [
         {
           "input": "",
-          "output": "5\n7\n9\n11\n13\n15\n17\n19\n21\n23\n25\n27\n29\n31\n33\n35\n37\n39\n41\n43\n45\n47\n49\n51\n53\n55\n57\n59\n61\n63\n65\n67\n69\n71\n73\n75\n"
+          "output": "15\n30\n45\n60\n75\n90\n"
         }
       ]
     },
@@ -149,14 +149,14 @@
     },
     {
       "name": "課題13",
-      "description": "移動コマンドcommandが入力され、「▲▼◀▶」で上下左右に移動します。移動後の座標を表示してください。",
+      "description": "移動コマンドcommandが入力され、「↑↓←→」で上下左右に移動します。移動後の座標を表示してください。",
       "points": 50,
       "testCases": [
-        { "input": "▲▲◀◀\n", "output": "(-2, -2)\n" },
-        { "input": "◀▲◀▶▶▼\n", "output": "(0, 0)\n" },
-        { "input": "▶▶▶\n", "output": "(3, 0)\n" },
-        { "input": "▼▼▲▲\n", "output": "(0, 0)\n" },
-        { "input": "▶◀▶◀\n", "output": "(0, 0)\n" }
+        { "input": "↑↑←←\n", "output": "(-2, -2)\n" },
+        { "input": "←↑←→→↓\n", "output": "(0, 0)\n" },
+        { "input": "→→→\n", "output": "(3, 0)\n" },
+        { "input": "↓↓↑↑\n", "output": "(0, 0)\n" },
+        { "input": "→←→←\n", "output": "(0, 0)\n" }
       ]
     }
   ]
