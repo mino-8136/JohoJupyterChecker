@@ -1,0 +1,157 @@
+{
+  "id": "5",
+  "title": "Lesson 5: for文とrange関数",
+  "description": "Pythonのfor文とrange関数の使用法を学びます。",
+  "problems": [
+    {
+      "name": "課題1",
+      "description": "0から20までの整数を順番に1行ずつ表示し、終了後に「終了」と表示するプログラムを修正してください。",
+      "points": 50,
+      "testCases": [
+        {
+          "input": "",
+          "output": "0\n1\n2\n...20\n終了\n"
+        }
+      ]
+    },
+    {
+      "name": "課題2",
+      "description": "50から100までの整数を1行ずつ表示してください。",
+      "points": 50,
+      "testCases": [
+        {
+          "input": "",
+          "output": "50\n51\n52\n...100\n"
+        }
+      ]
+    },
+    {
+      "name": "課題3",
+      "description": "入力で数値Nを受け取り、0からN-1までの数値を1行ずつ表示してください。",
+      "points": 50,
+      "testCases": [
+        { "input": "5\n", "output": "0\n1\n2\n3\n4\n" },
+        { "input": "10\n", "output": "0\n1\n...9\n" },
+        { "input": "1\n", "output": "0\n" },
+        { "input": "3\n", "output": "0\n1\n2\n" },
+        { "input": "0\n", "output": "" }
+      ]
+    },
+    {
+      "name": "課題4",
+      "description": "入力で数値Nを受け取り、N匹目まで「羊が◯匹」と表示し、最後に「zzz」を出力してください。",
+      "points": 50,
+      "testCases": [
+        { "input": "3\n", "output": "羊が1匹\n羊が2匹\n羊が3匹\nzzz\n" },
+        { "input": "1\n", "output": "羊が1匹\nzzz\n" },
+        { "input": "5\n", "output": "羊が1匹\n...羊が5匹\nzzz\n" },
+        { "input": "0\n", "output": "zzz\n" },
+        { "input": "10\n", "output": "羊が1匹\n...羊が10匹\nzzz\n" }
+      ]
+    },
+    {
+      "name": "課題5",
+      "description": "入力で数値Nを受け取り、1からNまでの総和を求めて出力してください。",
+      "points": 50,
+      "testCases": [
+        { "input": "5\n", "output": "15\n" },
+        { "input": "10\n", "output": "55\n" },
+        { "input": "1\n", "output": "1\n" },
+        { "input": "0\n", "output": "0\n" },
+        { "input": "100\n", "output": "5050\n" }
+      ]
+    },
+    {
+      "name": "課題6",
+      "description": "5から75までの奇数を表示するプログラムを修正してください。",
+      "points": 50,
+      "testCases": [
+        {
+          "input": "",
+          "output": "5\n7\n9\n...75\n"
+        }
+      ]
+    },
+    {
+      "name": "課題7",
+      "description": "1から100までの数値のうち、3の倍数かつ5の倍数の数値を1行ずつ表示してください。",
+      "points": 50,
+      "testCases": [
+        {
+          "input": "",
+          "output": "15\n30\n45\n...90\n"
+        }
+      ]
+    },
+    {
+      "name": "課題8",
+      "description": "FizzBuzz問題を解答してください。1から100まで数を数え、条件に応じて出力を変えてください。",
+      "points": 200,
+      "testCases": [
+        {
+          "input": "",
+          "output": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz\n...100\n"
+        }
+      ]
+    },
+    {
+      "name": "課題9",
+      "description": "入力で2以上の整数Nを受け取り、2で何回割り切れるかを求めてください。",
+      "points": 50,
+      "testCases": [
+        { "input": "16\n", "output": "4回\n" },
+        { "input": "100\n", "output": "2回\n" },
+        { "input": "32\n", "output": "5回\n" },
+        { "input": "7\n", "output": "0回\n" },
+        { "input": "64\n", "output": "6回\n" }
+      ]
+    },
+    {
+      "name": "課題10",
+      "description": "入力でAさん、Bさんのテストの点数score_A, score_Bが与えられ、それぞれ10点ごとに「■」を出力してください。",
+      "points": 50,
+      "testCases": [
+        { "input": "90\n20\n", "output": "A: 90 ■■■■■■■■■\nB: 20 ■■\n" },
+        { "input": "50\n30\n", "output": "A: 50 ■■■■\nB: 30 ■■■\n" },
+        { "input": "100\n100\n", "output": "A: 100 ■■■■■■■■■\nB: 100 ■■■■■■■■■\n" },
+        { "input": "0\n10\n", "output": "A: 0 \nB: 10 ■\n" },
+        { "input": "70\n60\n", "output": "A: 70 ■■■■■■\nB: 60 ■■■■■\n" }
+      ]
+    },
+    {
+      "name": "課題11",
+      "description": "入力で2以上の整数Nを受け取り、その数が素数かどうかを判定して出力してください。",
+      "points": 50,
+      "testCases": [
+        { "input": "19\n", "output": "19は素数です\n" },
+        { "input": "35\n", "output": "35は素数ではありません\n" },
+        { "input": "2\n", "output": "2は素数です\n" },
+        { "input": "100\n", "output": "100は素数ではありません\n" },
+        { "input": "29\n", "output": "29は素数です\n" }
+      ]
+    },
+    {
+      "name": "課題12",
+      "description": "1から500までの数値のうち、素数をすべて1行ずつ表示してください。",
+      "points": 50,
+      "testCases": [
+        {
+          "input": "",
+          "output": "2\n3\n5\n7\n...499\n"
+        }
+      ]
+    },
+    {
+      "name": "課題13",
+      "description": "移動コマンドcommandが入力され、「▲▼◀▶」で上下左右に移動します。移動後の座標を表示してください。",
+      "points": 50,
+      "testCases": [
+        { "input": "▲▲◀◀\n", "output": "(-2, -2)\n" },
+        { "input": "◀▲◀▶▶▼\n", "output": "(0, 0)\n" },
+        { "input": "▶▶▶\n", "output": "(3, 0)\n" },
+        { "input": "▼▼▲▲\n", "output": "(0, 0)\n" },
+        { "input": "▶◀▶◀\n", "output": "(0, 0)\n" }
+      ]
+    }
+  ]
+}
