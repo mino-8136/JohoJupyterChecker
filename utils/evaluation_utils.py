@@ -65,7 +65,7 @@ def extract_scripts(notebook_path, start_keyword="## 演習問題"):
             if start_keyword in cell['source']:
                 exercise_started = True
         #Codeセルを抽出する処理
-        elif cell['cell_type'] == 'code' and exercise_started and cell['source'] != '':
+        elif cell['cell_type'] == 'code' and exercise_started and cell['source'] != '' :
             code_cells.append(cell['source'])
 
     return code_cells
