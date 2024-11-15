@@ -1,39 +1,65 @@
 # JohoJupyterChecker
 
-学生が作成したJupyterNotebook内の課題を自動評価するためのプログラム
+学生が作成したJupyterNotebook内の課題を自動評価するためのプログラム。
+
+- assignment … 学生が編集するipynbファイルや、各課題のこと
+- checker(チェッカー) … テストケースが記述されたjsonファイル(バックエンド側での呼び方)
+- course(コース) … 各assignment/checkerがまとめられたフォルダ
 
 ## 問題評価の仕様
-- 実行時の時間制限は3秒となっています
-- 評価の仕様として、全角と半角の区別を統一する、大文字と小文字を統一する、スペースはすべて除去する、日本語の句読点は無視する。
-- 評価の仕様として、コードセルは空欄のものは無視されます。
+
+### 評価の制限事項
+
+- 実行時の時間制限は3秒となっています。
+- コードセルは空欄のものは無視されます。
+- 評価時に出力は以下の形式に揃えられます。
+  - 全角と半角の区別を統一する
+  - 大文字と小文字を統一する
+  - スペースはすべて除去する
+  - 日本語の句読点は無視する
 
 ### 非対応の問題形式
+
 - 1つの問題に対して複数のコードセルを使用する問題
-- 1つの問題に対して複数の出力が考えられる問題
+- 1つの問題に対して複数の正解が考えられる問題
 - 数値の誤差を加味する問題
 - 乱数を用いた問題
 
 ## 教員向け
+
 ### 授業利用時の手順
-- 公式サイトからPythonをインストールする。インストール時には「Use admin prilileges when installing py.exe」にチェックを入れる。
-  - Microsoft Store版だとうまく動かない？
-- 公式サイトからVisual Studio Codeをインストールする。初期設定のままでOK。
-- Visual Studio Codeに以下の拡張機能をインストールする。
-  - Japanese Language Pack for Visual Studio Code
-  - Python
-  - Jupyter
-- ipynbファイルからPythonを実行するとき、ipykernelのインストールを求められるのでインストールする
+
+1. 公式サイトからPythonをインストールします。
+   - インストール時には「Use admin prilileges when installing py.exe」にチェックを入れてください。
+   - Microsoft Store版だとうまく動かない可能性があります。
+2. 公式サイトからVisual Studio Codeをインストールします。
+   - インストールは初期設定のままでOKです。
+   - Visual Studio Codeが起動しない場合、後述の「エラー対応」を参照してください。
+3. Visual Studio Codeに以下の拡張機能をインストールします。
+   - Japanese Language Pack for Visual Studio Code
+   - Python
+   - Jupyter
+4. ipynbファイルからPythonを実行するとき、ipykernelのインストールを求められるのでインストールしてください
 
 ### エラー対応
-- プログラムが実行できない場合、ユーザー名に全角スペースが含まれるケースが多いです。
+
+- Visual Studio Codeが実行できない場合、ユーザー名に全角スペースが含まれるケースが多いです。
   - 別途ローカルアカウントの作成を行わせるか、コンピュータ室のPCから実行してください。
 - 実行結果が全て「Python」になる場合、py.exeのインストールができていません。
   - Pythonのインストーラーから、「Modify」から「py launcher」で瞬時に追加できます。
 - Windows Defenderに削除される場合、別途Windows セキュリティの削除対象から外す必要があります。
   - Windows セキュリティ → ウイルスと脅威の防止 → 現在の脅威 → 保護の履歴 → それらしい項目名の「操作」→ 「許可」
   - exe化に使っているpyinstallerが誤検知の対象となっている可能性が高いです。
- 
+
+### コピーされる結果の詳細
+
+- 課題のタイトル、学生番号、得点のデータが平文でクリップボードにコピーされます。
+- 暗号化データとしては、上記のデータに加えて、チェッカーファイルをもとにしたhash値が入っています。
+  - データを書き換えて提出した場合の不正は暗号化データと照合して検知できます。
+  - 同梱のチェッカーファイルを書き換えて判定した場合はhash値が変わります。
+
 ### 利用の制限
+
 - ある程度パソコン操作に習熟してきた頃からの利用を推奨します。
 - 学年組番号の入力欄では0000~9999の数値に制限しています。
 - このソフトウェアおよび問題は、教育機関または個人での利用であれば制限はありません。それ以外については連絡をお願いします。
@@ -41,6 +67,7 @@
 ## 課題の追加方法
 
 ### 課題ファイルの追加方法(オフライン版)
+
 - オフライン版では、アプリケーションと同階層にdocsフォルダを配置してください。
 
 ```
@@ -56,6 +83,7 @@ docs/
 ```
 
 ### 課題用のjsonファイルの形式
+
 - Markdownセルで「## 演習問題」というセル以降の課題が評価されるようになっているので、ipynbファイルにはその1行が必要です。
   - 演習の説明を載せる場合は、「## 演習問題」のMarkdownセルより前に書いてください。
 - 空欄のコードセルは無視されてしまうので、課題を提示する際は「# 課題4」のようにコメントを書いておくことを推奨します。
@@ -86,6 +114,7 @@ docs/
 ```
 
 ## JohoJupyterChecker自体のカスタマイズ
+
 - 自分でアプリケーションを変更して実行ファイル化するためには、下記の「開発要件」を参考に「Python」と「Node.js」のインストールしてください。
   - それらのインストールが終了後、当プロジェクト全体をダウンロードして編集を行ってください。
 - オフライン版で作成するには、「main.py」で「`is_offline = True`」にしてください。
@@ -96,6 +125,7 @@ docs/
 - 上記の手順が完了したら、下記の「授業者向けのアプリ化手順」を全て実行してください。
 
 ### course_list.jsonの形式(オンライン版のみ)
+
 ```
 {
   "courses": {
@@ -120,6 +150,7 @@ docs/
 ## 開発者向け
 
 ### 開発要件
+
 - Python 3.12
 - Node.js 20.15.0
 - npm install axios vue-axios crypto-js
@@ -127,6 +158,7 @@ docs/
 - 内部サーバーは http://localhost:5000 で融通
 
 ### Projectの初回起動と仮想環境の用意
+
 ```sh
 npm install
 python -m venv .venv
@@ -135,12 +167,16 @@ pip install flask flask-cors nbformat pywebview pyinstaller
 ```
 
 ### Python経由でのテスト起動
+
 ```sh
 npm run build
 py main.py
 ```
 
+※ このまま`npm run dev`でブラウザ上でチェック可能
+
 ### アプリケーションのビルド
+
 ```sh
 .venv\Scripts\activate
 npm run build
@@ -148,6 +184,7 @@ pyinstaller main.py --onefile --distpath application --clean --add-data "dist;di
 ```
 
 ### 授業者向けのアプリ化手順(初回のみ)
+
 ```sh
 npm install
 python -m venv .venv
@@ -158,11 +195,9 @@ pyinstaller main.py --onefile --distpath application --clean --add-data "dist;di
 ```
 
 ### 授業者向けのアプリ化手順(2回目以降)
+
 ```sh
-npm install
 .venv\Scripts\activate
-pip install flask flask-cors nbformat pywebview pyinstaller
 npm run build
 pyinstaller main.py --onefile --distpath application --clean --add-data "dist;dist" -n JohoJupyterChecker
 ```
-
