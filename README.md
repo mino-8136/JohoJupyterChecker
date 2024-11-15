@@ -31,10 +31,13 @@ b = input()
 - ipynbファイルからPythonを実行するとき、ipykernelのインストールを求められるのでインストールする
 
 ### エラー対応
-- プログラムが実行できない場合、ユーザー名に全角スペースが含まれるケースが多い。
-  - 別途ローカルアカウントの作成を行わせるか、コンピュータ室のPCから実行する
-- 実行結果が全て「Python」になる場合、py.exeのインストールができていない。
-  - Pythonのインストーラーから、「Modify」から「py launcher」で瞬時に追加できる
+- プログラムが実行できない場合、ユーザー名に全角スペースが含まれるケースが多いです。
+  - 別途ローカルアカウントの作成を行わせるか、コンピュータ室のPCから実行してください。
+- 実行結果が全て「Python」になる場合、py.exeのインストールができていません。
+  - Pythonのインストーラーから、「Modify」から「py launcher」で瞬時に追加できます。
+- Windows Defenderに削除される場合、別途Windows セキュリティの削除対象から外す必要があります。
+  - Windows セキュリティ → ウイルスと脅威の防止 → 現在の脅威 → 保護の履歴 → それらしい項目名の「操作」→ 「許可」
+  - exe化に使っているpyinstallerが誤検知の対象となっている可能性が高いです。
  
 ## 教員向け
 ### 利用の制限
@@ -42,9 +45,10 @@ b = input()
 - 学年組番号の入力欄では0000~9999の数値に制限しています。
 
 ### JohoJupyterCheckerのカスタマイズ
+- オフライン版を使用する場合、「main.py」で「`is_offline = True`」にしてください。
 - 提出されたJSONデータに不正が生じないように、「src -> components -> StudentScore.vue の `encryptionKey`」に暗号化キーを記述してください。
   - 課題タイトル・ID4桁・得点が暗号化されています。
-- オフライン版として利用する場合、main.pyの「」をFalseに設定してください。
+- 上記の手順が完了したら、下記の「授業者向けのアプリ化手順」を全て実行してください。
 
 ## 開発者向け
 
@@ -77,6 +81,16 @@ py main.py
 ### アプリケーションのビルド
 ```sh
 .venv\Scripts\activate
+npm run build
+pyinstaller main.py --onefile --distpath application --clean --add-data "dist;dist" -n JohoJupyterChecker
+```
+
+### 授業者向けのアプリ化手順
+```sh
+npm install
+python -m venv .venv
+.venv\Scripts\activate
+pip install flask flask-cors nbformat pywebview pyinstaller
 npm run build
 pyinstaller main.py --onefile --distpath application --clean --add-data "dist;dist" -n JohoJupyterChecker
 ```
