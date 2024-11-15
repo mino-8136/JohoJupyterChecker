@@ -16,7 +16,7 @@ from utils.file_utils import base_dir, docs_dir
 from utils.evaluation_utils import evaluate_submission
 
 #--------------------------------------------------------------#
-is_offline = True # オフラインモードの場合はTrueにする
+is_offline = False # オフラインモードの場合はTrueにする
 #--------------------------------------------------------------#
 
 app = Flask(
