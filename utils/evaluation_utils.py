@@ -104,6 +104,7 @@ def evaluate_submission(notebook_path, problems):
         }
 
         # 各入出力例を用いてテストを実施
+        case_index = 1
         for test_case in test_cases:
             input = test_case["input"]
             output = test_case["output"]
@@ -140,10 +141,11 @@ def evaluate_submission(notebook_path, problems):
                 "output_user": output_user,
                 "status": status.value
             })
-            # print(status.value)
+
+            # print(f"{problem.get('name', 'Problem {idx + 1}')} [case:{case_index}] -> {status.value}")
+            case_index += 1
 
         os.remove(script_path)
         total_results.append(unit_results)
 
-    # print(total_results)
     return total_results
