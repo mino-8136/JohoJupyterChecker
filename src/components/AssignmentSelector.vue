@@ -26,40 +26,39 @@ const selectedAssignmentId = ref<number | null>(null) // 選択された課題�
 interface AllCoursesJSON {
   [key: string]: any
 }
-interface AllAssignmentsJSON {
-  url: string
-}
 
-// 指定コース内の全Assignmentデータを取得する(親コンポーネントから呼び出し)
+// 指定コース内の全課題jsonデータを読み込む(App.vueから呼び出す)
 async function getAllAssignments(course: string) {
   // 既に読み込まれている課題データを初期化
   allAssignments.value = []
   store.initiateSelectedAssignment()
 
-  // store.allCoursesJSONから指定コース名をもとに、課題データを取得
+  // store.allCoursesJSONから指定コース名をもとに、課題jsonデータを取得
   const allCourses: AllCoursesJSON = store.allCoursesJSON
-  allCourses[course].assignments.forEach(async (assignment: AllAssignmentsJSON) => {
-    try {
-      // 指定されたURLから課題データを取得し、allAssignmentsに格納
-      const url = assignment.url
-      const response = await fetch('http://localhost:5000/api/assignments', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url })
-      })
+  const checkerURLs = allCourses[course].checkerURLs
+  for(const checkerURL of checkerURLs){
+    try{
+      // 指定されたURLから課題データを取得
+      const response = await fetch("http://localhost:5000/api/checker", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ checker_url: checkerURL }),
+      });
       if (!response.ok) {
-        throw new Error('課題データの取得に失敗しました')
+        throw new Error(`課題データの取得に失敗しました: ${checkerURL}`)
       }
-
       const data = await response.json()
       allAssignments.value.push(data)
-      allAssignments.value.sort((a, b) => a.id - b.id)
-
-      changeAssignment(0)
     } catch (e) {
       console.error(e)
     }
-  })
+  }
+
+  // 課題IDでソートし、最初の課題を選択
+  allAssignments.value.sort((a, b) => a.id - b.id)
+  if (allAssignments.value.length > 0) {
+    changeAssignment(0);
+  }
 }
 
 // storeに現在の課題を保持すると同時に、選択された課題のIDをローカルに保持する

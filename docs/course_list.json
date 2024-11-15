@@ -1,41 +1,19 @@
 {
   "courses": {
     "development": {
-      "assignments": [
-        {
-          "filename": "week1.json",
-          "url": "https://mino-8136.github.io/JohoJupyterChecker/development/week1.json"
-        },
-        {
-          "filename": "week2.json",
-          "url": "https://mino-8136.github.io/JohoJupyterChecker/development/week2.json"
-        }
+      "checkerURLs": [
+        "https://mino-8136.github.io/JohoJupyterChecker/development/week1.json",
+        "https://mino-8136.github.io/JohoJupyterChecker/development/week2.json"
       ]
     },
     "python_basic_101": {
-      "assignments": [
-        {
-          "filename": "assignment01.json",
-          "url": "https://mino-8136.github.io/JohoJupyterChecker/python_basic_101/assignment01.json"
-        },
-        {
-          "filename": "assignment02.json",
-          "url": "https://mino-8136.github.io/JohoJupyterChecker/python_basic_101/assignment02.json"
-        },
-        {
-          "filename": "assignment03.json",
-          "url": "https://mino-8136.github.io/JohoJupyterChecker/python_basic_101/assignment03.json"
-        },
-        {
-          "filename": "assignment04.json",
-          "url": "https://mino-8136.github.io/JohoJupyterChecker/python_basic_101/assignment04.json"
-        },
-        {
-          "filename": "assignment05.json",
-          "url": "https://mino-8136.github.io/JohoJupyterChecker/python_basic_101/assignment05.json"
-        }
+      "checkerURLs": [
+        "https://mino-8136.github.io/JohoJupyterChecker/python_basic_101/checker01.json",
+        "https://mino-8136.github.io/JohoJupyterChecker/python_basic_101/checker02.json",
+        "https://mino-8136.github.io/JohoJupyterChecker/python_basic_101/checker03.json",
+        "https://mino-8136.github.io/JohoJupyterChecker/python_basic_101/checker04.json",
+        "https://mino-8136.github.io/JohoJupyterChecker/python_basic_101/checker05.json"
       ]
     }
-  },
-  "last_update": "2024-10-26"
+  }
 }
