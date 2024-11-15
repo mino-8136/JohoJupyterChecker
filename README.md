@@ -121,7 +121,8 @@ docs/
 
 - 自分でアプリケーションを変更して実行ファイル化するためには、下記の「開発要件」を参考に「Python」と「Node.js」のインストールしてください。
   - それらのインストールが終了後、当プロジェクト全体をダウンロードして編集を行ってください。
-- オフライン版で作成するには、「main.py」で「`is_offline = True`」にしてください。
+- オフライン版で作成するには、「main.py」で「`is_offline = True`」にしてください。(v1.5はデフォルトでオフライン版です。)
+  - オンライン版で作成するには、「main.py」で「`is_offline = False`」にしてください。
 - オンライン版で課題配信元を変更するには、「main.py」で「`online_course_list_url`」のパスを変更してください。
   - course_list.jsonの形式は、後述の注釈を参考にしてください。
 - 提出されたJSONデータに不正が生じないように、「src -> components -> StudentScore.vue の `encryptionKey`」に暗号化キーを記述することを推奨します。
