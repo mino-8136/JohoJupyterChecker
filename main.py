@@ -31,11 +31,10 @@ CORS(app)
 @app.route('/api/courses')
 def api_get_all_courses():
     if is_offline:
-        # オフラインモードの場合、ローカルのjsonファイルからコース一覧を取得する
+        # オフラインモードの場合、ローカルからコース一覧ファイルを取得する
         url = docs_dir() / "docs" / "course_list.json"
         with url.open('r', encoding='utf-8') as f:
             data = json.load(f)
-            print(data)
             return jsonify(data)
     else: 
         # オンラインモードの場合、指定されたURLからコース一覧ファイルを取得する
@@ -54,8 +53,6 @@ def api_get_all_assignments():
     if is_offline:
         # オフラインモードの場合、指定されたディレクトリ内のjsonファイルを取得
         url = docs_dir() / "docs" / request.json['url']
-        print(url)
-
         with url.open('r', encoding='utf-8') as f:
             data = json.load(f)
             return jsonify(data)
@@ -65,7 +62,6 @@ def api_get_all_assignments():
         try:
             response = urllib.request.urlopen(url)
             data = json.loads(response.read().decode('utf-8'))
-            print(data)
             return jsonify(data)
         except urllib.error.HTTPError as e:
             return jsonify({"error": f"HTTPError: {e.code}"}), 500
