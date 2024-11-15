@@ -108,22 +108,25 @@ function copyResult() {
     return
   }
 
+  const assignmentProblems = store.selectedAssignment.problems
   const assignmentTitle = store.selectedAssignment.title
   const score = currentScore.value
+  const hash = CryptoJS.SHA256(JSON.stringify(assignmentProblems)).toString().slice(0, 6)
 
-  // 暗号化キーを用いて課題得点情報を暗号化(TODO : バックエンドへ移す)
-  // 検出できる不正 : 課題名を書き換えた・スコアを書き換えた・他人の学年組番号を入力して提出した
+  // 暗号化キーを用いて課題得点情報を暗号化
+  // 検出できる不正 : 課題名を書き換えた・スコアを書き換えた・他人の学年組番号を入力して提出した・テストケースを書き換えた
   const encryptedData = CryptoJS.AES.encrypt(
     JSON.stringify({
-      assignmentTitle: assignmentTitle,
+      title: assignmentTitle,
       studentId: studentId.value,
-      score: score
+      score: score,
+      hash: hash
     }),
     encryptionKey
   ).toString()
 
   const result = {
-    assignmentTitle: assignmentTitle,
+    title: assignmentTitle,
     studentId: studentId.value,
     score: score,
     encryptedData: encryptedData
