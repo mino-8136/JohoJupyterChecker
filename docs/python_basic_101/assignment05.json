@@ -157,7 +157,7 @@
       "description": "移動コマンドcommandが入力され、「↑↓←→」で上下左右に移動します。移動後の座標を表示してください。",
       "points": 50,
       "testCases": [
-        { "input": "↑↑←←\n", "output": "(-2,-2)\n" },
+        { "input": "←←↑\n", "output": "(-2,-1)\n" },
         { "input": "←↑←→→↓\n", "output": "(0,0)\n" },
         { "input": "↑↑↓↓←→←→\n", "output": "(0,0)\n" },
         { "input": "\n", "output": "(0,0)\n" },
