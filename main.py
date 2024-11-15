@@ -12,10 +12,12 @@ import threading
 import urllib
 import urllib.request
 
-from utils.file_utils import base_dir, get_all_courses, get_all_assignments
+from utils.file_utils import base_dir, docs_dir
 from utils.evaluation_utils import evaluate_submission
 
-is_online = False
+#--------------------------------------------------------------#
+is_offline = True # オフラインモードの場合はTrueにする
+#--------------------------------------------------------------#
 
 app = Flask(
     __name__, 
@@ -25,35 +27,51 @@ app = Flask(
 )
 CORS(app)
 
-
-# 指定されたURLからコース一覧ファイルを取得するAPI
+# コース一覧を取得するAPI
 @app.route('/api/courses')
 def api_get_all_courses():
-    # TODO: オンラインモードの場合と、オフラインモードの場合で処理を分ける
-    # オフラインモードの場合
+    if is_offline:
+        # オフラインモードの場合、ローカルのjsonファイルからコース一覧を取得する
+        url = docs_dir() / "docs" / "course_list.json"
+        with url.open('r', encoding='utf-8') as f:
+            data = json.load(f)
+            print(data)
+            return jsonify(data)
+    else: 
+        # オンラインモードの場合、指定されたURLからコース一覧ファイルを取得する
+        url = "https://mino-8136.github.io/JohoJupyterChecker/course_list.json"
+        try:
+            response = urllib.request.urlopen(url)
+            data = json.loads(response.read().decode('utf-8'))
+            return jsonify(data)
+        except urllib.error.HTTPError as e:
+            return jsonify({"error": f"HTTPError: {e.code}"}), 500
 
-    # オンラインモードの場合
-    url = "https://mino-8136.github.io/JohoJupyterChecker/course_list.json"
-    try:
-        response = urllib.request.urlopen(url)
-        data = json.loads(response.read().decode('utf-8'))
-        return jsonify(data)
-    except urllib.error.HTTPError as e:
-        return jsonify({"error": f"HTTPError: {e.code}"}), 500
-    
-# 指定されたURLから課題ファイルを取得するAPI
+
+# 指定されたURL/パスから課題ファイルを1つ取得するAPI
 @app.route('/api/assignments', methods=['POST'])
 def api_get_all_assignments():
-    url = request.json['url']
-    try:
-        response = urllib.request.urlopen(url)
-        data = json.loads(response.read().decode('utf-8'))
-        return jsonify(data)
-    except urllib.error.HTTPError as e:
-        return jsonify({"error": f"HTTPError: {e.code}"}), 500
+    if is_offline:
+        # オフラインモードの場合、指定されたディレクトリ内のjsonファイルを取得
+        url = docs_dir() / "docs" / request.json['url']
+        print(url)
+
+        with url.open('r', encoding='utf-8') as f:
+            data = json.load(f)
+            return jsonify(data)
+    else:
+        # オンラインモードの場合、指定されたURLから課題ファイルを取得する
+        url = request.json['url']
+        try:
+            response = urllib.request.urlopen(url)
+            data = json.loads(response.read().decode('utf-8'))
+            print(data)
+            return jsonify(data)
+        except urllib.error.HTTPError as e:
+            return jsonify({"error": f"HTTPError: {e.code}"}), 500
 
 
-# 課題データを返すAPI
+# 提出された課題ファイルを正誤判定して返すAPI
 @app.route('/api/submit', methods=['POST'])
 def submit_assignment():
 
@@ -70,7 +88,6 @@ def submit_assignment():
     # 渡された課題JSONデータから問題を抽出する
     assignments = json.loads(request.form['assignments'])
     problems = assignments['problems']
-    # print(problems)
 
     # JupyterNotebookファイルと課題データを実行して評価
     try:
