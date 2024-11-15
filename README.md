@@ -46,6 +46,8 @@ b = input()
 
 ### JohoJupyterCheckerのカスタマイズ
 - オフライン版を使用する場合、「main.py」で「`is_offline = True`」にしてください。
+  - アプリケーションと同階層にdocsフォルダを配置してください。
+  - 各課題のurlは、「`"url": "python_basic_101/assignment01.json"`」のように、docsフォルダ以下のパスを記述してください。
 - 提出されたJSONデータに不正が生じないように、「src -> components -> StudentScore.vue の `encryptionKey`」に暗号化キーを記述してください。
   - 課題タイトル・ID4桁・得点が暗号化されています。
 - 上記の手順が完了したら、下記の「授業者向けのアプリ化手順」を全て実行してください。
@@ -59,7 +61,7 @@ b = input()
 - pip install flask flask-cors nbformat pywebview
 - pip install pyinstaller
 - 内部サーバーは http://localhost:5000 で融通
-- 
+
 ### Projectの初回起動
 ```sh
 npm install
