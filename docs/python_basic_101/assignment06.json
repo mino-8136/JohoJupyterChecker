@@ -239,7 +239,7 @@
         },
         {
           "input": "数学I 数学II 数学III 数学A 数学B 数学C\n60 85 70 82 67 89\n",
-          "output": "最高点: 100 科目名: E\n最低点: 60 科目名: A\n"
+          "output": "最高点: 89 科目名: 数学C\n最低点: 60 科目名: 数学I\n"
         },
         {
           "input": "History Math Science\n80 85 90\n",
